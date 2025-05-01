@@ -19,13 +19,10 @@ jobs:
   validate:
     name: Validate DNS Terraform
     runs-on: self-hosted
+    container:
+      image: ghcr.io/opentofu/opentofu:1.6.2
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Setup OpenTofu
-        uses: opentofu/setup-opentofu@v1
-        with:
-          tofu_version: "1.6.2"
       
       - name: Validate
         working-directory: dns
@@ -39,13 +36,10 @@ jobs:
     name: Plan DNS Terraform
     needs: validate
     runs-on: self-hosted
+    container:
+      image: ghcr.io/opentofu/opentofu:1.6.2
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Setup OpenTofu
-        uses: opentofu/setup-opentofu@v1
-        with:
-          tofu_version: "1.6.2"
       
       - name: Plan
         working-directory: dns
@@ -67,14 +61,11 @@ jobs:
     name: Apply DNS Terraform
     needs: plan
     runs-on: self-hosted
+    container:
+      image: ghcr.io/opentofu/opentofu:1.6.2
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Setup OpenTofu
-        uses: opentofu/setup-opentofu@v1
-        with:
-          tofu_version: "1.6.2"
       
       - name: Download Plan Artifact
         uses: actions/download-artifact@v3

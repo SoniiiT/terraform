@@ -18,14 +18,11 @@ env:
 jobs:
   validate:
     name: Validate Cloudflare Terraform
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+    container:
+      image: ghcr.io/opentofu/opentofu:1.6.2
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Setup OpenTofu
-        uses: opentofu/setup-opentofu@v1
-        with:
-          tofu_version: "1.6.2"
       
       - name: Validate
         working-directory: cloudflare
@@ -36,14 +33,11 @@ jobs:
   plan:
     name: Plan Cloudflare Terraform
     needs: validate
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+    container:
+      image: ghcr.io/opentofu/opentofu:1.6.2
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Setup OpenTofu
-        uses: opentofu/setup-opentofu@v1
-        with:
-          tofu_version: "1.6.2"
       
       - name: Plan
         working-directory: cloudflare
@@ -62,15 +56,12 @@ jobs:
   apply:
     name: Apply Cloudflare Terraform
     needs: plan
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+    container:
+      image: ghcr.io/opentofu/opentofu:1.6.2
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Setup OpenTofu
-        uses: opentofu/setup-opentofu@v1
-        with:
-          tofu_version: "1.6.2"
       
       - name: Download Plan Artifact
         uses: actions/download-artifact@v3

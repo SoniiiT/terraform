@@ -22,7 +22,7 @@ jobs:
     name: Validate PVE Terraform
     runs-on: self-hosted
     container:
-      image: opentofu/opentofu:1.6.2
+      image: ghcr.io/opentofu/opentofu:1.6.2
     steps:
       - uses: actions/checkout@v4
       
