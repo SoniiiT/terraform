@@ -18,7 +18,7 @@ env:
 jobs:
   validate:
     name: Validate Cloudflare Terraform
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/opentofu/opentofu:1.6.2
     steps:
@@ -33,7 +33,7 @@ jobs:
   plan:
     name: Plan Cloudflare Terraform
     needs: validate
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/opentofu/opentofu:1.6.2
     steps:
@@ -56,7 +56,7 @@ jobs:
   apply:
     name: Apply Cloudflare Terraform
     needs: plan
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/opentofu/opentofu:1.6.2
     if: github.ref == 'refs/heads/main'

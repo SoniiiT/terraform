@@ -18,7 +18,7 @@ env:
 jobs:
   validate:
     name: Validate Twingate Terraform
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/opentofu/opentofu:1.6.2
     steps:
@@ -35,7 +35,7 @@ jobs:
   plan:
     name: Plan Twingate Terraform
     needs: validate
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/opentofu/opentofu:1.6.2
     steps:
@@ -60,7 +60,7 @@ jobs:
   apply:
     name: Apply Twingate Terraform
     needs: plan
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/opentofu/opentofu:1.6.2
     if: github.ref == 'refs/heads/main'
