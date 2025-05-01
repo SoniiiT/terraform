@@ -1,0 +1,160 @@
+stages:
+  - validate
+  - plan
+  - apply
+
+variables:
+  TF_CLI_ARGS: "-no-color"
+  TF_CLI_ARGS_plan: "-no-color -input=false"
+  TF_CLI_ARGS_apply: "-no-color -input=false -auto-approve"
+  TF_VAR_proxmox_api_url: "https://192.168.178.6:8006/api2/json"
+  TF_VAR_proxmox_api_token_id: "terraform@pam!terraform"
+  TF_VAR_proxmox_api_token_secret: $PROXMOX_API_TOKEN_SECRET
+  TF_VAR_lxc_password: $LXC_PASSWORD
+  TF_VAR_tsig_key: $DNS_TSIG_KEY
+  TF_VAR_tg_api_token: $TG_API_TOKEN
+  GIT_STRATEGY: clone
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - ${TF_DIR}/.terraform
+    - ${TF_DIR}/.terraform.lock.hcl
+  policy: pull-push
+
+before_script:
+  - tofu --version
+  - tofu init
+
+.validate_template: &validate_definition
+  stage: validate
+  image:
+    name: ghcr.io/opentofu/opentofu:1.6.2
+    entrypoint: [""]
+  script:
+    - cd ${TF_DIR}
+    - rm -f .terraform.lock.hcl
+    - tofu init
+    - tofu validate
+  artifacts: {}
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+.plan_template: &plan_definition
+  stage: plan
+  image:
+    name: ghcr.io/opentofu/opentofu:1.6.2
+    entrypoint: [""]
+  script:
+    - cd ${TF_DIR}
+    - tofu init
+    - tofu providers lock
+    - tofu plan -out=tfplan
+  artifacts:
+    paths:
+      - ${TF_DIR}/tfplan
+    expire_in: 1 day
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: on_success
+
+.apply_template: &apply_definition
+  stage: apply
+  image:
+    name: ghcr.io/opentofu/opentofu:1.6.2
+    entrypoint: [""]
+  script:
+    - cd ${TF_DIR}
+    - tofu init
+    - tofu apply -auto-approve tfplan
+    - git config --global user.email "terraform-runner@soniiit.net"
+    - git config --global user.name "terraform-runner"
+    - git add terraform.tfstate
+    - git commit -m "[skip ci] Update terraform state"
+    - git push "https://terraform-runner:${GITLAB_ACCESS_TOKEN}@gitlab.soniiit.net/${CI_PROJECT_PATH}.git" HEAD:${CI_COMMIT_REF_NAME}
+  artifacts: {}
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+# PVE Server Jobs
+validate:pve-srv-01:
+  <<: *validate_definition
+  variables:
+    TF_DIR: "pve-srv-01"
+
+plan:pve-srv-01:
+  <<: *plan_definition
+  variables:
+    TF_DIR: "pve-srv-01"
+  needs:
+    - validate:pve-srv-01
+
+apply:pve-srv-01:
+  <<: *apply_definition
+  variables:
+    TF_DIR: "pve-srv-01"
+  needs:
+    - plan:pve-srv-01
+
+# DNS Jobs
+validate:dns:
+  <<: *validate_definition
+  variables:
+    TF_DIR: "dns"
+
+plan:dns:
+  <<: *plan_definition
+  variables:
+    TF_DIR: "dns"
+  needs:
+    - validate:dns
+
+apply:dns:
+  <<: *apply_definition
+  variables:
+    TF_DIR: "dns"
+  needs:
+    - plan:dns
+
+# Cloudflare Jobs
+validate:cloudflare:
+  <<: *validate_definition
+  variables:
+    TF_DIR: "cloudflare"
+
+plan:cloudflare:
+  <<: *plan_definition
+  variables:
+    TF_DIR: "cloudflare"
+  needs:
+    - validate:cloudflare
+
+apply:cloudflare:
+  <<: *apply_definition
+  variables:
+    TF_DIR: "cloudflare"
+  needs:
+    - plan:cloudflare
+
+# Twingate Jobs
+validate:twingate:
+  <<: *validate_definition
+  variables:
+    TF_DIR: "twingate"
+
+plan:twingate:
+  <<: *plan_definition
+  variables:
+    TF_DIR: "twingate"
+  needs:
+    - validate:twingate
+
+apply:twingate:
+  <<: *apply_definition
+  variables:
+    TF_DIR: "twingate"
+  needs:
+    - plan:twingate 
