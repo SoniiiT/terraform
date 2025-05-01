@@ -21,13 +21,10 @@ jobs:
   validate:
     name: Validate PVE Terraform
     runs-on: self-hosted
+    container:
+      image: opentofu/opentofu:1.6.2
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Setup OpenTofu
-        uses: opentofu/setup-opentofu@v1
-        with:
-          tofu_version: "1.6.2"
       
       - name: Validate
         working-directory: pve-srv-01
@@ -42,13 +39,10 @@ jobs:
     name: Plan PVE Terraform
     needs: validate
     runs-on: self-hosted
+    container:
+      image: opentofu/opentofu:1.6.2
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Setup OpenTofu
-        uses: opentofu/setup-opentofu@v1
-        with:
-          tofu_version: "1.6.2"
       
       - name: Plan
         working-directory: pve-srv-01
@@ -71,14 +65,11 @@ jobs:
     name: Apply PVE Terraform
     needs: plan
     runs-on: self-hosted
+    container:
+      image: opentofu/opentofu:1.6.2
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Setup OpenTofu
-        uses: opentofu/setup-opentofu@v1
-        with:
-          tofu_version: "1.6.2"
       
       - name: Download Plan Artifact
         uses: actions/download-artifact@v3
