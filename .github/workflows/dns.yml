@@ -21,8 +21,12 @@ jobs:
     runs-on: self-hosted
     container:
       image: ghcr.io/opentofu/opentofu:1.6.2
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Validate
         working-directory: dns
@@ -38,8 +42,12 @@ jobs:
     runs-on: self-hosted
     container:
       image: ghcr.io/opentofu/opentofu:1.6.2
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Plan
         working-directory: dns
@@ -51,7 +59,7 @@ jobs:
           tofu plan -out=tfplan
       
       - name: Upload Plan Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: tfplan-dns
           path: dns/tfplan
@@ -64,11 +72,15 @@ jobs:
     container:
       image: ghcr.io/opentofu/opentofu:1.6.2
     if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Download Plan Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: tfplan-dns
           path: dns
@@ -81,10 +93,14 @@ jobs:
           tofu init
           tofu apply -auto-approve tfplan
           
-      - name: Commit and push state
+      - name: Configure Git
         run: |
+          git config --global --add safe.directory /__w/terraform/terraform
           git config --global user.email "terraform-runner@soniiit.net"
           git config --global user.name "terraform-runner"
+          
+      - name: Commit and push state
+        run: |
           git add dns/terraform.tfstate
           git commit -m "[skip ci] Update DNS terraform state"
-          git push "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref }} 
+          git push origin HEAD:${{ github.ref }} 

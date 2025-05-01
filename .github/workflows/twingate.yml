@@ -21,13 +21,17 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/opentofu/opentofu:1.6.2
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Validate
         working-directory: twingate
         env:
-          TF_VAR_tg_api_token: ${{ secrets.TG_API_TOKEN }}
+          TF_VAR_twingate_api_token: ${{ secrets.TG_API_TOKEN }}
         run: |
           tofu init
           tofu validate
@@ -38,20 +42,24 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/opentofu/opentofu:1.6.2
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Plan
         working-directory: twingate
         env:
-          TF_VAR_tg_api_token: ${{ secrets.TG_API_TOKEN }}
+          TF_VAR_twingate_api_token: ${{ secrets.TG_API_TOKEN }}
         run: |
           tofu init
           tofu providers lock
           tofu plan -out=tfplan
       
       - name: Upload Plan Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: tfplan-twingate
           path: twingate/tfplan
@@ -64,11 +72,15 @@ jobs:
     container:
       image: ghcr.io/opentofu/opentofu:1.6.2
     if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Download Plan Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: tfplan-twingate
           path: twingate
@@ -76,15 +88,19 @@ jobs:
       - name: Apply
         working-directory: twingate
         env:
-          TF_VAR_tg_api_token: ${{ secrets.TG_API_TOKEN }}
+          TF_VAR_twingate_api_token: ${{ secrets.TG_API_TOKEN }}
         run: |
           tofu init
           tofu apply -auto-approve tfplan
           
-      - name: Commit and push state
+      - name: Configure Git
         run: |
+          git config --global --add safe.directory /__w/terraform/terraform
           git config --global user.email "terraform-runner@soniiit.net"
           git config --global user.name "terraform-runner"
+          
+      - name: Commit and push state
+        run: |
           git add twingate/terraform.tfstate
           git commit -m "[skip ci] Update Twingate terraform state"
-          git push "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref }} 
+          git push origin HEAD:${{ github.ref }} 
