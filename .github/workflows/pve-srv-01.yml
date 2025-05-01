@@ -90,10 +90,14 @@ jobs:
           tofu init
           tofu apply -auto-approve tfplan
           
-      - name: Commit and push state
+      - name: Configure Git
         run: |
+          git config --global --add safe.directory /__w/terraform/terraform
           git config --global user.email "terraform-runner@soniiit.net"
           git config --global user.name "terraform-runner"
+          
+      - name: Commit and push state
+        run: |
           git add pve-srv-01/terraform.tfstate
           git commit -m "[skip ci] Update PVE terraform state"
-          git push "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref }} 
+          git push origin HEAD:${{ github.ref }} 
