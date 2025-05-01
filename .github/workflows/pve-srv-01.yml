@@ -1,4 +1,4 @@
-name: PVE Server Terraform
+name: PVE-SRV-01 Terraform
 
 on:
   push:
