@@ -126,9 +126,41 @@ resource "proxmox_lxc" "lxc-lancache" {
     onboot = true
 }
 
-resource "proxmox_lxc" "lxc-pterodactyl" {
+resource "proxmox_lxc" "lxc-pterodactyl-panel" {
     target_node  = "pve-srv-01"
-    hostname     = "pterodactyl"
+    hostname     = "pterodactyl-panel"
+    ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
+    password     = var.lxc_password
+    ostype       = "ubuntu"
+    unprivileged = true
+    cores     = 1
+    memory    = 2048
+    pool      = "LXC"
+
+  // Terraform will crash without rootfs defined
+    rootfs {
+        storage = "M2-Storage"
+        size    = "32G"
+  }
+
+    network {
+        name   = "eth0"
+        bridge = "vmbr0"
+        ip     = "192.168.178.40/24"
+        ip6    = "auto"
+        gw     = "192.168.178.1"
+  }
+
+    features {
+        nesting = true
+    }
+
+    onboot = true
+}
+
+resource "proxmox_lxc" "lxc-pterodactyl-wings" {
+    target_node  = "pve-srv-01"
+    hostname     = "pterodactyl-wings"
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -146,7 +178,7 @@ resource "proxmox_lxc" "lxc-pterodactyl" {
     network {
         name   = "eth0"
         bridge = "vmbr0"
-        ip     = "192.168.178.49/24"
+        ip     = "192.168.178.41/24"
         ip6    = "auto"
         gw     = "192.168.178.1"
   }
