@@ -1,4 +1,3 @@
-# änderung
 resource "proxmox_lxc" "lxc-checkmk" {
     target_node  = "pve-srv-01"
     hostname     = "checkmk"
