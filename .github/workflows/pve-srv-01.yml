@@ -55,7 +55,7 @@ jobs:
           tofu plan -out=tfplan
       
       - name: Upload Plan Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: tfplan-pve-srv-01
           path: pve-srv-01/tfplan
