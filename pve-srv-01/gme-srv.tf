@@ -2,9 +2,9 @@
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
-#     vmid = "0"
+#     vmid = 400
 #     name = "gme-srv-panel"
-#     tags = "gameserver,docker"
+#     tags = "gameserver;docker"
 #     desc = "Pterodactyl Gameserver Panel"
 #     automatic_reboot = false
 
@@ -28,7 +28,7 @@
 #     # VM CPU Settings
 #     cores = 1
 #     sockets = 1
-#     cpu = "kvm64"
+#     cpu_type = "kvm64"
 
 #     # VM Memory Settings
 #     memory = 4096
@@ -51,7 +51,7 @@
 #         virtio {
 #             virtio0 {
 #                 disk {
-#                     size               = 32
+#                     size               = "32G"
 #                     storage            = "M2-Storage"
 #                 }
 #             }
@@ -78,9 +78,9 @@
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
-#     vmid = "0"
+#     vmid = 401
 #     name = "gme-srv-01"
-#     tags = "gameserver,docker"
+#     tags = "gameserver;docker"
 #     desc = "Pterodactyl Gameserver Node01"
 #     automatic_reboot = false
 
@@ -104,7 +104,7 @@
 #     # VM CPU Settings
 #     cores = 4
 #     sockets = 1
-#     cpu = "host"
+#     cpu_type = "host"
 
 #     # VM Memory Settings
 #     memory = 12288
@@ -127,7 +127,7 @@
 #         virtio {
 #             virtio0 {
 #                 disk {
-#                     size               = 160
+#                     size               = "160G"
 #                     storage            = "HDD-Storage"
 #                 }
 #             }

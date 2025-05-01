@@ -2,9 +2,9 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server01" {
 
     # VM General Settings
     target_node = "pve-srv-01"
-    vmid = "300"
+    vmid = 300
     name = "k3s-soniiit-prod1-server01"
-    tags = "ubuntu,kubernetes"
+    tags = "kubernetes;ubuntu"
     desc = "Server 01 for K3s Kubernetes Cluster"
     automatic_reboot = false
 
@@ -28,7 +28,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server01" {
     # VM CPU Settings
     cores = 1
     sockets = 1
-    cpu = "host"
+    cpu_type = "host"
 
     # VM Memory Settings
     memory = 8192
@@ -52,13 +52,13 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server01" {
         virtio {
             virtio0 {
                 disk {
-                    size               = 32
+                    size               = "32G"
                     storage            = "M2-Storage"
                 }
             }
             virtio1 {
                 disk {
-                    size               = 256
+                    size               = "256G"
                     storage            = "HDD-Storage"
                 }
             }
@@ -85,9 +85,9 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent01" {
 
     # VM General Settings
     target_node = "pve-srv-01"
-    vmid = "303"
+    vmid = 303
     name = "k3s-soniiit-prod1-agent01"
-    tags = "ubuntu,kubernetes"
+    tags = "kubernetes;ubuntu"
     desc = "Agent 01 for K3s Kubernetes Cluster"
     automatic_reboot = false
 
@@ -111,7 +111,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent01" {
     # VM CPU Settings
     cores = 1
     sockets = 1
-    cpu = "host"
+    cpu_type = "host"
 
     # VM Memory Settings
     memory = 8192
@@ -135,13 +135,13 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent01" {
         virtio {
             virtio0 {
                 disk {
-                    size               = 32
+                    size               = "32G"
                     storage            = "M2-Storage"
                 }
             }
             virtio1 {
                 disk {
-                    size               = 256
+                    size               = "256G"
                     storage            = "HDD-Storage"
                 }
             }

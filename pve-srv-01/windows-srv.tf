@@ -2,7 +2,7 @@
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
-#     vmid = "0"
+#     vmid = 200
 #     name = "dc-srv-01"
 #     tags = "windows"
 #     desc = "Domain Controller for soniiit.home"
@@ -28,7 +28,7 @@
 #     # VM CPU Settings
 #     cores = 2
 #     sockets = 1
-#     cpu = "kvm64"
+#     cpu_type = "kvm64"
 
 #     # VM Memory Settings
 #     memory = 2048
@@ -50,7 +50,7 @@
 #         scsi {
 #             scsi0 {
 #                 disk {
-#                     size               = 32
+#                     size               = "32G"
 #                     storage            = "M2-Storage"
 #                 }
 #             }
@@ -68,7 +68,7 @@
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
-#     vmid = "0"
+#     vmid = 201
 #     name = "dc-srv-02"
 #     tags = "windows"
 #     desc = "Domain Controller for soniiit.home"
@@ -94,7 +94,7 @@
 #     # VM CPU Settings
 #     cores = 2
 #     sockets = 1
-#     cpu = "kvm64"
+#     cpu_type = "kvm64"
 
 #     # VM Memory Settings
 #     memory = 2048
@@ -116,7 +116,7 @@
 #         scsi {
 #             scsi0 {
 #                 disk {
-#                     size               = 32
+#                     size               = "32G"
 #                     storage            = "M2-Storage"
 #                 }
 #             }

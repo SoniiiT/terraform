@@ -2,9 +2,9 @@
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
-#     vmid = "0"
+#     vmid = 500
 #     name = "app-srv-01"
-#     tags = "ubuntu,application"
+#     tags = "ubuntu;application"
 #     desc = "Teleport Proxy Server"
 #     automatic_reboot = false
 
@@ -28,7 +28,7 @@
 #     # VM CPU Settings
 #     cores = 1
 #     sockets = 1
-#     cpu = "kvm64"
+#     cpu_type = "kvm64"
 
 #     # VM Memory Settings
 #     memory = 2048
@@ -51,7 +51,7 @@
 #         virtio {
 #             virtio0 {
 #                 disk {
-#                     size               = 32
+#                     size               = "32G"
 #                     storage            = "M2-Storage"
 #                 }
 #             }
@@ -78,9 +78,9 @@
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
-#     vmid = "0"
+#     vmid = 501
 #     name = "app-srv-02"
-#     tags = "ubuntu,docker,application"
+#     tags = "ubuntu;docker;application"
 #     desc = "Lancache Server"
 #     automatic_reboot = false
 
@@ -104,7 +104,7 @@
 #     # VM CPU Settings
 #     cores = 2
 #     sockets = 1
-#     cpu = "kvm64"
+#     cpu_type = "kvm64"
 
 #     # VM Memory Settings
 #     memory = 16384
@@ -127,13 +127,13 @@
 #         virtio {
 #             virtio0 {
 #                 disk {
-#                     size               = 32
+#                     size               = "32G"
 #                     storage            = "M2-Storage"
 #                 }
 #             }
 #             virtio1 {
 #                 disk {
-#                     size               = 4096
+#                     size               = "4096G"
 #                     storage            = "HDD-Storage"
 #                 }
 #             }
@@ -160,9 +160,9 @@
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
-#     vmid = "0"
+#     vmid = 502
 #     name = "app-srv-03"
-#     tags = "ubuntu,application,docker,dns"
+#     tags = "ubuntu;application;docker;dns"
 #     desc = "Bind9 DNS Server"
 #     automatic_reboot = false
 
@@ -187,7 +187,7 @@
 #     # VM CPU Settings
 #     cores = 1
 #     sockets = 1
-#     cpu = "kvm64"
+#     cpu_type = "kvm64"
 
 #     # VM Memory Settings
 #     memory = 2048
@@ -210,7 +210,7 @@
 #         virtio {
 #             virtio0 {
 #                 disk {
-#                     size               = 32
+#                     size               = "32G"
 #                     storage            = "M2-Storage"
 #                 }
 #             }
@@ -237,9 +237,9 @@
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
-#     vmid = "0"
+#     vmid = 503
 #     name = "app-srv-04"
-#     tags = "ubuntu,application"
+#     tags = "ubuntu;application"
 #     desc = "Kasm Server"
 #     automatic_reboot = false
 

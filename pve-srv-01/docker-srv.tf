@@ -2,9 +2,9 @@ resource "proxmox_vm_qemu" "docker_srv_01" {
 
     # VM General Settings
     target_node = "pve-srv-01"
-    vmid = "0"
+    vmid = 100
     name = "docker-srv-01"
-    tags = "ubuntu,docker"
+    tags = "docker;ubuntu"
     desc = "Docker Server 01"
     automatic_reboot = false
 
@@ -52,13 +52,13 @@ resource "proxmox_vm_qemu" "docker_srv_01" {
         virtio {
             virtio0 {
                 disk {
-                    size               = 32
+                    size               = "32G"
                     storage            = "M2-Storage"
                 }
             }
             virtio1 {
                 disk {
-                    size               = 128
+                    size               = "128G"
                     storage            = "HDD-Storage"
                 }
             }
@@ -85,9 +85,9 @@ resource "proxmox_vm_qemu" "docker_srv_02" {
 
     # VM General Settings
     target_node = "pve-srv-01"
-    vmid = "0"
+    vmid = 109
     name = "docker-srv-02"
-    tags = "ubuntu,docker"
+    tags = "docker;ubuntu"
     desc = "Docker Server 02"
     automatic_reboot = false
 
@@ -135,13 +135,13 @@ resource "proxmox_vm_qemu" "docker_srv_02" {
         virtio {
             virtio0 {
                 disk {
-                    size               = 32
+                    size               = "32G"
                     storage            = "M2-Storage"
                 }
             }
             virtio1 {
                 disk {
-                    size               = 128
+                    size               = "128G"
                     storage            = "HDD-Storage"
                 }
             }
@@ -168,9 +168,9 @@ resource "proxmox_vm_qemu" "docker_srv_03" {
 
     # VM General Settings
     target_node = "pve-srv-01"
-    vmid = "0"
+    vmid = 103
     name = "docker-srv-03"
-    tags = "ubuntu,docker"
+    tags = "docker;ubuntu"
     desc = "Docker Server 03"
     automatic_reboot = false
 
@@ -218,7 +218,7 @@ resource "proxmox_vm_qemu" "docker_srv_03" {
         virtio {
             virtio0 {
                 disk {
-                    size               = 32
+                    size               = "32G"
                     storage            = "M2-Storage"
                 }
             }
