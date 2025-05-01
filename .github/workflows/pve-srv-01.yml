@@ -1,0 +1,104 @@
+name: PVE Server Terraform
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'pve-srv-01/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'pve-srv-01/**'
+
+env:
+  TF_CLI_ARGS: "-no-color"
+  TF_CLI_ARGS_plan: "-no-color -input=false"
+  TF_CLI_ARGS_apply: "-no-color -input=false -auto-approve"
+  TF_VAR_proxmox_api_url: ${{ vars.TF_VAR_proxmox_api_url }}
+  TF_VAR_proxmox_api_token_id: ${{ vars.TF_VAR_proxmox_api_token_id }}
+
+jobs:
+  validate:
+    name: Validate PVE Terraform
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup OpenTofu
+        uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: "1.6.2"
+      
+      - name: Validate
+        working-directory: pve-srv-01
+        env:
+          TF_VAR_proxmox_api_token_secret: ${{ secrets.PROXMOX_API_TOKEN_SECRET }}
+          TF_VAR_lxc_password: ${{ secrets.LXC_PASSWORD }}
+        run: |
+          tofu init
+          tofu validate
+
+  plan:
+    name: Plan PVE Terraform
+    needs: validate
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup OpenTofu
+        uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: "1.6.2"
+      
+      - name: Plan
+        working-directory: pve-srv-01
+        env:
+          TF_VAR_proxmox_api_token_secret: ${{ secrets.PROXMOX_API_TOKEN_SECRET }}
+          TF_VAR_lxc_password: ${{ secrets.LXC_PASSWORD }}
+        run: |
+          tofu init
+          tofu providers lock
+          tofu plan -out=tfplan
+      
+      - name: Upload Plan Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: tfplan-pve-srv-01
+          path: pve-srv-01/tfplan
+          retention-days: 1
+
+  apply:
+    name: Apply PVE Terraform
+    needs: plan
+    runs-on: self-hosted
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup OpenTofu
+        uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: "1.6.2"
+      
+      - name: Download Plan Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: tfplan-pve-srv-01
+          path: pve-srv-01
+      
+      - name: Apply
+        working-directory: pve-srv-01
+        env:
+          TF_VAR_proxmox_api_token_secret: ${{ secrets.PROXMOX_API_TOKEN_SECRET }}
+          TF_VAR_lxc_password: ${{ secrets.LXC_PASSWORD }}
+        run: |
+          tofu init
+          tofu apply -auto-approve tfplan
+          
+      - name: Commit and push state
+        run: |
+          git config --global user.email "terraform-runner@soniiit.net"
+          git config --global user.name "terraform-runner"
+          git add pve-srv-01/terraform.tfstate
+          git commit -m "[skip ci] Update PVE terraform state"
+          git push "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref }} 

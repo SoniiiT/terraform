@@ -1,0 +1,99 @@
+name: Twingate Terraform
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'twingate/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'twingate/**'
+
+env:
+  TF_CLI_ARGS: "-no-color"
+  TF_CLI_ARGS_plan: "-no-color -input=false"
+  TF_CLI_ARGS_apply: "-no-color -input=false -auto-approve"
+
+jobs:
+  validate:
+    name: Validate Twingate Terraform
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup OpenTofu
+        uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: "1.6.2"
+      
+      - name: Validate
+        working-directory: twingate
+        env:
+          TF_VAR_tg_api_token: ${{ secrets.TG_API_TOKEN }}
+        run: |
+          tofu init
+          tofu validate
+
+  plan:
+    name: Plan Twingate Terraform
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup OpenTofu
+        uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: "1.6.2"
+      
+      - name: Plan
+        working-directory: twingate
+        env:
+          TF_VAR_tg_api_token: ${{ secrets.TG_API_TOKEN }}
+        run: |
+          tofu init
+          tofu providers lock
+          tofu plan -out=tfplan
+      
+      - name: Upload Plan Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: tfplan-twingate
+          path: twingate/tfplan
+          retention-days: 1
+
+  apply:
+    name: Apply Twingate Terraform
+    needs: plan
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup OpenTofu
+        uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: "1.6.2"
+      
+      - name: Download Plan Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: tfplan-twingate
+          path: twingate
+      
+      - name: Apply
+        working-directory: twingate
+        env:
+          TF_VAR_tg_api_token: ${{ secrets.TG_API_TOKEN }}
+        run: |
+          tofu init
+          tofu apply -auto-approve tfplan
+          
+      - name: Commit and push state
+        run: |
+          git config --global user.email "terraform-runner@soniiit.net"
+          git config --global user.name "terraform-runner"
+          git add twingate/terraform.tfstate
+          git commit -m "[skip ci] Update Twingate terraform state"
+          git push "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref }} 

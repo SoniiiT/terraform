@@ -1,0 +1,99 @@
+name: DNS Terraform
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'dns/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'dns/**'
+
+env:
+  TF_CLI_ARGS: "-no-color"
+  TF_CLI_ARGS_plan: "-no-color -input=false"
+  TF_CLI_ARGS_apply: "-no-color -input=false -auto-approve"
+
+jobs:
+  validate:
+    name: Validate DNS Terraform
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup OpenTofu
+        uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: "1.6.2"
+      
+      - name: Validate
+        working-directory: dns
+        env:
+          TF_VAR_tsig_key: ${{ secrets.DNS_TSIG_KEY }}
+        run: |
+          tofu init
+          tofu validate
+
+  plan:
+    name: Plan DNS Terraform
+    needs: validate
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup OpenTofu
+        uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: "1.6.2"
+      
+      - name: Plan
+        working-directory: dns
+        env:
+          TF_VAR_tsig_key: ${{ secrets.DNS_TSIG_KEY }}
+        run: |
+          tofu init
+          tofu providers lock
+          tofu plan -out=tfplan
+      
+      - name: Upload Plan Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: tfplan-dns
+          path: dns/tfplan
+          retention-days: 1
+
+  apply:
+    name: Apply DNS Terraform
+    needs: plan
+    runs-on: self-hosted
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup OpenTofu
+        uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: "1.6.2"
+      
+      - name: Download Plan Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: tfplan-dns
+          path: dns
+      
+      - name: Apply
+        working-directory: dns
+        env:
+          TF_VAR_tsig_key: ${{ secrets.DNS_TSIG_KEY }}
+        run: |
+          tofu init
+          tofu apply -auto-approve tfplan
+          
+      - name: Commit and push state
+        run: |
+          git config --global user.email "terraform-runner@soniiit.net"
+          git config --global user.name "terraform-runner"
+          git add dns/terraform.tfstate
+          git commit -m "[skip ci] Update DNS terraform state"
+          git push "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref }} 

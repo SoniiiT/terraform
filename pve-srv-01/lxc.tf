@@ -18,7 +18,7 @@ resource "proxmox_lxc" "lxc-checkmk" {
     network {
         name   = "eth0"
         bridge = "vmbr0"
-        ip     = "192.168.178.61/24"
+        ip     = "192.168.178.48/24"
         ip6    = "auto"
         gw     = "192.168.178.1"
   }
@@ -50,7 +50,7 @@ resource "proxmox_lxc" "lxc-wazuh" {
     network {
         name   = "eth0"
         bridge = "vmbr0"
-        ip     = "192.168.178.62/24"
+        ip     = "192.168.178.46/24"
         ip6    = "auto"
         gw     = "192.168.178.1"
   }
@@ -146,7 +146,7 @@ resource "proxmox_lxc" "lxc-lancache" {
 #     network {
 #         name   = "eth0"
 #         bridge = "vmbr0"
-#         ip     = "192.168.178.65/24"
+#         ip     = "192.168.178.49/24"
 #         ip6    = "auto"
 #         gw     = "192.168.178.1"
 #   }
@@ -178,7 +178,7 @@ resource "proxmox_lxc" "lxc-cloudflared" {
     network {
         name   = "eth0"
         bridge = "vmbr0"
-        ip     = "192.168.178.66/24"
+        ip     = "192.168.178.43/24"
         ip6    = "auto"
         gw     = "192.168.178.1"
   }
@@ -210,7 +210,7 @@ resource "proxmox_lxc" "lxc-nextcloud" {
     network {
         name   = "eth0"
         bridge = "vmbr0"
-        ip     = "192.168.178.68/24"
+        ip     = "192.168.178.47/24"
         ip6    = "auto"
         gw     = "192.168.178.1"
   }
@@ -242,7 +242,7 @@ resource "proxmox_lxc" "lxc-authentik" {
     network {
         name   = "eth0"
         bridge = "vmbr0"
-        ip     = "192.168.178.69/24"
+        ip     = "192.168.178.44/24"
         ip6    = "auto"
         gw     = "192.168.178.1"
   }
@@ -274,7 +274,7 @@ resource "proxmox_lxc" "lxc-cloudflareddns" {
     network {
         name   = "eth0"
         bridge = "vmbr0"
-        ip     = "192.168.178.71/24"
+        ip     = "192.168.178.42/24"
         ip6    = "auto"
         gw     = "192.168.178.1"
   }
@@ -306,7 +306,7 @@ resource "proxmox_lxc" "lxc-remotely" {
     network {
         name   = "eth0"
         bridge = "vmbr0"
-        ip     = "192.168.178.72/24"
+        ip     = "192.168.178.45/24"
         ip6    = "auto"
         gw     = "192.168.178.1"
   }

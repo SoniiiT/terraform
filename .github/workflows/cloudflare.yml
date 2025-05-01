@@ -1,0 +1,93 @@
+name: Cloudflare Terraform
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'cloudflare/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'cloudflare/**'
+
+env:
+  TF_CLI_ARGS: "-no-color"
+  TF_CLI_ARGS_plan: "-no-color -input=false"
+  TF_CLI_ARGS_apply: "-no-color -input=false -auto-approve"
+
+jobs:
+  validate:
+    name: Validate Cloudflare Terraform
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup OpenTofu
+        uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: "1.6.2"
+      
+      - name: Validate
+        working-directory: cloudflare
+        run: |
+          tofu init
+          tofu validate
+
+  plan:
+    name: Plan Cloudflare Terraform
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup OpenTofu
+        uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: "1.6.2"
+      
+      - name: Plan
+        working-directory: cloudflare
+        run: |
+          tofu init
+          tofu providers lock
+          tofu plan -out=tfplan
+      
+      - name: Upload Plan Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: tfplan-cloudflare
+          path: cloudflare/tfplan
+          retention-days: 1
+
+  apply:
+    name: Apply Cloudflare Terraform
+    needs: plan
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup OpenTofu
+        uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: "1.6.2"
+      
+      - name: Download Plan Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: tfplan-cloudflare
+          path: cloudflare
+      
+      - name: Apply
+        working-directory: cloudflare
+        run: |
+          tofu init
+          tofu apply -auto-approve tfplan
+          
+      - name: Commit and push state
+        run: |
+          git config --global user.email "terraform-runner@soniiit.net"
+          git config --global user.name "terraform-runner"
+          git add cloudflare/terraform.tfstate
+          git commit -m "[skip ci] Update Cloudflare terraform state"
+          git push "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref }} 
