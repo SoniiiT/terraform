@@ -3,7 +3,7 @@ resource "cloudflare_dns_record" "minecraft_srv" {
   zone_id = "4ec5c5258e769e7f6d96ba75c3ef514a"
   name    = "_minecraft._tcp.mc"  # Der Service und Protokoll
   type    = "SRV"
-  data {
+  data = {
     service  = "_minecraft"
     proto    = "_tcp"
     name     = "mc"  # Der Name des Eintrags
