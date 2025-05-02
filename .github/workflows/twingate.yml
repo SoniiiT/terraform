@@ -31,7 +31,7 @@ jobs:
       - name: Validate
         working-directory: twingate
         env:
-          TF_VAR_twingate_api_token: ${{ secrets.TG_API_TOKEN }}
+          TF_VAR_tg_api_token: ${{ secrets.TG_API_TOKEN }}
         run: |
           tofu init
           tofu validate
@@ -52,7 +52,7 @@ jobs:
       - name: Plan
         working-directory: twingate
         env:
-          TF_VAR_twingate_api_token: ${{ secrets.TG_API_TOKEN }}
+          TF_VAR_tg_api_token: ${{ secrets.TG_API_TOKEN }}
         run: |
           tofu init
           tofu providers lock
@@ -88,7 +88,7 @@ jobs:
       - name: Apply
         working-directory: twingate
         env:
-          TF_VAR_twingate_api_token: ${{ secrets.TG_API_TOKEN }}
+          TF_VAR_tg_api_token: ${{ secrets.TG_API_TOKEN }}
         run: |
           tofu init
           tofu apply -auto-approve tfplan

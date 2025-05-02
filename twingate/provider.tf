@@ -13,6 +13,6 @@ variable "tg_api_token" {
 }
 
 provider "twingate" {
-    api_token = var.tg_api_token
-    network   = "soniiit"
+  api_token = var.tg_api_token
+  network   = "soniiit"
 }
