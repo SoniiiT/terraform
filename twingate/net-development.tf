@@ -35,7 +35,7 @@ resource "twingate_resource" "wildcard_dns_development" {
     }
 
     dynamic "access_group" {
-        for_each = [twingate_group.development.id]
+        for_each = [twingate_group.development_group.id]
         content {
             group_id = access_group.value
             security_policy_id = data.twingate_security_policy.policy_development.id
