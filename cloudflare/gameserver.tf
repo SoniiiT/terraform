@@ -1,7 +1,7 @@
 # Minecraft Vanilla Server SRV Record
-resource "cloudflare_record" "minecraft_srv" {
-  zone_id = "4ec5c5258e769e7f6d96ba75c3ef514a"  # Ersetze dies mit deiner Cloudflare Zone ID
-  name    = "_minecraft._tcp.minecraft"  # Der Service und Protokoll
+resource "cloudflare_dns_record" "minecraft_srv" {
+  zone_id = "4ec5c5258e769e7f6d96ba75c3ef514a"
+  name    = "_minecraft._tcp.mc"  # Der Service und Protokoll
   type    = "SRV"
   data {
     service  = "_minecraft"
@@ -13,4 +13,5 @@ resource "cloudflare_record" "minecraft_srv" {
     target   = "mc.soniiit.net"  # Der Zielhost
   }
   ttl = 1  # Auto TTL
+  comment = "Minecraft Vanilla Server SRV Record"
 }
