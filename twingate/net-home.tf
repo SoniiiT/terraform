@@ -1,8 +1,4 @@
 # Security Policy für Home
-data "twingate_users" "all" {
-  email = "Toni.Romero@live.de"
-}
-
 data "twingate_security_policy" "policy_home" {
   name = "Home Policy"
 }
