@@ -2,7 +2,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server01" {
 
     # VM General Settings
     target_node = "pve-srv-01"
-    vmid = 300
+    vmid = 600
     name = "k3s-soniiit-prod1-server01"
     tags = "kubernetes;ubuntu"
     desc = "Server 01 for K3s Kubernetes Cluster"
@@ -85,7 +85,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent01" {
 
     # VM General Settings
     target_node = "pve-srv-01"
-    vmid = 303
+    vmid = 601
     name = "k3s-soniiit-prod1-agent01"
     tags = "kubernetes;ubuntu"
     desc = "Agent 01 for K3s Kubernetes Cluster"

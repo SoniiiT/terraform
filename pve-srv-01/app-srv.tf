@@ -2,7 +2,7 @@
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
-#     vmid = 500
+#     vmid = 200
 #     name = "app-srv-01"
 #     tags = "ubuntu;application"
 #     desc = "Teleport Proxy Server"
@@ -78,7 +78,7 @@
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
-#     vmid = 501
+#     vmid = 201
 #     name = "app-srv-02"
 #     tags = "ubuntu;docker;application"
 #     desc = "Lancache Server"
@@ -160,7 +160,7 @@
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
-#     vmid = 502
+#     vmid = 202
 #     name = "app-srv-03"
 #     tags = "ubuntu;application;docker;dns"
 #     desc = "Bind9 DNS Server"
@@ -237,7 +237,7 @@
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
-#     vmid = 503
+#     vmid = 203
 #     name = "app-srv-04"
 #     tags = "ubuntu;application"
 #     desc = "Kasm Server"
@@ -316,7 +316,7 @@
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
-#     vmid = "0"
+#     vmid = 204
 #     name = "app-srv-06"
 #     tags = "ubuntu,application"
 #     desc = "Cockpit Main Server"
@@ -393,7 +393,7 @@
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
-#     vmid = "0"
+#     vmid = 205
 #     name = "app-srv-07"
 #     tags = "ubuntu,application"
 #     desc = "Wazuh Server"

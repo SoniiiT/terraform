@@ -2,6 +2,20 @@
 
 Dieses Repository enthält Konfigurationen für die Verwaltung von Cloud-Infrastruktur mit Terraform oder OpenTofu. Beide Tools sind Infrastructure as Code (IaC) Lösungen, die es ermöglichen, Cloud-Ressourcen deklarativ zu definieren und zu verwalten.
 
+## VM-ID-Struktur
+
+Die VM-IDs sind nach folgendem Schema strukturiert:
+
+- LXC-Container: Automatisch ab 100
+- App-Server: 200-299
+- Demo-Server: 300-399
+- Gameserver: 400-499
+- Docker-Server: 500-599
+- K3s-Server: 600-699
+- Windows-Server: 700-799
+
+Diese Struktur hilft bei der Organisation und Identifizierung der verschiedenen VM-Typen im Proxmox VE Cluster.
+
 ## Was ist Terraform/OpenTofu?
 
 Terraform und OpenTofu sind Tools, die es ermöglichen, Infrastruktur als Code zu definieren. Anstatt Cloud-Ressourcen manuell über Web-Interfaces zu erstellen und zu verwalten, werden diese in Konfigurationsdateien beschrieben. Dies bietet mehrere Vorteile:

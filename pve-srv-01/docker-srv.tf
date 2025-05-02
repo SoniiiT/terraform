@@ -2,7 +2,7 @@ resource "proxmox_vm_qemu" "docker_srv_01" {
 
     # VM General Settings
     target_node = "pve-srv-01"
-    vmid = 100
+    vmid = 500
     name = "docker-srv-01"
     tags = "docker;ubuntu"
     desc = "Docker Server 01"
@@ -85,7 +85,7 @@ resource "proxmox_vm_qemu" "docker_srv_02" {
 
     # VM General Settings
     target_node = "pve-srv-01"
-    vmid = 109
+    vmid = 501
     name = "docker-srv-02"
     tags = "docker;ubuntu"
     desc = "Docker Server 02"
@@ -168,7 +168,7 @@ resource "proxmox_vm_qemu" "docker_srv_03" {
 
     # VM General Settings
     target_node = "pve-srv-01"
-    vmid = 103
+    vmid = 502
     name = "docker-srv-03"
     tags = "docker;ubuntu"
     desc = "Docker Server 03"

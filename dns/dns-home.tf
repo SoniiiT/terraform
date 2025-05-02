@@ -24,7 +24,7 @@ resource "dns_a_record_set" "sw_01" {
 resource "dns_a_record_set" "proxmox" {
     zone = "home.soniiit.net."
     name = "proxmox"
-    addresses = [ "192.168.178.30" ]
+    addresses = [ "192.168.178.20" ]
     ttl = 3600
 }
 
@@ -36,10 +36,12 @@ resource "dns_a_record_set" "twingate_connector_01" {
     ttl = 3600
 }
 
+# NAS
+
 resource "dns_a_record_set" "truenas" {
     zone = "home.soniiit.net."
     name = "truenas"
-    addresses = [ "192.168.178.30" ]
+    addresses = [ "192.168.178.20" ]
     ttl = 3600
 }
 
@@ -47,34 +49,20 @@ resource "dns_a_record_set" "truenas" {
 resource "dns_a_record_set" "wazuh" {
     zone = "home.soniiit.net."
     name = "wazuh"
-    addresses = [ "192.168.178.30" ]
+    addresses = [ "192.168.178.20" ]
     ttl = 3600
 }
 
-resource "dns_a_record_set" "lancache" {
+resource "dns_a_record_set" "checkmk" {
     zone = "home.soniiit.net."
-    name = "lancache"
-    addresses = [ "192.168.178.30" ]
+    name = "checkmk"
+    addresses = [ "192.168.178.20" ]
     ttl = 3600
 }
 
-resource "dns_a_record_set" "lancache_api" {
+resource "dns_a_record_set" "pihole" {
     zone = "home.soniiit.net."
-    name = "lancache-api"
-    addresses = [ "192.168.178.30" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "veeam" {
-    zone = "home.soniiit.net."
-    name = "veeam"
-    addresses = [ "192.168.178.30" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "cockpit" {
-    zone = "home.soniiit.net."
-    name = "cockpit"
-    addresses = [ "192.168.178.30" ]
+    name = "pihole"
+    addresses = [ "192.168.178.20" ]
     ttl = 3600
 }

@@ -2,7 +2,7 @@
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
-#     vmid = 200
+#     vmid = 700
 #     name = "dc-srv-01"
 #     tags = "windows"
 #     desc = "Domain Controller for soniiit.home"
@@ -68,7 +68,7 @@
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
-#     vmid = 201
+#     vmid = 701
 #     name = "dc-srv-02"
 #     tags = "windows"
 #     desc = "Domain Controller for soniiit.home"
