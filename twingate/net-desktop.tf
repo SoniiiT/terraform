@@ -1,8 +1,4 @@
 # Security Policy für Desktop
-data "twingate_users" "all" {
-  email = "Toni.Romero@live.de"
-}
-
 data "twingate_security_policy" "policy_desktop" {
   name = "Desktop Policy"
 }
@@ -41,7 +37,7 @@ resource "twingate_resource" "ubuntu_desktop" {
     }
 
     access_group {
-        group_id = twingate_group.desktop_group.id
+        group_id = twingate_group.desktop.id
         security_policy_id = data.twingate_security_policy.policy_desktop.id
         usage_based_autolock_duration_days = 30
     }
@@ -70,7 +66,7 @@ resource "twingate_resource" "windows_desktop" {
     }
 
     access_group {
-        group_id = twingate_group.desktop_group.id
+        group_id = twingate_group.desktop.id
         security_policy_id = data.twingate_security_policy.policy_desktop.id
         usage_based_autolock_duration_days = 30
     }

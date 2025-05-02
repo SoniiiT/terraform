@@ -7,13 +7,13 @@ data "twingate_security_policy" "policy_development" {
   name = "Development Policy"
 }
 
-# Remote Network für Desktop
+# Remote Network für Development
 resource "twingate_remote_network" "net_development" {
   name = "net-development"
   location = "ON_PREMISE"
 }
 
-# Desktop Gruppe
+# Development Gruppe
 resource "twingate_group" "development" {
   name = "net-development_group"
   user_ids = [data.twingate_users.all.users[0].id]

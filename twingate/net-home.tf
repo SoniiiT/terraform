@@ -7,13 +7,13 @@ data "twingate_security_policy" "policy_home" {
   name = "Home Policy"
 }
 
-# Remote Network für Desktop
+# Remote Network für Home
 resource "twingate_remote_network" "net_home" {
   name = "net-home"
   location = "ON_PREMISE"
 }
 
-# Desktop Gruppe
+# Home Gruppe
 resource "twingate_group" "home" {
   name = "net-home_group"
   user_ids = [data.twingate_users.all.users[0].id]

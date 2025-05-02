@@ -3,6 +3,7 @@ data "twingate_users" "all" {
   email = "Toni.Romero@live.de"
 }
 
+# Security Policy für Demo
 data "twingate_security_policy" "policy_demo" {
   name = "Demo Policy"
 }
@@ -13,7 +14,7 @@ resource "twingate_remote_network" "net_demo" {
   location = "ON_PREMISE"
 }
 
-# Desktop Gruppe
+# Demo Gruppe
 resource "twingate_group" "demo" {
   name = "net-demo_group"
   user_ids = [data.twingate_users.all.users[0].id]
