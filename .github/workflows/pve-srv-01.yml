@@ -108,6 +108,10 @@ jobs:
           git config --global user.email "terraform-runner@soniiit.net"
           git config --global user.name "terraform-runner"
           
+      - name: Pull latest changes
+        run: |
+          git pull origin ${{ github.ref }} --rebase
+          
       - name: Commit and push state
         run: |
           git add pve-srv-01/terraform.tfstate
