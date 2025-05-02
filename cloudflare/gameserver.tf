@@ -13,5 +13,5 @@ resource "cloudflare_dns_record" "minecraft_srv" {
     target   = "mc.soniiit.net"  # Der Zielhost
   }
   ttl = 1  # Auto TTL
-  comment = "Minecraft Vanilla Server SRV Record"
+  comment = "Created by Terraform"
 }
