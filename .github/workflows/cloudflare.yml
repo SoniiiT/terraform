@@ -99,12 +99,15 @@ jobs:
           git config --global user.email "terraform-runner@soniiit.net"
           git config --global user.name "terraform-runner"
           
+      - name: Commit state changes
+        run: |
+          git add cloudflare/terraform.tfstate
+          git commit -m "[skip ci] Update Cloudflare terraform state"
+          
       - name: Pull latest changes
         run: |
           git pull origin ${{ github.ref }} --rebase
           
-      - name: Commit and push state
+      - name: Push state
         run: |
-          git add cloudflare/terraform.tfstate
-          git commit -m "[skip ci] Update Cloudflare terraform state"
           git push origin HEAD:${{ github.ref }} 
