@@ -1,8 +1,3 @@
-# Security Policy für Desktop
-data "twingate_users" "all" {
-  email = "Toni.Romero@live.de"
-}
-
 # Security Policy für Demo
 data "twingate_security_policy" "policy_demo" {
   name = "Demo Policy"
