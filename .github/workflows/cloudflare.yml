@@ -101,8 +101,12 @@ jobs:
           
       - name: Commit state changes
         run: |
-          git add cloudflare/terraform.tfstate
-          git commit -m "[skip ci] Update Cloudflare terraform state"
+          if git diff --quiet cloudflare/terraform.tfstate; then
+            echo "No changes to terraform.tfstate"
+          else
+            git add cloudflare/terraform.tfstate
+            git commit -m "[skip ci] Update Cloudflare terraform state"
+          fi
           
       - name: Pull latest changes
         run: |
