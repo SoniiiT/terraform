@@ -1,5 +1,5 @@
 # Security Policy für Demo
-data "twingate_security_policy" "policy_demo" {
+resource "twingate_security_policy" "policy_demo_policy" {
   name = "Demo Policy"
 }
 
@@ -10,7 +10,7 @@ resource "twingate_remote_network" "net_demo" {
 }
 
 # Demo Gruppe
-resource "twingate_group" "demo" {
+resource "twingate_group" "demo_group" {
   name = "net-demo_group"
   user_ids = [data.twingate_users.all.users[0].id]
   is_authoritative = true

@@ -1,5 +1,5 @@
 # Security Policy für Development
-data "twingate_security_policy" "policy_development" {
+resource "twingate_security_policy" "policy_development" {
   name = "Development Policy"
 }
 
@@ -10,7 +10,7 @@ resource "twingate_remote_network" "net_development" {
 }
 
 # Development Gruppe
-resource "twingate_group" "development" {
+resource "twingate_group" "development_group" {
   name = "net-development_group"
   user_ids = [data.twingate_users.all.users[0].id]
   is_authoritative = true

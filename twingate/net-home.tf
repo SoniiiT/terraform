@@ -1,5 +1,5 @@
 # Security Policy für Home
-data "twingate_security_policy" "policy_home" {
+resource "twingate_security_policy" "policy_home" {
   name = "Home Policy"
 }
 
@@ -10,7 +10,7 @@ resource "twingate_remote_network" "net_home" {
 }
 
 # Home Gruppe
-resource "twingate_group" "home" {
+resource "twingate_group" "home_group" {
   name = "net-home_group"
   user_ids = [data.twingate_users.all.users[0].id]
   is_authoritative = true

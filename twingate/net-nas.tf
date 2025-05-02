@@ -1,5 +1,5 @@
 # Security Policy für NAS
-data "twingate_security_policy" "policy_nas" {
+resource "twingate_security_policy" "policy_nas" {
   name = "NAS Policy"
 }
 
@@ -10,7 +10,7 @@ resource "twingate_remote_network" "net_nas" {
 }
 
 # NAS Gruppe
-resource "twingate_group" "nas" {
+resource "twingate_group" "nas_group" {
   name = "net-nas_group"
   user_ids = [data.twingate_users.all.users[0].id]
   is_authoritative = true
