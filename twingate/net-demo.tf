@@ -1,3 +1,25 @@
+# Security Policy für Desktop
+data "twingate_users" "all" {
+  email = "Toni.Romero@live.de"
+}
+
+data "twingate_security_policy" "policy_demo" {
+  name = "Demo Policy"
+}
+
+# Remote Network für Demo
+resource "twingate_remote_network" "net_demo" {
+  name = "net-demo"
+  location = "ON_PREMISE"
+}
+
+# Desktop Gruppe
+resource "twingate_group" "demo" {
+  name = "net-demo_group"
+  user_ids = [data.twingate_users.all.users[0].id]
+  is_authoritative = true
+}
+
 # # Wildcard-Route für Demo
 # resource "twingate_resource" "wildcard_dns_demo" {
 #     name = "Wildcard Demo"

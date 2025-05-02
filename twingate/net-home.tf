@@ -1,3 +1,25 @@
+# Security Policy für Home
+data "twingate_users" "all" {
+  email = "Toni.Romero@live.de"
+}
+
+data "twingate_security_policy" "policy_home" {
+  name = "Home Policy"
+}
+
+# Remote Network für Desktop
+resource "twingate_remote_network" "net_home" {
+  name = "net-home"
+  location = "ON_PREMISE"
+}
+
+# Desktop Gruppe
+resource "twingate_group" "home" {
+  name = "net-home_group"
+  user_ids = [data.twingate_users.all.users[0].id]
+  is_authoritative = true
+}
+
 # # Wildcard-Route für Home
 # resource "twingate_resource" "wildcard_dns_home" {
 #     name = "Wildcard Home"
