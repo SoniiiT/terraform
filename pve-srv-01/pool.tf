@@ -1,7 +1,7 @@
-resource "proxmox_pool" "application" {
-  poolid  = "Application" 
-  comment = "Application pool"
-}
+# resource "proxmox_pool" "application" {
+#   poolid  = "Application" 
+#   comment = "Application pool"
+# }
 
 resource "proxmox_pool" "backup" {
   poolid  = "Backup" 
@@ -28,10 +28,10 @@ resource "proxmox_pool" "docker" {
   comment = "Docker pool"
 }
 
-resource "proxmox_pool" "gameserver" {
-  poolid  = "Gameserver" 
-  comment = "Gameserver pool"
-}
+# resource "proxmox_pool" "gameserver" {
+#   poolid  = "Gameserver" 
+#   comment = "Gameserver pool"
+# }
 
 resource "proxmox_pool" "gitagents" {
   poolid  = "GitAgents" 
