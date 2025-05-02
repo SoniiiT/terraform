@@ -1,10 +1,10 @@
 terraform {
-    required_providers {
+  required_providers {
     twingate = {
-        source = "Twingate/twingate"
-        version = "3.0.4"
-        }
+      source = "twingate/twingate"
+      version = "3.0.19"
     }
+  }
 }
 
 variable "tg_api_token" {
