@@ -1,7 +1,7 @@
 # Security Policy für Windows
-resource "twingate_security_policy" "policy_windows" {
+data "twingate_security_policy" "policy_windows" {
   name = "Windows Policy"
-} 
+}
 
 # Remote Network für Windows
 resource "twingate_remote_network" "net_windows" {

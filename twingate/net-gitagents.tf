@@ -1,5 +1,5 @@
 # Security Policy für Gitagents
-resource "twingate_security_policy" "policy_gitagents" {
+data "twingate_security_policy" "policy_gitagents" {
   name = "Gitagents Policy"
 }
 

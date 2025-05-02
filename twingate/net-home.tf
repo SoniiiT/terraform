@@ -1,5 +1,5 @@
 # Security Policy für Home
-resource "twingate_security_policy" "policy_home" {
+data "twingate_security_policy" "policy_home" {
   name = "Home Policy"
 }
 

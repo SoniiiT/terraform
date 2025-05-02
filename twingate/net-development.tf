@@ -1,5 +1,5 @@
 # Security Policy für Development
-resource "twingate_security_policy" "policy_development" {
+data "twingate_security_policy" "policy_development" {
   name = "Development Policy"
 }
 

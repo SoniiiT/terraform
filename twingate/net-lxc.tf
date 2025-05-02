@@ -1,5 +1,5 @@
 # Security Policy für LXC
-resource "twingate_security_policy" "policy_lxc" {
+data "twingate_security_policy" "policy_lxc" {
   name = "LXC Policy"
 }
 

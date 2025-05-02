@@ -1,5 +1,5 @@
 # Security Policy für Desktop
-resource "twingate_security_policy" "policy_desktop" {
+data "twingate_security_policy" "policy_desktop" {
   name = "Desktop Policy"
 }
 
@@ -37,7 +37,7 @@ resource "twingate_resource" "ubuntu_desktop" {
     }
 
     access_group {
-        group_id = twingate_group.desktop.id
+        group_id = twingate_group.desktop_group.id
         security_policy_id = data.twingate_security_policy.policy_desktop.id
         usage_based_autolock_duration_days = 30
     }
@@ -66,7 +66,7 @@ resource "twingate_resource" "windows_desktop" {
     }
 
     access_group {
-        group_id = twingate_group.desktop.id
+        group_id = twingate_group.desktop_group.id
         security_policy_id = data.twingate_security_policy.policy_desktop.id
         usage_based_autolock_duration_days = 30
     }

@@ -1,5 +1,5 @@
 # Security Policy für NAS
-resource "twingate_security_policy" "policy_nas" {
+data "twingate_security_policy" "policy_nas" {
   name = "NAS Policy"
 }
 

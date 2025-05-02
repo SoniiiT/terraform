@@ -1,5 +1,5 @@
 # Security Policy für Demo
-resource "twingate_security_policy" "policy_demo_policy" {
+data "twingate_security_policy" "policy_demo" {
   name = "Demo Policy"
 }
 

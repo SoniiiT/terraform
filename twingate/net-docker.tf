@@ -1,5 +1,5 @@
 # Security Policy für Docker
-resource "twingate_security_policy" "policy_docker" {
+data "twingate_security_policy" "policy_docker" {
   name = "Docker Policy"
 }
 

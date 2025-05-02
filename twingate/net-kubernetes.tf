@@ -1,5 +1,5 @@
 # Security Policy für Kubernetes
-resource "twingate_security_policy" "policy_kubernetes" {
+data "twingate_security_policy" "policy_kubernetes" {
   name = "Kubernetes Policy"
 }
 
@@ -9,9 +9,9 @@ resource "twingate_remote_network" "net_kubernetes" {
   location = "ON_PREMISE"
 }
 
-# K3s-Soniiit-Prod-1 Gruppe
-resource "twingate_group" "k3s_soniiit_prod_1_group" {
-  name = "net-kubernetes-soniiit-prod-1_group"
+# Kubernetes Gruppe
+resource "twingate_group" "kubernetes_group" {
+  name = "net-kubernetes_group"
   user_ids = [data.twingate_users.all.users[0].id]
   is_authoritative = true
 }
