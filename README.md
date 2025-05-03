@@ -6,13 +6,14 @@ Dieses Repository enthält Konfigurationen für die Verwaltung von Cloud-Infrast
 
 Die VM-IDs sind nach folgendem Schema strukturiert:
 
-- LXC-Container: Automatisch ab 100
-- App-Server: 200-299
+- LXC-Container: Automatisch ab 100-299
 - Demo-Server: 300-399
-- Gameserver: 400-499
+- Development: 400-499
 - Docker-Server: 500-599
-- K3s-Server: 600-699
+- Kubernetes-Server: 600-699
 - Windows-Server: 700-799
+- Sonstiges: 800-899
+- Templates: 900-999
 
 Diese Struktur hilft bei der Organisation und Identifizierung der verschiedenen VM-Typen im Proxmox VE Cluster.
 

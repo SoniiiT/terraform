@@ -28,11 +28,6 @@ resource "proxmox_pool" "docker" {
   comment = "Docker pool"
 }
 
-# resource "proxmox_pool" "gameserver" {
-#   poolid  = "Gameserver" 
-#   comment = "Gameserver pool"
-# }
-
 resource "proxmox_pool" "gitagents" {
   poolid  = "GitAgents" 
   comment = "GitAgents pool"
@@ -61,11 +56,6 @@ resource "proxmox_pool" "nas" {
 resource "proxmox_pool" "template" {
   poolid  = "Template" 
   comment = "Template pool"
-}
-
-resource "proxmox_pool" "twingate" {
-  poolid  = "Twingate" 
-  comment = "Twingate pool"
 }
 
 resource "proxmox_pool" "windows" {

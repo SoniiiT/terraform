@@ -6,7 +6,7 @@ resource "proxmox_vm_qemu" "docker_srv_01" {
     vmid = 500
     name = "docker-srv-01"
     tags = "docker;ubuntu"
-    desc = "Docker Server 01"
+    desc = "Docker Server 01 for internal Container"
     automatic_reboot = false
 
     # The destination resource pool for the new VM
@@ -89,7 +89,7 @@ resource "proxmox_vm_qemu" "docker_srv_02" {
     vmid = 501
     name = "docker-srv-02"
     tags = "docker;ubuntu"
-    desc = "Docker Server 02"
+    desc = "Docker Server 02 for external Container"
     automatic_reboot = false
 
     # The destination resource pool for the new VM
@@ -172,7 +172,7 @@ resource "proxmox_vm_qemu" "docker_srv_03" {
     vmid = 502
     name = "docker-srv-03"
     tags = "docker;ubuntu"
-    desc = "Docker Server 03"
+    desc = "Docker Server 03 for agents Container"
     automatic_reboot = false
 
     # The destination resource pool for the new VM
