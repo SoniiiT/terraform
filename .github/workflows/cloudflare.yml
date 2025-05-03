@@ -20,7 +20,7 @@ jobs:
     name: Validate Cloudflare Terraform
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/opentofu/opentofu:1.6.2
+      image: ghcr.io/opentofu/opentofu:1.9.1
     permissions:
       contents: write
     steps:
@@ -41,7 +41,7 @@ jobs:
     needs: validate
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/opentofu/opentofu:1.6.2
+      image: ghcr.io/opentofu/opentofu:1.9.1
     permissions:
       contents: write
     steps:
@@ -70,7 +70,7 @@ jobs:
     needs: plan
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/opentofu/opentofu:1.6.2
+      image: ghcr.io/opentofu/opentofu:1.9.1
     if: github.ref == 'refs/heads/main'
     permissions:
       contents: write
