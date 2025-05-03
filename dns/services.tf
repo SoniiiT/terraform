@@ -7,7 +7,7 @@ resource "dns_a_record_set" "proxmox" {
 }
 
 # Backup Server
-resource "dns_a_record_set" "proxmox" {
+resource "dns_a_record_set" "pbs" {
     zone = "home.soniiit.net."
     name = "pbs"
     addresses = [ "192.168.178.20" ]
