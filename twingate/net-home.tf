@@ -46,6 +46,64 @@ resource "twingate_resource" "wildcard_dns_home" {
     is_active = true
 }
 
+# PVE-SRV-01
+resource "twingate_resource" "pve_srv_01" {
+    name = "pve-srv-01"
+    address = "192.168.178.6"
+    alias = "pve-srv-01.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_home.id
+
+    security_policy_id = data.twingate_security_policy.policy_home.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22", "8006"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    access_group {
+        group_id = twingate_group.home_group.id
+        security_policy_id = data.twingate_security_policy.policy_home.id
+        usage_based_autolock_duration_days = 30
+    }
+
+    is_active = true
+}
+
+# PBS-BAK-01
+resource "twingate_resource" "pbs_bak_01" {
+    name = "pbs-bak-01"
+    address = "192.168.178.5"
+    alias = "pbs-bak-01.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_home.id
+
+    security_policy_id = data.twingate_security_policy.policy_home.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22", "8007"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    access_group {
+        group_id = twingate_group.home_group.id
+        security_policy_id = data.twingate_security_policy.policy_home.id
+        usage_based_autolock_duration_days = 30
+    }
+
+    is_active = true
+}
+
 # # jellyfin-home-01
 # resource "twingate_resource" "jellyfin_home_01" {
 #     name = "jellyfin-home-01"
