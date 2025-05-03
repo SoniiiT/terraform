@@ -8,6 +8,7 @@ resource "proxmox_lxc" "lxc-checkmk" {
     cores     = 4
     memory    = 4096
     pool      = "LXC"
+    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
 
   // Terraform will crash without rootfs defined
     rootfs {
@@ -40,6 +41,7 @@ resource "proxmox_lxc" "lxc-wazuh" {
     cores     = 2
     memory    = 8192
     pool      = "LXC"
+    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
 
   // Terraform will crash without rootfs defined
     rootfs {
@@ -72,6 +74,7 @@ resource "proxmox_lxc" "lxc-bind9" {
     cores     = 1
     memory    = 2048
     pool      = "LXC"
+    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
 
   // Terraform will crash without rootfs defined
     rootfs {
@@ -104,6 +107,7 @@ resource "proxmox_lxc" "lxc-lancache" {
     cores     = 2
     memory    = 16384
     pool      = "LXC"
+    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
 
   // Terraform will crash without rootfs defined
     rootfs {
@@ -136,6 +140,7 @@ resource "proxmox_lxc" "lxc-pterodactyl-panel" {
     cores     = 1
     memory    = 2048
     pool      = "LXC"
+    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
 
   // Terraform will crash without rootfs defined
     rootfs {
@@ -168,6 +173,7 @@ resource "proxmox_lxc" "lxc-pterodactyl-wings" {
     cores     = 4
     memory    = 16384
     pool      = "LXC"
+    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
 
   // Terraform will crash without rootfs defined
     rootfs {
@@ -200,6 +206,7 @@ resource "proxmox_lxc" "lxc-cloudflared" {
     cores     = 1
     memory    = 2048
     pool      = "LXC"
+    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
 
   // Terraform will crash without rootfs defined
     rootfs {
@@ -232,6 +239,7 @@ resource "proxmox_lxc" "lxc-nextcloud" {
     cores     = 2
     memory    = 8192
     pool      = "LXC"
+    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
 
   // Terraform will crash without rootfs defined
     rootfs {
@@ -264,6 +272,7 @@ resource "proxmox_lxc" "lxc-authentik" {
     cores     = 1
     memory    = 2048
     pool      = "LXC"
+    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
 
   // Terraform will crash without rootfs defined
     rootfs {
@@ -296,6 +305,7 @@ resource "proxmox_lxc" "lxc-cloudflareddns" {
     cores     = 1
     memory    = 2048
     pool      = "LXC"
+    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
 
   // Terraform will crash without rootfs defined
     rootfs {
@@ -328,6 +338,7 @@ resource "proxmox_lxc" "lxc-remotely" {
     cores     = 2
     memory    = 4096
     pool      = "LXC"
+    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
 
   // Terraform will crash without rootfs defined
     rootfs {
