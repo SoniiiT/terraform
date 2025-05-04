@@ -1,3 +1,5 @@
+# Liste aller Services die über den Reverse Proxy eingerichtet werden
+
 # Hypervisor
 resource "dns_a_record_set" "proxmox" {
     zone = "home.soniiit.net."
