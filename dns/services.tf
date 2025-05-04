@@ -53,6 +53,12 @@ resource "dns_a_record_set" "docker_srv_03_wildcard" {
 }
 
 # Docker Containers
+resource "dns_a_record_set" "kestra" {
+    zone = "home.soniiit.net."
+    name = "kestra"
+    addresses = [ "192.168.178.20" ]
+    ttl = 3600
+}
 
 # Kubernetes Containers
 resource "dns_a_record_set" "traefik" {
