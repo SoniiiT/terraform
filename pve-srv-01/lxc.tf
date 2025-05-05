@@ -1,6 +1,6 @@
 resource "proxmox_lxc" "lxc-checkmk" {
     target_node  = "pve-srv-01"
-    hostname     = "checkmk"
+    hostname     = "lxc-checkmk"
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -33,7 +33,7 @@ resource "proxmox_lxc" "lxc-checkmk" {
 
 resource "proxmox_lxc" "lxc-wazuh" {
     target_node  = "pve-srv-01"
-    hostname     = "wazuh"
+    hostname     = "lxc-wazuh"
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -66,7 +66,7 @@ resource "proxmox_lxc" "lxc-wazuh" {
 
 resource "proxmox_lxc" "lxc-bind9" {
     target_node  = "pve-srv-01"
-    hostname     = "bind9"
+    hostname     = "lxc-bind9"
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -99,7 +99,7 @@ resource "proxmox_lxc" "lxc-bind9" {
 
 resource "proxmox_lxc" "lxc-lancache" {
     target_node  = "pve-srv-01"
-    hostname     = "lancache"
+    hostname     = "lxc-lancache"
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -132,7 +132,7 @@ resource "proxmox_lxc" "lxc-lancache" {
 
 resource "proxmox_lxc" "lxc-pterodactyl-panel" {
     target_node  = "pve-srv-01"
-    hostname     = "pterodactyl-panel"
+    hostname     = "lxc-pterodactyl-panel"
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -165,7 +165,7 @@ resource "proxmox_lxc" "lxc-pterodactyl-panel" {
 
 resource "proxmox_lxc" "lxc-pterodactyl-wings" {
     target_node  = "pve-srv-01"
-    hostname     = "pterodactyl-wings"
+    hostname     = "lxc-pterodactyl-wings"
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -198,7 +198,7 @@ resource "proxmox_lxc" "lxc-pterodactyl-wings" {
 
 resource "proxmox_lxc" "lxc-cloudflared" {
     target_node  = "pve-srv-01"
-    hostname     = "cloudflared"
+    hostname     = "lxc-cloudflared"
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -231,7 +231,7 @@ resource "proxmox_lxc" "lxc-cloudflared" {
 
 resource "proxmox_lxc" "lxc-nextcloud" {
     target_node  = "pve-srv-01"
-    hostname     = "nextcloud"
+    hostname     = "lxc-nextcloud"
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -297,7 +297,7 @@ resource "proxmox_lxc" "lxc-authentik" {
 
 resource "proxmox_lxc" "lxc-cloudflareddns" {
     target_node  = "pve-srv-01"
-    hostname     = "cloudflareddns"
+    hostname     = "lxc-cloudflareddns"
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -330,7 +330,7 @@ resource "proxmox_lxc" "lxc-cloudflareddns" {
 
 resource "proxmox_lxc" "lxc-remotely" {
     target_node  = "pve-srv-01"
-    hostname     = "remotely"
+    hostname     = "lxc-remotely"
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
