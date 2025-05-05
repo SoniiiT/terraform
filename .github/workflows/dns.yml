@@ -96,15 +96,41 @@ jobs:
         env:
           TF_VAR_tsig_key: ${{ secrets.DNS_TSIG_KEY }}
         run: |
+          # Debug-Informationen zur Umgebung
+          echo "Umgebungsinformationen:"
+          env | grep TF_ || true
+          pwd
+          echo "Dateiberechtigungen:"
+          ls -la ./
+          
           tofu init
           tofu apply -auto-approve tfplan
-          # Explizit den State in eine Datei exportieren
+          
+          echo "Debug: Zeige State-Informationen"
+          tofu state list
+          
+          # Versuche den State mit verschiedenen Methoden zu exportieren
+          echo "Exportiere State mit state pull"
           tofu state pull > terraform.tfstate
-          # Debug: List files to see if state was created
-          ls -la
-          # Try to force state saving
-          tofu state pull > terraform.tfstate
-          ls -la
+          
+          # Prüfe Dateiinhalt und -größe
+          echo "State-Datei Größe und erste Zeilen:"
+          ls -la terraform.tfstate
+          head -n 20 terraform.tfstate
+          
+          # Alternative Methode mit show
+          echo "Exportiere State mit show -json"
+          tofu show -json > terraform.tfstate.json
+          
+          # Prüfe JSON State-Datei
+          echo "JSON State-Datei Größe:"
+          ls -la terraform.tfstate.json
+          
+          # Konvertiere JSON zu regulärem State-Format falls nötig
+          if [ -s "terraform.tfstate.json" ] && [ ! -s "terraform.tfstate" ]; then
+            echo "State-Datei ist leer, verwende JSON-Datei stattdessen"
+            cp terraform.tfstate.json terraform.tfstate
+          fi
           
       - name: Configure Git
         run: |
@@ -115,6 +141,14 @@ jobs:
       - name: Commit state changes
         run: |
           if [ -f dns/terraform.tfstate ]; then
+            if [ ! -s dns/terraform.tfstate ]; then
+              echo "terraform.tfstate ist leer, prüfe JSON-Version"
+              if [ -f dns/terraform.tfstate.json ] && [ -s dns/terraform.tfstate.json ]; then
+                echo "Verwende JSON-Version als State-Datei"
+                cp dns/terraform.tfstate.json dns/terraform.tfstate
+              fi
+            fi
+            
             if git diff --quiet dns/terraform.tfstate; then
               echo "No changes to terraform.tfstate"
             else
