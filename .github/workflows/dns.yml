@@ -116,20 +116,33 @@ jobs:
           # Prüfe Dateiinhalt und -größe
           echo "State-Datei Größe und erste Zeilen:"
           ls -la terraform.tfstate
-          head -n 20 terraform.tfstate
+          cat terraform.tfstate | wc -l
           
-          # Alternative Methode mit show
-          echo "Exportiere State mit show -json"
-          tofu show -json > terraform.tfstate.json
+          # Alternatives Verfahren: Jede Ressource einzeln exportieren und in eine Datei zusammenführen
+          echo "Versuche alternative Methode zum State-Export"
+          echo '{"version":4,"terraform_version":"1.6.2","serial":1,"lineage":"","outputs":{},"resources":[' > terraform.tfstate.full
           
-          # Prüfe JSON State-Datei
-          echo "JSON State-Datei Größe:"
-          ls -la terraform.tfstate.json
+          first=true
+          for resource in $(tofu state list); do
+            if [ "$first" = true ]; then
+              first=false
+            else
+              echo "," >> terraform.tfstate.full
+            fi
+            
+            # Exportiere jede Ressource einzeln
+            tofu state show -json "$resource" >> terraform.tfstate.full
+          done
           
-          # Konvertiere JSON zu regulärem State-Format falls nötig
-          if [ -s "terraform.tfstate.json" ] && [ ! -s "terraform.tfstate" ]; then
-            echo "State-Datei ist leer, verwende JSON-Datei stattdessen"
-            cp terraform.tfstate.json terraform.tfstate
+          echo ']}' >> terraform.tfstate.full
+          
+          echo "Alternative State-Datei Größe:"
+          ls -la terraform.tfstate.full
+          
+          # Wenn die ursprüngliche State-Datei leer ist, verwende die alternative
+          if [ ! -s "terraform.tfstate" ] || [ "$(cat terraform.tfstate | wc -l)" -lt 5 ]; then
+            echo "Standard State-Datei ist leer oder unvollständig, verwende alternative Version"
+            cp terraform.tfstate.full terraform.tfstate
           fi
           
       - name: Configure Git
@@ -141,13 +154,17 @@ jobs:
       - name: Commit state changes
         run: |
           if [ -f dns/terraform.tfstate ]; then
-            if [ ! -s dns/terraform.tfstate ]; then
-              echo "terraform.tfstate ist leer, prüfe JSON-Version"
-              if [ -f dns/terraform.tfstate.json ] && [ -s dns/terraform.tfstate.json ]; then
-                echo "Verwende JSON-Version als State-Datei"
-                cp dns/terraform.tfstate.json dns/terraform.tfstate
+            if [ ! -s dns/terraform.tfstate ] || [ "$(cat dns/terraform.tfstate | wc -l)" -lt 5 ]; then
+              echo "terraform.tfstate ist leer oder unvollständig, prüfe alternative Version"
+              if [ -f dns/terraform.tfstate.full ] && [ -s dns/terraform.tfstate.full ]; then
+                echo "Verwende vollständig exportierte State-Datei"
+                cp dns/terraform.tfstate.full dns/terraform.tfstate
               fi
             fi
+            
+            # Debug-Ausgabe
+            echo "Inhalt der finalen State-Datei:"
+            cat dns/terraform.tfstate | head -20
             
             if git diff --quiet dns/terraform.tfstate; then
               echo "No changes to terraform.tfstate"
