@@ -1,3 +1,5 @@
+# Hier sind die A-Records für die LXC Container
+
 # GitHub-Runner-Terraform
 resource "dns_a_record_set" "lxc_github_runner_terraform" {
     zone = "home.soniiit.net."

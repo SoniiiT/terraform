@@ -1,3 +1,5 @@
+# Hier sind die A-Records für das Kubernetes Cluster
+
 # Virtual IP
 resource "dns_a_record_set" "k3s_soniiit_prod1_vip" {
     zone = "home.soniiit.net."

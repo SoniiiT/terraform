@@ -1,3 +1,5 @@
+# Hier sind die A-Records für die Docker Hosts
+
 # Hosts
 resource "dns_a_record_set" "docker_srv_01" {
     zone = "home.soniiit.net."

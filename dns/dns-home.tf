@@ -1,3 +1,5 @@
+# Hier sind die A-Records für das Home Network
+
 # Home Network
 resource "dns_a_record_set" "gw_01" {
     zone = "home.soniiit.net."
