@@ -264,7 +264,7 @@ resource "proxmox_lxc" "lxc-nextcloud" {
 
 resource "proxmox_lxc" "lxc-authentik" {
     target_node  = "pve-srv-01"
-    hostname     = "authentik"
+    hostname     = "lxc-authentik"
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
