@@ -95,7 +95,7 @@ jobs:
           name: tfplan-dns
           path: dns
       
-      - name: Apply & Debug State
+      - name: Apply & Deploy State
         working-directory: dns
         env:
           TF_VAR_tsig_key: ${{ secrets.DNS_TSIG_KEY }}
@@ -112,64 +112,10 @@ jobs:
           echo "Ressourcen im State:"
           tofu state list
           
-          # Verzeichnis-Struktur untersuchen
-          echo "==== Verzeichnisstruktur ===="
-          ls -la ./
-          echo "Absoluter Pfad:"
-          pwd
+          # State extrahieren und in Datei speichern
+          tofu state pull > terraform.tfstate
           
-          echo "==== .terraform Verzeichnis ===="
-          ls -la .terraform/
-          
-          # Feststellen, wo der State-File liegt
-          echo "==== Wo ist die State-Datei? ===="
-          find / -name "*.tfstate" 2>/dev/null || echo "Keine .tfstate Dateien gefunden"
-          
-          # Versuche den State zu exportieren
-          echo "==== State Pull Versuch ===="
-          tofu state pull > terraform.tfstate.pull
-          ls -la terraform.tfstate.pull
-          echo "Inhalt der terraform.tfstate.pull (erste 20 Zeilen):"
-          cat terraform.tfstate.pull | head -n 20
-          
-          # Jetzt erstellen wir einen neuen State mit den richtigen Daten
-          echo "==== Manuelles State-Erstellen ===="
-          # Erstellen wir den State manuell als JSON-Objekt mit Ressourcen
-          echo '{
-            "version": 4,
-            "terraform_version": "1.6.2",
-            "serial": 1,
-            "lineage": "terraform-manual",
-            "outputs": {},
-            "resources": [' > terraform.tfstate.manual
-            
-          # Füge alle Ressourcen einzeln hinzu
-          first=true
-          for resource in $(tofu state list); do
-            # Füge Komma hinzu, außer beim ersten Eintrag
-            if [ "$first" = "true" ]; then
-              first=false
-            else
-              echo "," >> terraform.tfstate.manual
-            fi
-            
-            # Hole die Ressourcendaten und schreibe sie in die State-Datei
-            tofu state show -json "$resource" >> terraform.tfstate.manual
-          done
-          
-          # Schließe die JSON-Struktur
-          echo ']}' >> terraform.tfstate.manual
-          
-          # Kopiere die manuelle State-Datei
-          cp terraform.tfstate.manual terraform.tfstate
-          
-          # Status der State-Dateien anzeigen
-          echo "==== State-Datei Details ===="
-          ls -la terraform.tfstate*
-          echo "Anzahl der Zeilen im manuellen State:"
-          wc -l terraform.tfstate.manual
-          echo "Inhalt der finalen State-Datei (erste 50 Zeilen):"
-          cat terraform.tfstate | head -n 50
+          echo "State wurde erfolgreich erstellt"
           
       - name: Configure Git
         run: |
@@ -182,9 +128,6 @@ jobs:
           if [ -f dns/terraform.tfstate ] && [ -s dns/terraform.tfstate ]; then
             # State-Datei ist vorhanden und nicht leer
             echo "Prüfe auf Änderungen im State..."
-            echo "===== Inhalt der terraform.tfstate ====="
-            cat dns/terraform.tfstate | head -n 50
-            echo "===== Ende des State-Auszugs ====="
             
             git add dns/terraform.tfstate
             
@@ -199,10 +142,6 @@ jobs:
             echo "Aktuelle Dateien im dns/ Verzeichnis:"
             ls -la dns/
           fi
-          
-      - name: Pull latest changes
-        run: |
-          git pull origin ${{ github.ref }} --rebase
           
       - name: Push state
         run: |
