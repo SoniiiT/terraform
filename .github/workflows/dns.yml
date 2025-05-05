@@ -101,11 +101,15 @@ jobs:
           
       - name: Commit state changes
         run: |
-          if git diff --quiet dns/terraform.tfstate; then
-            echo "No changes to terraform.tfstate"
+          if [ -f dns/terraform.tfstate ]; then
+            if git diff --quiet dns/terraform.tfstate; then
+              echo "No changes to terraform.tfstate"
+            else
+              git add dns/terraform.tfstate
+              git commit -m "[skip ci] Update DNS terraform state"
+            fi
           else
-            git add dns/terraform.tfstate
-            git commit -m "[skip ci] Update DNS terraform state"
+            echo "terraform.tfstate does not exist yet"
           fi
           
       - name: Pull latest changes
