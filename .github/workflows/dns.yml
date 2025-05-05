@@ -39,6 +39,8 @@ jobs:
         env:
           TF_VAR_tsig_key: ${{ secrets.DNS_TSIG_KEY }}
         run: |
+          # Leere State-Datei löschen, um mit frischem State zu starten
+          rm -f terraform.tfstate
           tofu init
           tofu validate
 
@@ -60,6 +62,8 @@ jobs:
         env:
           TF_VAR_tsig_key: ${{ secrets.DNS_TSIG_KEY }}
         run: |
+          # Leere State-Datei löschen, um mit frischem State zu starten
+          rm -f terraform.tfstate
           tofu init
           tofu providers lock
           tofu plan -out=tfplan
@@ -91,59 +95,31 @@ jobs:
           name: tfplan-dns
           path: dns
       
-      - name: Apply
+      - name: Apply & Generate State
         working-directory: dns
         env:
           TF_VAR_tsig_key: ${{ secrets.DNS_TSIG_KEY }}
         run: |
-          # Debug-Informationen zur Umgebung
-          echo "Umgebungsinformationen:"
-          env | grep TF_ || true
-          pwd
-          echo "Dateiberechtigungen:"
-          ls -la ./
+          # Leere State-Datei löschen, um mit frischem State zu starten
+          rm -f terraform.tfstate
           
+          # Initialisieren und Apply ausführen
+          echo "Initialisiere und wende Konfiguration an..."
           tofu init
           tofu apply -auto-approve tfplan
           
-          echo "Debug: Zeige State-Informationen"
+          # State Listen um zu prüfen, dass alles korrekt angelegt wurde
+          echo "Ressourcen im State:"
           tofu state list
           
-          # Versuche den State mit verschiedenen Methoden zu exportieren
-          echo "Exportiere State mit state pull"
+          # State-Datei exportieren - dies wird einen frischen State generieren
+          echo "Exportiere State..."
           tofu state pull > terraform.tfstate
           
-          # Prüfe Dateiinhalt und -größe
-          echo "State-Datei Größe und erste Zeilen:"
+          # Status der State-Datei anzeigen
+          echo "State-Datei Details:"
           ls -la terraform.tfstate
-          cat terraform.tfstate | wc -l
-          
-          # Alternatives Verfahren: Jede Ressource einzeln exportieren und in eine Datei zusammenführen
-          echo "Versuche alternative Methode zum State-Export"
-          echo '{"version":4,"terraform_version":"1.6.2","serial":1,"lineage":"","outputs":{},"resources":[' > terraform.tfstate.full
-          
-          first=true
-          for resource in $(tofu state list); do
-            if [ "$first" = true ]; then
-              first=false
-            else
-              echo "," >> terraform.tfstate.full
-            fi
-            
-            # Exportiere jede Ressource einzeln
-            tofu state show -json "$resource" >> terraform.tfstate.full
-          done
-          
-          echo ']}' >> terraform.tfstate.full
-          
-          echo "Alternative State-Datei Größe:"
-          ls -la terraform.tfstate.full
-          
-          # Wenn die ursprüngliche State-Datei leer ist, verwende die alternative
-          if [ ! -s "terraform.tfstate" ] || [ "$(cat terraform.tfstate | wc -l)" -lt 5 ]; then
-            echo "Standard State-Datei ist leer oder unvollständig, verwende alternative Version"
-            cp terraform.tfstate.full terraform.tfstate
-          fi
+          head -n 10 terraform.tfstate
           
       - name: Configure Git
         run: |
@@ -153,27 +129,19 @@ jobs:
           
       - name: Commit state changes
         run: |
-          if [ -f dns/terraform.tfstate ]; then
-            if [ ! -s dns/terraform.tfstate ] || [ "$(cat dns/terraform.tfstate | wc -l)" -lt 5 ]; then
-              echo "terraform.tfstate ist leer oder unvollständig, prüfe alternative Version"
-              if [ -f dns/terraform.tfstate.full ] && [ -s dns/terraform.tfstate.full ]; then
-                echo "Verwende vollständig exportierte State-Datei"
-                cp dns/terraform.tfstate.full dns/terraform.tfstate
-              fi
-            fi
+          if [ -f dns/terraform.tfstate ] && [ -s dns/terraform.tfstate ]; then
+            # State-Datei ist vorhanden und nicht leer
+            echo "Prüfe auf Änderungen im State..."
+            git add dns/terraform.tfstate
             
-            # Debug-Ausgabe
-            echo "Inhalt der finalen State-Datei:"
-            cat dns/terraform.tfstate | head -20
-            
-            if git diff --quiet dns/terraform.tfstate; then
-              echo "No changes to terraform.tfstate"
+            if git diff --cached --quiet dns/terraform.tfstate; then
+              echo "Keine Änderungen am terraform.tfstate"
             else
-              git add dns/terraform.tfstate
+              echo "Änderungen am terraform.tfstate gefunden, committe sie"
               git commit -m "[skip ci] Update DNS terraform state"
             fi
           else
-            echo "terraform.tfstate does not exist yet"
+            echo "Keine gültige terraform.tfstate gefunden"
           fi
           
       - name: Pull latest changes
