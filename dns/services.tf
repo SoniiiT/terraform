@@ -112,6 +112,13 @@ resource "dns_a_record_set" "argocd" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "checkmk-collector" {
+    zone = "home.soniiit.net."
+    name = "checkmk-collector"
+    addresses = [ "192.168.178.20" ]
+    ttl = 3600
+}
+
 # LXC
 resource "dns_a_record_set" "wazuh" {
     zone = "home.soniiit.net."
