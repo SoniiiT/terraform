@@ -9,12 +9,6 @@ on:
     branches: [ main ]
     paths:
       - 'dns/**'
-  workflow_dispatch:
-    inputs:
-      reason:
-        description: 'Grund für manuelle Ausführung'
-        required: false
-        default: 'Manuelle Ausführung'
 
 env:
   TF_CLI_ARGS: "-no-color"
@@ -39,8 +33,6 @@ jobs:
         env:
           TF_VAR_tsig_key: ${{ secrets.DNS_TSIG_KEY }}
         run: |
-          # Leere State-Datei löschen, um mit frischem State zu starten
-          rm -f terraform.tfstate
           tofu init
           tofu validate
 
@@ -62,8 +54,6 @@ jobs:
         env:
           TF_VAR_tsig_key: ${{ secrets.DNS_TSIG_KEY }}
         run: |
-          # Leere State-Datei löschen, um mit frischem State zu starten
-          rm -f terraform.tfstate
           tofu init
           tofu providers lock
           tofu plan -out=tfplan
@@ -95,27 +85,13 @@ jobs:
           name: tfplan-dns
           path: dns
       
-      - name: Apply & Deploy State
+      - name: Apply
         working-directory: dns
         env:
           TF_VAR_tsig_key: ${{ secrets.DNS_TSIG_KEY }}
         run: |
-          # Leere State-Datei löschen, um mit frischem State zu starten
-          rm -f terraform.tfstate
-          
-          # Initialisieren und Apply ausführen
-          echo "Initialisiere und wende Konfiguration an..."
           tofu init
           tofu apply -auto-approve tfplan
-          
-          # State Listen um zu prüfen, dass alles korrekt angelegt wurde
-          echo "Ressourcen im State:"
-          tofu state list
-          
-          # State extrahieren und in Datei speichern
-          tofu state pull > terraform.tfstate
-          
-          echo "State wurde erfolgreich erstellt"
           
       - name: Configure Git
         run: |
@@ -125,23 +101,16 @@ jobs:
           
       - name: Commit state changes
         run: |
-          if [ -f dns/terraform.tfstate ] && [ -s dns/terraform.tfstate ]; then
-            # State-Datei ist vorhanden und nicht leer
-            echo "Prüfe auf Änderungen im State..."
-            
-            git add dns/terraform.tfstate
-            
-            if git diff --cached --quiet dns/terraform.tfstate; then
-              echo "Keine Änderungen am terraform.tfstate"
-            else
-              echo "Änderungen am terraform.tfstate gefunden, committe sie"
-              git commit -m "[skip ci] Update DNS terraform state"
-            fi
+          if git diff --quiet dns/terraform.tfstate; then
+            echo "No changes to terraform.tfstate"
           else
-            echo "Keine gültige terraform.tfstate gefunden"
-            echo "Aktuelle Dateien im dns/ Verzeichnis:"
-            ls -la dns/
+            git add dns/terraform.tfstate
+            git commit -m "[skip ci] Update DNS terraform state"
           fi
+          
+      - name: Pull latest changes
+        run: |
+          git pull origin ${{ github.ref }} --rebase
           
       - name: Push state
         run: |
