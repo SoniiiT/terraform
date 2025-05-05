@@ -6,7 +6,7 @@ resource "proxmox_lxc" "lxc-checkmk" {
     ostype       = "ubuntu"
     unprivileged = true
     cores     = 4
-    memory    = 4096
+    memory    = 32768
     pool      = "LXC"
     nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
 
