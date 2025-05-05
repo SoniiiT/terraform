@@ -6,6 +6,13 @@ resource "dns_a_record_set" "lxc_github_runner_terraform" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "lxc_github_runner_docker" {
+    zone = "home.soniiit.net."
+    name = "lxc-gr-docker"
+    addresses = [ "192.168.178.71" ]
+    ttl = 3600
+}
+
 # Authentik
 resource "dns_a_record_set" "lxc_authentik" {
     zone = "home.soniiit.net."

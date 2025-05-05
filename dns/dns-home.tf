@@ -36,3 +36,11 @@ resource "dns_a_record_set" "twingate_connector_01" {
     addresses = [ "192.168.178.7" ]
     ttl = 3600
 }
+
+# Home
+resource "dns_a_record_set" "jellyfin-home-01" {
+    zone = "home.soniiit.net."
+    name = "jellyfin-home-01"
+    addresses = [ "192.168.178.98" ]
+    ttl = 3600
+}
