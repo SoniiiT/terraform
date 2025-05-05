@@ -9,6 +9,12 @@ on:
     branches: [ main ]
     paths:
       - 'dns/**'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Grund für manuelle Ausführung'
+        required: false
+        default: 'Manuelle Ausführung'
 
 env:
   TF_CLI_ARGS: "-no-color"
@@ -92,6 +98,13 @@ jobs:
         run: |
           tofu init
           tofu apply -auto-approve tfplan
+          # Explizit den State in eine Datei exportieren
+          tofu state pull > terraform.tfstate
+          # Debug: List files to see if state was created
+          ls -la
+          # Try to force state saving
+          tofu state pull > terraform.tfstate
+          ls -la
           
       - name: Configure Git
         run: |
