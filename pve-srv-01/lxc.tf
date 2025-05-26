@@ -592,9 +592,9 @@ resource "proxmox_lxc" "lxc-graylog" {
     onboot = true
 }
 
-resource "proxmox_lxc" "lxc-nomand" {
+resource "proxmox_lxc" "lxc-nomad" {
     target_node  = "pve-srv-01"
-    hostname     = "lxc-nomand"
+    hostname     = "lxc-nomad"
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
