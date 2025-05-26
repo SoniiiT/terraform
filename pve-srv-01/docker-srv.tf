@@ -6,7 +6,7 @@ resource "proxmox_vm_qemu" "docker_srv_01" {
     vmid = 500
     name = "docker-srv-01"
     tags = "docker;ubuntu"
-    desc = "Docker Server 01 for internal Container"
+    desc = "Docker Server 01"
     automatic_reboot = false
 
     # The destination resource pool for the new VM
@@ -27,12 +27,12 @@ resource "proxmox_vm_qemu" "docker_srv_01" {
     agent = 1
 
     # VM cpu_type Settings
-    cores = 1
+    cores = 2
     sockets = 1
     cpu_type = "kvm64"
 
     # VM Memory Settings
-    memory = 8192
+    memory = 16384
 
     # VM Network Settings
     network {
@@ -89,7 +89,7 @@ resource "proxmox_vm_qemu" "docker_srv_02" {
     vmid = 501
     name = "docker-srv-02"
     tags = "docker;ubuntu"
-    desc = "Docker Server 02 for external Container"
+    desc = "Docker Server 02"
     automatic_reboot = false
 
     # The destination resource pool for the new VM
@@ -110,12 +110,12 @@ resource "proxmox_vm_qemu" "docker_srv_02" {
     agent = 1
 
     # VM cpu_type Settings
-    cores = 1
+    cores = 2
     sockets = 1
     cpu_type = "kvm64"
 
     # VM Memory Settings
-    memory = 8192
+    memory = 16384
 
     # VM Network Settings
     network {
@@ -172,7 +172,7 @@ resource "proxmox_vm_qemu" "docker_srv_03" {
     vmid = 502
     name = "docker-srv-03"
     tags = "docker;ubuntu"
-    desc = "Docker Server 03 for agents Container"
+    desc = "Docker Server 03"
     automatic_reboot = false
 
     # The destination resource pool for the new VM
@@ -193,12 +193,12 @@ resource "proxmox_vm_qemu" "docker_srv_03" {
     agent = 1
 
     # VM cpu_type Settings
-    cores = 1
+    cores = 2
     sockets = 1
     cpu_type = "host"
 
     # VM Memory Settings
-    memory = 8192
+    memory = 16384
 
     # VM Network Settings
     network {
@@ -223,6 +223,12 @@ resource "proxmox_vm_qemu" "docker_srv_03" {
                     storage            = "M2-Storage"
                 }
             }
+            virtio1 {
+                disk {
+                    size               = "128G"
+                    storage            = "HDD-Storage"
+                }
+            }
         }
     }
 
@@ -231,6 +237,172 @@ resource "proxmox_vm_qemu" "docker_srv_03" {
 
     # (Optional) IP Address and Gateway
     ipconfig0 = "ip=192.168.178.32/24,gw=192.168.178.1,ip6=dhcp"
+
+    # (Optional) DNS Servers
+    nameserver = "192.168.178.3"
+
+    # (Optional) Default User
+    ciuser = "soniiit"
+
+    # (Optional) Add your Public SSH KEY
+    sshkeys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCwS2E+9u7DXG01ViDPKTObWcqb3MZ1+bkHrfOl2e0FokVv8QI6v0LtJgPc5i8eEunQlK29GsLmf9s1cKLN8LdgT7VXknSg2tsNtL1/nDFrSwRnuu5HJXmxjrdpPFyBSq5h/hOwwImhT5vSRdwfNF9Y4N0kwEghzu1/7JJDF8eAW66DBrBeMgz28U4IohCiRm+YvGhsvRfqeD9ztd+Wb0xcb485yotE8LnDAzGsfSwQ4GrOaoiLYdzZAVNiqXKrZhs7YpyvTu6ngnA+sGH+w0Igms++eF9ElQkfgz4LHVUdjVaySC41YWqE2nQacVqefEPcCIKnaAwRlvtBzBSXujCCI4//py/538SWLYrcmGjtNBKkBA0KVbPP+R7qq387Hr+bjjoXtIARsuqqj6gCzmYxrGiors84vt+dYMWNzTj9tvOVkNFpsIu3NER2e1yXgjVXSpPZDKERTCcDoNIwLI91+6EpMnXYz8MtH80CIHFJNSwflc5wud2ebSEGmSfGgJ0djAN4KWIhg/J+RgcZ/o/dvew6GxRYbv9EDZ3UXSaSEeKvjGLXAPV5MhQuIB1iavzV6CO3ntTKvqYHFyxSkWTXTyllGtsAj3N2DLA8CSnswsBXmO0FleEhjwAUzCA3itDK+/oBipPFbna3x0c+qcb8GJSsYpNIvTqdFb92DgUiPQ== "
+}
+
+resource "proxmox_vm_qemu" "docker_srv_04" {
+
+    # VM General Settings
+    target_node = "pve-srv-01"
+    vmid = 503
+    name = "docker-srv-04"
+    tags = "docker;ubuntu"
+    desc = "Docker Server 04"
+    automatic_reboot = false
+
+    # The destination resource pool for the new VM
+    pool = "Docker"
+
+    # VM Advanced General Settings
+    onboot = true
+    boot = "order=virtio0;net0"
+    bootdisk = "virtio"
+    scsihw = "virtio-scsi-pci"
+
+    # VM OS Settings
+    full_clone = true
+    clone = "ubuntu-server-24-04-01"
+    bios = "seabios"
+
+    # VM System Settings
+    agent = 1
+
+    # VM cpu_type Settings
+    cores = 2
+    sockets = 1
+    cpu_type = "host"
+
+    # VM Memory Settings
+    memory = 16384
+
+    # VM Network Settings
+    network {
+        id = 0
+        bridge = "vmbr0"
+        model  = "virtio"
+    }
+
+    # VM Disk Settings Cloud-Init
+    disks {
+        ide {
+            ide0 {
+                cloudinit {
+                    storage = "M2-Storage"
+                }
+            }
+        }
+        virtio {
+            virtio0 {
+                disk {
+                    size               = "32G"
+                    storage            = "M2-Storage"
+                }
+            }
+            virtio1 {
+                disk {
+                    size               = "128G"
+                    storage            = "HDD-Storage"
+                }
+            }
+        }
+    }
+
+    # VM Cloud-Init Settings
+    os_type = "cloud-init"
+
+    # (Optional) IP Address and Gateway
+    ipconfig0 = "ip=192.168.178.33/24,gw=192.168.178.1,ip6=dhcp"
+
+    # (Optional) DNS Servers
+    nameserver = "192.168.178.3"
+
+    # (Optional) Default User
+    ciuser = "soniiit"
+
+    # (Optional) Add your Public SSH KEY
+    sshkeys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCwS2E+9u7DXG01ViDPKTObWcqb3MZ1+bkHrfOl2e0FokVv8QI6v0LtJgPc5i8eEunQlK29GsLmf9s1cKLN8LdgT7VXknSg2tsNtL1/nDFrSwRnuu5HJXmxjrdpPFyBSq5h/hOwwImhT5vSRdwfNF9Y4N0kwEghzu1/7JJDF8eAW66DBrBeMgz28U4IohCiRm+YvGhsvRfqeD9ztd+Wb0xcb485yotE8LnDAzGsfSwQ4GrOaoiLYdzZAVNiqXKrZhs7YpyvTu6ngnA+sGH+w0Igms++eF9ElQkfgz4LHVUdjVaySC41YWqE2nQacVqefEPcCIKnaAwRlvtBzBSXujCCI4//py/538SWLYrcmGjtNBKkBA0KVbPP+R7qq387Hr+bjjoXtIARsuqqj6gCzmYxrGiors84vt+dYMWNzTj9tvOVkNFpsIu3NER2e1yXgjVXSpPZDKERTCcDoNIwLI91+6EpMnXYz8MtH80CIHFJNSwflc5wud2ebSEGmSfGgJ0djAN4KWIhg/J+RgcZ/o/dvew6GxRYbv9EDZ3UXSaSEeKvjGLXAPV5MhQuIB1iavzV6CO3ntTKvqYHFyxSkWTXTyllGtsAj3N2DLA8CSnswsBXmO0FleEhjwAUzCA3itDK+/oBipPFbna3x0c+qcb8GJSsYpNIvTqdFb92DgUiPQ== "
+}
+
+resource "proxmox_vm_qemu" "docker_srv_05" {
+
+    # VM General Settings
+    target_node = "pve-srv-01"
+    vmid = 504
+    name = "docker-srv-05"
+    tags = "docker;ubuntu"
+    desc = "Docker Server 05"
+    automatic_reboot = false
+
+    # The destination resource pool for the new VM
+    pool = "Docker"
+
+    # VM Advanced General Settings
+    onboot = true
+    boot = "order=virtio0;net0"
+    bootdisk = "virtio"
+    scsihw = "virtio-scsi-pci"
+
+    # VM OS Settings
+    full_clone = true
+    clone = "ubuntu-server-24-04-01"
+    bios = "seabios"
+
+    # VM System Settings
+    agent = 1
+
+    # VM cpu_type Settings
+    cores = 2
+    sockets = 1
+    cpu_type = "host"
+
+    # VM Memory Settings
+    memory = 16384
+
+    # VM Network Settings
+    network {
+        id = 0
+        bridge = "vmbr0"
+        model  = "virtio"
+    }
+
+    # VM Disk Settings Cloud-Init
+    disks {
+        ide {
+            ide0 {
+                cloudinit {
+                    storage = "M2-Storage"
+                }
+            }
+        }
+        virtio {
+            virtio0 {
+                disk {
+                    size               = "32G"
+                    storage            = "M2-Storage"
+                }
+            }
+            virtio1 {
+                disk {
+                    size               = "128G"
+                    storage            = "HDD-Storage"
+                }
+            }
+        }
+    }
+
+    # VM Cloud-Init Settings
+    os_type = "cloud-init"
+
+    # (Optional) IP Address and Gateway
+    ipconfig0 = "ip=192.168.178.34/24,gw=192.168.178.1,ip6=dhcp"
 
     # (Optional) DNS Servers
     nameserver = "192.168.178.3"
