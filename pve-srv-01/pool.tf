@@ -1,7 +1,7 @@
-# resource "proxmox_pool" "application" {
-#   poolid  = "Application" 
-#   comment = "Application pool"
-# }
+resource "proxmox_pool" "application" {
+  poolid  = "Application" 
+  comment = "Application pool"
+}
 
 resource "proxmox_pool" "backup" {
   poolid  = "Backup" 
@@ -43,10 +43,10 @@ resource "proxmox_pool" "k3s_soniiit_prod_1" {
   comment = "K3s-SoniiiT-Prod-1 pool"
 }
 
-# resource "proxmox_pool" "lxc" {
-#   poolid  = "LXC" 
-#   comment = "LXC pool"
-# }
+resource "proxmox_pool" "lxc" {
+  poolid  = "LXC" 
+  comment = "LXC pool"
+}
 
 resource "proxmox_pool" "nas" {
   poolid  = "NAS" 
