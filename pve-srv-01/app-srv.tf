@@ -1,4 +1,4 @@
-resource "proxmox_vm_qemu" "docker_srv_05" {
+resource "proxmox_vm_qemu" "app-srv-01" {
 
     # VM General Settings
     target_node = "pve-srv-01"
