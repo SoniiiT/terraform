@@ -1,6 +1,6 @@
 # Security Policy für Runners
 data "twingate_security_policy" "policy_runners" {
-  name = "runners Policy"
+  name = "Runners Policy"
 }
 
 # Remote Network für Runners
