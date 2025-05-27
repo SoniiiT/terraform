@@ -28,9 +28,9 @@ resource "proxmox_pool" "docker" {
   comment = "Docker pool"
 }
 
-resource "proxmox_pool" "gitagents" {
-  poolid  = "GitAgents" 
-  comment = "GitAgents pool"
+resource "proxmox_pool" "runners" {
+  poolid  = "Runners" 
+  comment = "Runners pool"
 }
 
 resource "proxmox_pool" "home" {
