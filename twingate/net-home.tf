@@ -104,7 +104,7 @@ resource "twingate_resource" "pbs_bak_01" {
     is_active = true
 }
 
-# jellyfin-home-01
+/* # jellyfin-home-01
 resource "twingate_resource" "jellyfin_home_01" {
     name = "jellyfin-home-01"
     address = "192.168.178.7"
@@ -166,4 +166,4 @@ resource "twingate_resource" "home_srv_01" {
     }
 
     is_active = true
-}
+} */
