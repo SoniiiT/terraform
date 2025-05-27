@@ -1,6 +1,7 @@
 /* resource "proxmox_lxc" "lxc-wazuh" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-wazuh"
+    vmid         = 100
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -34,6 +35,7 @@
 resource "proxmox_lxc" "lxc-bind9" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-bind9"
+    vmid         = 101
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -67,6 +69,7 @@ resource "proxmox_lxc" "lxc-bind9" {
 resource "proxmox_lxc" "lxc-pterodactyl-panel" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-pterodactyl-panel"
+    vmid         = 102
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -100,6 +103,7 @@ resource "proxmox_lxc" "lxc-pterodactyl-panel" {
 resource "proxmox_lxc" "lxc-pterodactyl-wings" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-pterodactyl-wings"
+    vmid         = 103
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -133,6 +137,7 @@ resource "proxmox_lxc" "lxc-pterodactyl-wings" {
 resource "proxmox_lxc" "lxc-cloudflared" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-cloudflared"
+    vmid         = 104
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -166,6 +171,7 @@ resource "proxmox_lxc" "lxc-cloudflared" {
 resource "proxmox_lxc" "lxc-nextcloud" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-nextcloud"
+    vmid         = 105
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -199,6 +205,7 @@ resource "proxmox_lxc" "lxc-nextcloud" {
 resource "proxmox_lxc" "lxc-authentik" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-authentik"
+    vmid         = 106
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -232,6 +239,7 @@ resource "proxmox_lxc" "lxc-authentik" {
 resource "proxmox_lxc" "lxc-cloudflareddns" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-cloudflareddns"
+    vmid         = 107
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -265,6 +273,7 @@ resource "proxmox_lxc" "lxc-cloudflareddns" {
 resource "proxmox_lxc" "lxc-remotely" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-remotely"
+    vmid         = 108
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -298,6 +307,7 @@ resource "proxmox_lxc" "lxc-remotely" {
 resource "proxmox_lxc" "lxc-netdata-01" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-netdata-01"
+    vmid         = 109
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -331,6 +341,7 @@ resource "proxmox_lxc" "lxc-netdata-01" {
 resource "proxmox_lxc" "lxc-netdata-02" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-netdata-02"
+    vmid         = 110
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -364,6 +375,7 @@ resource "proxmox_lxc" "lxc-netdata-02" {
 resource "proxmox_lxc" "lxc-netdata-03" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-netdata-03"
+    vmid         = 111
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -397,6 +409,7 @@ resource "proxmox_lxc" "lxc-netdata-03" {
 resource "proxmox_lxc" "lxc-netdata-04" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-netdata-04"
+    vmid         = 112
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -430,6 +443,7 @@ resource "proxmox_lxc" "lxc-netdata-04" {
 resource "proxmox_lxc" "lxc-netdata-05" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-netdata-05"
+    vmid         = 113
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -463,6 +477,7 @@ resource "proxmox_lxc" "lxc-netdata-05" {
 resource "proxmox_lxc" "lxc-uptimekuma" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-uptimekuma"
+    vmid         = 114
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -496,6 +511,7 @@ resource "proxmox_lxc" "lxc-uptimekuma" {
 resource "proxmox_lxc" "lxc-zabbix" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-zabbix"
+    vmid         = 115
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -529,6 +545,7 @@ resource "proxmox_lxc" "lxc-zabbix" {
 resource "proxmox_lxc" "lxc-graylog" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-graylog"
+    vmid         = 116
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
@@ -562,6 +579,7 @@ resource "proxmox_lxc" "lxc-graylog" {
 resource "proxmox_lxc" "lxc-nomad" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-nomad"
+    vmid         = 117
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
