@@ -1,4 +1,4 @@
-/* # Security Policy für Gitagents
+# Security Policy für Gitagents
 data "twingate_security_policy" "policy_gitagents" {
   name = "Gitagents Policy"
 }
@@ -43,4 +43,4 @@ resource "twingate_resource" "github_runner_terraform" {
     }
 
     is_active = true
-} */
+}

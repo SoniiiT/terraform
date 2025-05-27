@@ -1,4 +1,4 @@
-/* # Security Policy für Desktop
+# Security Policy für Desktop
 data "twingate_security_policy" "policy_desktop" {
   name = "Desktop Policy"
 }
@@ -14,4 +14,4 @@ resource "twingate_group" "desktop_group" {
   name = "net-desktop_group"
   user_ids = [data.twingate_users.all.users[0].id]
   is_authoritative = true
-} */
+}

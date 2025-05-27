@@ -1,4 +1,4 @@
-/* # Security Policy für Docker
+# Security Policy für Docker
 data "twingate_security_policy" "policy_docker" {
   name = "Docker Policy"
 }
@@ -157,4 +157,4 @@ resource "twingate_resource" "docker_srv_03" {
     }
 
     is_active = true
-} */
+}

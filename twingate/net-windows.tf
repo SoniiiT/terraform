@@ -1,4 +1,4 @@
-/* # Security Policy für Windows
+# Security Policy für Windows
 data "twingate_security_policy" "policy_windows" {
   name = "Windows Policy"
 }
@@ -14,4 +14,4 @@ resource "twingate_group" "windows_group" {
   name = "net-windows_group"
   user_ids = [data.twingate_users.all.users[0].id]
   is_authoritative = true
-} */
+}

@@ -1,4 +1,4 @@
-/* # Security Policy für Kubernetes
+# Security Policy für Kubernetes
 data "twingate_security_policy" "policy_kubernetes" {
   name = "Kubernetes Policy"
 }
@@ -101,4 +101,4 @@ resource "twingate_resource" "k3s_soniiit_prod1_agent01" {
     }
 
     is_active = true
-} */
+}
