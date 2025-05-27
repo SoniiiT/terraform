@@ -6,7 +6,8 @@ Dieses Repository enthält Konfigurationen für die Verwaltung von Cloud-Infrast
 
 Die VM-IDs sind nach folgendem Schema strukturiert:
 
-- LXC-Container: Automatisch ab 100-299
+- LXC-Container: Automatisch ab 100-199
+- Appication-Sevrer: 200-299
 - Demo-Server: 300-399
 - Development: 400-499
 - Docker-Server: 500-599
