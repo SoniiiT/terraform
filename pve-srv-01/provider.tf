@@ -3,6 +3,7 @@ terraform {
     organization = "soniiit-net"
     workspaces {
       name = "pve-srv-01"
+      execution_mode = "local"
     }
   }
 
