@@ -363,3 +363,32 @@ resource "twingate_resource" "lxc_wazuh" {
 
     is_active = true
 }
+
+# Nomad
+resource "twingate_resource" "lxc_nomad" {
+    name = "lxc-wazuh"
+    address = "192.168.178.53"
+    alias = "lxc-wazuh.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_lxc.id
+
+    security_policy_id = data.twingate_security_policy.policy_lxc.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22", "4646"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    access_group {
+        group_id = twingate_group.lxc_group.id
+        security_policy_id = data.twingate_security_policy.policy_lxc.id
+        usage_based_autolock_duration_days = 30
+    }
+
+    is_active = true
+}
