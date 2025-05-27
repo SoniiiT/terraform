@@ -17,7 +17,7 @@ resource "twingate_group" "gitagents_group" {
 }
 
 # GitHub-Runner-Terraform
-resource "twingate_resource" "github_runner_terraform" {
+/* resource "twingate_resource" "github_runner_terraform" {
     name = "github-runner-terraform"
     address = "192.168.178.70"
     alias = "gr-terraform.home.soniiit.net"
@@ -43,4 +43,4 @@ resource "twingate_resource" "github_runner_terraform" {
     }
 
     is_active = true
-}
+} */
