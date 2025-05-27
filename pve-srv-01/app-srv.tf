@@ -1,4 +1,4 @@
-resource "proxmox_vm_qemu" "app_srv_01" {
+resource "proxmox_vm_qemu" "docker_srv_05" {
 
     # VM General Settings
     target_node = "pve-srv-01"
@@ -25,7 +25,7 @@ resource "proxmox_vm_qemu" "app_srv_01" {
     # VM System Settings
     agent = 1
 
-    # VM CPU Settings
+    # VM cpu_type Settings
     cores = 2
     sockets = 1
     cpu_type = "kvm64"
@@ -35,6 +35,7 @@ resource "proxmox_vm_qemu" "app_srv_01" {
 
     # VM Network Settings
     network {
+        id = 0
         bridge = "vmbr0"
         model  = "virtio"
     }
