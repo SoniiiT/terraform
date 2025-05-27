@@ -31,7 +31,7 @@ jobs:
       - name: Validate
         working-directory: twingate
         env:
-          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
           TF_VAR_tg_api_token: ${{ secrets.TG_API_TOKEN }}
         run: |
           terraform init
@@ -53,7 +53,7 @@ jobs:
       - name: Plan
         working-directory: twingate
         env:
-          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
           TF_VAR_tg_api_token: ${{ secrets.TG_API_TOKEN }}
         run: |
           terraform init
@@ -90,7 +90,7 @@ jobs:
       - name: Apply
         working-directory: twingate
         env:
-          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
           TF_VAR_tg_api_token: ${{ secrets.TG_API_TOKEN }}
         run: |
           terraform init
