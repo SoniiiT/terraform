@@ -575,7 +575,7 @@ resource "proxmox_lxc" "lxc-graylog" {
 
     onboot = true
 }
-
+*/
 resource "proxmox_lxc" "lxc-nomad" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-nomad"
@@ -608,4 +608,4 @@ resource "proxmox_lxc" "lxc-nomad" {
     }
 
     onboot = true
-} */
+}
