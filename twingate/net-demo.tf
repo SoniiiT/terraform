@@ -1,4 +1,4 @@
-# Security Policy für Demo
+/* # Security Policy für Demo
 data "twingate_security_policy" "policy_demo" {
   name = "Demo Policy"
 }
@@ -44,4 +44,4 @@ resource "twingate_resource" "wildcard_dns_demo" {
     }
 
     is_active = true
-}
+} */

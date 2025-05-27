@@ -1,4 +1,4 @@
-# Security Policy für LXC
+/* # Security Policy für LXC
 data "twingate_security_policy" "policy_lxc" {
   name = "LXC Policy"
 }
@@ -391,4 +391,4 @@ resource "twingate_resource" "lxc_nomad" {
     }
 
     is_active = true
-}
+} */

@@ -20,7 +20,7 @@ jobs:
     name: Validate PVE Terraform
     runs-on: self-hosted
     container:
-      image: ghcr.io/opentofu/opentofu:1.6.2
+      image: hashicorp/terraform:1.6.2
     permissions:
       contents: write
     steps:
@@ -31,20 +31,21 @@ jobs:
       - name: Validate
         working-directory: pve-srv-01
         env:
+          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
           TF_VAR_proxmox_api_url: "https://192.168.178.6:8006/api2/json"
           TF_VAR_proxmox_api_token_id: "terraform@pam!terraform"
           TF_VAR_proxmox_api_token_secret: ${{ secrets.PROXMOX_API_TOKEN_SECRET }}
           TF_VAR_lxc_password: ${{ secrets.LXC_PASSWORD }}
         run: |
-          tofu init
-          tofu validate
+          terraform init
+          terraform validate
 
   plan:
     name: Plan PVE Terraform
     needs: validate
     runs-on: self-hosted
     container:
-      image: ghcr.io/opentofu/opentofu:1.6.2
+      image: hashicorp/terraform:1.6.2
     permissions:
       contents: write
     steps:
@@ -55,14 +56,15 @@ jobs:
       - name: Plan
         working-directory: pve-srv-01
         env:
+          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
           TF_VAR_proxmox_api_url: "https://192.168.178.6:8006/api2/json"
           TF_VAR_proxmox_api_token_id: "terraform@pam!terraform"
           TF_VAR_proxmox_api_token_secret: ${{ secrets.PROXMOX_API_TOKEN_SECRET }}
           TF_VAR_lxc_password: ${{ secrets.LXC_PASSWORD }}
         run: |
-          tofu init
-          tofu providers lock
-          tofu plan -out=tfplan
+          terraform init
+          terraform providers lock
+          terraform plan -out=tfplan
       
       - name: Upload Plan Artifact
         uses: actions/upload-artifact@v4
@@ -76,7 +78,7 @@ jobs:
     needs: plan
     runs-on: self-hosted
     container:
-      image: ghcr.io/opentofu/opentofu:1.6.2
+      image: hashicorp/terraform:1.6.2
     if: github.ref == 'refs/heads/main'
     permissions:
       contents: write
@@ -94,33 +96,11 @@ jobs:
       - name: Apply
         working-directory: pve-srv-01
         env:
+          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
           TF_VAR_proxmox_api_url: "https://192.168.178.6:8006/api2/json"
           TF_VAR_proxmox_api_token_id: "terraform@pam!terraform"
           TF_VAR_proxmox_api_token_secret: ${{ secrets.PROXMOX_API_TOKEN_SECRET }}
           TF_VAR_lxc_password: ${{ secrets.LXC_PASSWORD }}
         run: |
-          tofu init
-          tofu apply -auto-approve tfplan
-          
-      - name: Configure Git
-        run: |
-          git config --global --add safe.directory /__w/terraform/terraform
-          git config --global user.email "terraform-runner@soniiit.net"
-          git config --global user.name "terraform-runner"
-          
-      - name: Commit state changes
-        run: |
-          if git diff --quiet pve-srv-01/terraform.tfstate; then
-            echo "No changes to terraform.tfstate"
-          else
-            git add pve-srv-01/terraform.tfstate
-            git commit -m "[skip ci] Update PVE terraform state"
-          fi
-          
-      - name: Pull latest changes
-        run: |
-          git pull origin ${{ github.ref }} --rebase
-          
-      - name: Push state
-        run: |
-          git push origin HEAD:${{ github.ref }} 
+          terraform init
+          terraform apply -auto-approve tfplan 

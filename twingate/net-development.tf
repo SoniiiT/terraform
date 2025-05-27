@@ -1,4 +1,4 @@
-# Security Policy für Development
+/* # Security Policy für Development
 data "twingate_security_policy" "policy_development" {
   name = "Development Policy"
 }
@@ -44,4 +44,4 @@ resource "twingate_resource" "wildcard_dns_development" {
     }
 
     is_active = true
-}
+} */

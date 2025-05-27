@@ -1,4 +1,11 @@
 terraform {
+  cloud {
+    organization = "soniiit-net"
+    workspaces {
+      name = "twingate"
+    }
+  }
+
   required_providers {
     twingate = {
       source = "twingate/twingate"

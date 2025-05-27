@@ -1,4 +1,11 @@
 terraform {
+  cloud {
+    organization = "soniiit-net"
+    workspaces {
+      name = "cloudflare"
+    }
+  }
+
   required_providers {
     cloudflare = {
       source = "cloudflare/cloudflare"

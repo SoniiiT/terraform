@@ -1,4 +1,4 @@
-resource "proxmox_pool" "application" {
+/* resource "proxmox_pool" "application" {
   poolid  = "Application" 
   comment = "Application pool"
 }
@@ -61,4 +61,4 @@ resource "proxmox_pool" "template" {
 resource "proxmox_pool" "windows" {
   poolid  = "Windows" 
   comment = "Windows pool"
-}
+} */

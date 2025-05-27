@@ -1,4 +1,4 @@
-# Hier sind die A-Records für die Services die über den Reverse Proxy eingerichtet werden
+/* # Hier sind die A-Records für die Services die über den Reverse Proxy eingerichtet werden
 
 # Hypervisor
 resource "dns_a_record_set" "proxmox" {
@@ -139,4 +139,4 @@ resource "dns_a_record_set" "pihole" {
     name = "pihole"
     addresses = [ "192.168.178.20" ]
     ttl = 3600
-}
+} */

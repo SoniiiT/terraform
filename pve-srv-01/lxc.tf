@@ -1,4 +1,4 @@
-resource "proxmox_lxc" "lxc-wazuh" {
+/* resource "proxmox_lxc" "lxc-wazuh" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-wazuh"
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
@@ -590,4 +590,4 @@ resource "proxmox_lxc" "lxc-nomad" {
     }
 
     onboot = true
-}
+} */

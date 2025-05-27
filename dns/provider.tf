@@ -1,4 +1,11 @@
 terraform {
+  cloud {
+    organization = "soniiit-net"
+    workspaces {
+      name = "dns"
+    }
+  }
+
     required_providers {
         dns = {
             source = "hashicorp/dns"

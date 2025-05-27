@@ -1,4 +1,4 @@
-# Hier sind die A-Records für das Home Network
+/* # Hier sind die A-Records für das Home Network
 
 # Home Network
 resource "dns_a_record_set" "gw_01" {
@@ -45,4 +45,4 @@ resource "dns_a_record_set" "jellyfin-home-01" {
     name = "jellyfin-home-01"
     addresses = [ "192.168.178.98" ]
     ttl = 3600
-}
+} */

@@ -1,4 +1,4 @@
-# Hier sind die A-Records für die LXC Container
+/* # Hier sind die A-Records für die LXC Container
 
 # GitHub-Runner-Terraform
 resource "dns_a_record_set" "lxc_github_runner_terraform" {
@@ -109,4 +109,4 @@ resource "dns_a_record_set" "lxc_wazuh" {
     name = "lxc-wazuh"
     addresses = [ "192.168.178.46" ]
     ttl = 3600
-}
+} */

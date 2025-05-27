@@ -1,4 +1,4 @@
-# Hier sind die A-Records für das Kubernetes Cluster
+/* # Hier sind die A-Records für das Kubernetes Cluster
 
 # Virtual IP
 resource "dns_a_record_set" "k3s_soniiit_prod1_vip" {
@@ -23,3 +23,4 @@ resource "dns_a_record_set" "k3s_soniiit_prod1_agent01" {
     addresses = [ "192.168.178.12" ]
     ttl = 3600
 }
+ */

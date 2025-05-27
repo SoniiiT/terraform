@@ -1,4 +1,11 @@
 terraform {
+  cloud {
+    organization = "soniiit-net"
+    workspaces {
+      name = "pve-srv-01"
+    }
+  }
+
     required_providers {
         proxmox = {
             source = "registry.opentofu.org/telmate/proxmox"

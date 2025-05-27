@@ -1,4 +1,4 @@
-# Security Policy für Home
+/* # Security Policy für Home
 data "twingate_security_policy" "policy_home" {
   name = "Home Policy"
 }
@@ -166,4 +166,4 @@ resource "twingate_resource" "pbs_bak_01" {
 #     }
 
 #     is_active = true
-# }
+# } */

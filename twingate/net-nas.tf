@@ -1,4 +1,4 @@
-# Security Policy für NAS
+/* # Security Policy für NAS
 data "twingate_security_policy" "policy_nas" {
   name = "NAS Policy"
 }
@@ -43,4 +43,4 @@ resource "twingate_resource" "truenas" {
     }
 
     is_active = true
-}
+} */
