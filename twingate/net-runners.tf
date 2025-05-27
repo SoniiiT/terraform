@@ -1,17 +1,17 @@
-# Security Policy für Gitagents
-data "twingate_security_policy" "policy_gitagents" {
-  name = "Gitagents Policy"
+# Security Policy für Runners
+data "twingate_security_policy" "policy_runners" {
+  name = "runners Policy"
 }
 
-# Remote Network für Gitagents
-resource "twingate_remote_network" "net_gitagents" {
-  name = "net-gitagents"
+# Remote Network für Runners
+resource "twingate_remote_network" "net_runners" {
+  name = "net-runners"
   location = "ON_PREMISE"
 }
 
-# Gitagents Gruppe
-resource "twingate_group" "gitagents_group" {
-  name = "net-gitagents_group"
+# Runners Gruppe
+resource "twingate_group" "runners_group" {
+  name = "net-runners_group"
   user_ids = [data.twingate_users.all.users[0].id]
   is_authoritative = true
 }
@@ -21,9 +21,9 @@ resource "twingate_resource" "github_runner_terraform" {
     name = "github-runner-terraform"
     address = "192.168.178.70"
     alias = "gr-terraform.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_gitagents.id
+    remote_network_id = twingate_remote_network.net_runners.id
 
-    security_policy_id = data.twingate_security_policy.policy_gitagents.id
+    security_policy_id = data.twingate_security_policy.policy_runners.id
 
     protocols = {
         allow_icmp = true
@@ -37,8 +37,8 @@ resource "twingate_resource" "github_runner_terraform" {
     }
 
     access_group {
-        group_id = twingate_group.gitagents_group.id
-        security_policy_id = data.twingate_security_policy.policy_gitagents.id
+        group_id = twingate_group.runners_group.id
+        security_policy_id = data.twingate_security_policy.policy_runners.id
         usage_based_autolock_duration_days = 30
     }
 
