@@ -318,7 +318,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent03" {
     os_type = "cloud-init"
 
     # (Optional) IP Address and Gateway
-    ipconfig0 = "ip=192.168.178.13/24,gw=192.168.178.1,ip6=dhcp"
+    ipconfig0 = "ip=192.168.178.14/24,gw=192.168.178.1,ip6=dhcp"
 
     # (Optional) DNS Servers
     nameserver = "192.168.178.3"
@@ -401,7 +401,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent04" {
     os_type = "cloud-init"
 
     # (Optional) IP Address and Gateway
-    ipconfig0 = "ip=192.168.178.14/24,gw=192.168.178.1,ip6=dhcp"
+    ipconfig0 = "ip=192.168.178.15/24,gw=192.168.178.1,ip6=dhcp"
 
     # (Optional) DNS Servers
     nameserver = "192.168.178.3"
@@ -484,7 +484,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent05" {
     os_type = "cloud-init"
 
     # (Optional) IP Address and Gateway
-    ipconfig0 = "ip=192.168.178.15/24,gw=192.168.178.1,ip6=dhcp"
+    ipconfig0 = "ip=192.168.178.16/24,gw=192.168.178.1,ip6=dhcp"
 
     # (Optional) DNS Servers
     nameserver = "192.168.178.3"
