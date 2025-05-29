@@ -30,9 +30,9 @@
     }
 
     onboot = true
-}
+} */
 
-resource "proxmox_lxc" "lxc-bind9" {
+/* resource "proxmox_lxc" "lxc-bind9" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-bind9"
     vmid         = 101
@@ -64,9 +64,9 @@ resource "proxmox_lxc" "lxc-bind9" {
     }
 
     onboot = true
-}
+} */
 
-resource "proxmox_lxc" "lxc-pterodactyl-panel" {
+/* resource "proxmox_lxc" "lxc-pterodactyl-panel" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-pterodactyl-panel"
     vmid         = 102
@@ -132,7 +132,7 @@ resource "proxmox_lxc" "lxc-pterodactyl-wings" {
     }
 
     onboot = true
-}
+} */
 
 resource "proxmox_lxc" "lxc-cloudflared" {
     target_node  = "pve-srv-01"
@@ -168,7 +168,7 @@ resource "proxmox_lxc" "lxc-cloudflared" {
     onboot = true
 }
 
-resource "proxmox_lxc" "lxc-nextcloud" {
+/* resource "proxmox_lxc" "lxc-nextcloud" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-nextcloud"
     vmid         = 105
@@ -200,9 +200,9 @@ resource "proxmox_lxc" "lxc-nextcloud" {
     }
 
     onboot = true
-}
+} */
 
-resource "proxmox_lxc" "lxc-cloudflareddns" {
+/* resource "proxmox_lxc" "lxc-cloudflareddns" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-cloudflareddns"
     vmid         = 107
@@ -234,9 +234,9 @@ resource "proxmox_lxc" "lxc-cloudflareddns" {
     }
 
     onboot = true
-}
+} */
 
-resource "proxmox_lxc" "lxc-netdata-01" {
+/* resource "proxmox_lxc" "lxc-netdata-01" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-netdata-01"
     vmid         = 109
@@ -404,8 +404,8 @@ resource "proxmox_lxc" "lxc-netdata-05" {
     }
 
     onboot = true
-}
-*/
+} */
+
 resource "proxmox_lxc" "lxc-nomad" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-nomad"
