@@ -9,7 +9,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server01" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "K3s-SoniiiT-Prod-1"
+    pool = "K3s-SoniiiT-Prod-01"
 
     # VM Advanced General Settings
     onboot = true
