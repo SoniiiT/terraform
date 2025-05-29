@@ -1,3 +1,13 @@
+# LXC die nicht von Terraform erstellt werden
+# VMID 100; LXC-Pterodactyl-Panel
+# VMID 101; LXC-Pterodactyl-Wings
+# VMID 103; Github-Runner-Docker
+# VMID 110; Github-Runner-Terraform
+# VMID 115; Github-Runner-Packer
+# VMID 121; LXC-Bind9
+# VMID 128; LXC-Nextcloud
+
+
 /* resource "proxmox_lxc" "lxc-wazuh" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-wazuh"
@@ -21,108 +31,6 @@
         name   = "eth0"
         bridge = "vmbr0"
         ip     = "192.168.178.46/24"
-        ip6    = "auto"
-        gw     = "192.168.178.1"
-  }
-
-    features {
-        nesting = true
-    }
-
-    onboot = true
-} */
-
-/* resource "proxmox_lxc" "lxc-bind9" {
-    target_node  = "pve-srv-01"
-    hostname     = "lxc-bind9"
-    vmid         = 101
-    ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
-    password     = var.lxc_password
-    ostype       = "ubuntu"
-    unprivileged = true
-    cores     = 1
-    memory    = 2048
-    pool      = "LXC"
-    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
-
-  // Terraform will crash without rootfs defined
-    rootfs {
-        storage = "M2-Storage"
-        size    = "32G"
-  }
-
-    network {
-        name   = "eth0"
-        bridge = "vmbr0"
-        ip     = "192.168.178.3/24"
-        ip6    = "auto"
-        gw     = "192.168.178.1"
-  }
-
-    features {
-        nesting = true
-    }
-
-    onboot = true
-} */
-
-/* resource "proxmox_lxc" "lxc-pterodactyl-panel" {
-    target_node  = "pve-srv-01"
-    hostname     = "lxc-pterodactyl-panel"
-    vmid         = 102
-    ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
-    password     = var.lxc_password
-    ostype       = "ubuntu"
-    unprivileged = true
-    cores     = 1
-    memory    = 2048
-    pool      = "LXC"
-    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
-
-  // Terraform will crash without rootfs defined
-    rootfs {
-        storage = "M2-Storage"
-        size    = "32G"
-  }
-
-    network {
-        name   = "eth0"
-        bridge = "vmbr0"
-        ip     = "192.168.178.40/24"
-        ip6    = "auto"
-        gw     = "192.168.178.1"
-  }
-
-    features {
-        nesting = true
-    }
-
-    onboot = true
-}
-
-resource "proxmox_lxc" "lxc-pterodactyl-wings" {
-    target_node  = "pve-srv-01"
-    hostname     = "lxc-pterodactyl-wings"
-    vmid         = 103
-    ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
-    password     = var.lxc_password
-    ostype       = "ubuntu"
-    unprivileged = true
-    cores     = 4
-    memory    = 16384
-    pool      = "LXC"
-    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
-
-  // Terraform will crash without rootfs defined
-    rootfs {
-        storage = "HDD-Storage"
-        size    = "512G"
-  }
-
-    network {
-        name   = "eth0"
-        bridge = "vmbr0"
-        ip     = "192.168.178.41/24"
         ip6    = "auto"
         gw     = "192.168.178.1"
   }
@@ -167,74 +75,6 @@ resource "proxmox_lxc" "lxc-cloudflared" {
 
     onboot = true
 }
-
-/* resource "proxmox_lxc" "lxc-nextcloud" {
-    target_node  = "pve-srv-01"
-    hostname     = "lxc-nextcloud"
-    vmid         = 105
-    ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
-    password     = var.lxc_password
-    ostype       = "ubuntu"
-    unprivileged = true
-    cores     = 2
-    memory    = 8192
-    pool      = "LXC"
-    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
-
-  // Terraform will crash without rootfs defined
-    rootfs {
-        storage = "HDD-Storage"
-        size    = "192G"
-  }
-
-    network {
-        name   = "eth0"
-        bridge = "vmbr0"
-        ip     = "192.168.178.47/24"
-        ip6    = "auto"
-        gw     = "192.168.178.1"
-  }
-
-    features {
-        nesting = true
-    }
-
-    onboot = true
-} */
-
-/* resource "proxmox_lxc" "lxc-cloudflareddns" {
-    target_node  = "pve-srv-01"
-    hostname     = "lxc-cloudflareddns"
-    vmid         = 107
-    ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
-    password     = var.lxc_password
-    ostype       = "ubuntu"
-    unprivileged = true
-    cores     = 1
-    memory    = 2048
-    pool      = "LXC"
-    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
-
-  // Terraform will crash without rootfs defined
-    rootfs {
-        storage = "M2-Storage"
-        size    = "32G"
-  }
-
-    network {
-        name   = "eth0"
-        bridge = "vmbr0"
-        ip     = "192.168.178.42/24"
-        ip6    = "auto"
-        gw     = "192.168.178.1"
-  }
-
-    features {
-        nesting = true
-    }
-
-    onboot = true
-} */
 
 /* resource "proxmox_lxc" "lxc-netdata-01" {
     target_node  = "pve-srv-01"
@@ -405,37 +245,3 @@ resource "proxmox_lxc" "lxc-netdata-05" {
 
     onboot = true
 } */
-
-resource "proxmox_lxc" "lxc-nomad" {
-    target_node  = "pve-srv-01"
-    hostname     = "lxc-nomad"
-    vmid         = 117
-    ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
-    password     = var.lxc_password
-    ostype       = "ubuntu"
-    unprivileged = true
-    cores     = 2
-    memory    = 4096
-    pool      = "LXC"
-    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
-
-  // Terraform will crash without rootfs defined
-    rootfs {
-        storage = "M2-Storage"
-        size    = "32G"
-  }
-
-    network {
-        name   = "eth0"
-        bridge = "vmbr0"
-        ip     = "192.168.178.53/24"
-        ip6    = "auto"
-        gw     = "192.168.178.1"
-  }
-
-    features {
-        nesting = true
-    }
-
-    onboot = true
-}

@@ -38,9 +38,9 @@ resource "proxmox_pool" "home" {
   comment = "Home pool"
 }
 
-resource "proxmox_pool" "k3s_soniiit_prod_1" {
-  poolid  = "K3s-SoniiiT-Prod-1" 
-  comment = "K3s-SoniiiT-Prod-1 pool"
+resource "proxmox_pool" "k3s_soniiit_prod_01" {
+  poolid  = "K3s-SoniiiT-Prod-01" 
+  comment = "K3s-SoniiiT-Prod-01 pool"
 }
 
 resource "proxmox_pool" "lxc" {
