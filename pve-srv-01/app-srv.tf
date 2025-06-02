@@ -78,7 +78,7 @@ resource "proxmox_vm_qemu" "app-srv-01" {
 resource "proxmox_vm_qemu" "app-srv-02" {
 
     # VM General Settings
-    target_node = "pve-srv-02"
+    target_node = "pve-srv-01"
     vmid = 201
     name = "app-srv-02"
     tags = "ubuntu;application"
