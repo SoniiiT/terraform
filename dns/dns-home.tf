@@ -46,3 +46,10 @@ resource "dns_a_record_set" "jellyfin-home-01" {
     addresses = [ "192.168.178.98" ]
     ttl = 3600
 } */
+
+resource "dns_a_record_set" "nodejs-test" {
+    zone = "home.soniiit.net."
+    name = "nodejs"
+    addresses = [ "192.168.178.20" ]
+    ttl = 3600
+}
