@@ -1,4 +1,4 @@
-/* # Minecraft Vanilla Server SRV Record
+# Minecraft Vanilla Server SRV Record
 resource "cloudflare_dns_record" "minecraft_vanilla_srv" {
   zone_id = "4ec5c5258e769e7f6d96ba75c3ef514a"
   name    = "_minecraft._tcp.mc"  # Der Service und Protokoll
@@ -104,4 +104,4 @@ resource "cloudflare_dns_record" "minecraft_create_srv" {
   }
   ttl = 1  # Auto TTL
   comment = "Created and Managed by Terraform"
-} */
+}
