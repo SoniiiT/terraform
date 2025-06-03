@@ -20,7 +20,7 @@ resource "proxmox_vm_qemu" "docker_srv_01" {
 
     # VM OS Settings
     full_clone = true
-    clone = "ubuntu-server-24-04-02-docker-nomad"
+    clone = "ubuntu-server-24-04-02-docker"
     bios = "seabios"
 
     # VM System Settings
