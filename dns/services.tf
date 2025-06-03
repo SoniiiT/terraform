@@ -1,4 +1,4 @@
-/* # Hier sind die A-Records für die Services die über den Reverse Proxy eingerichtet werden
+# Hier sind die A-Records für die Services die über den Reverse Proxy eingerichtet werden
 
 # Hypervisor
 resource "dns_a_record_set" "proxmox" {
@@ -43,13 +43,6 @@ resource "dns_a_record_set" "docker_srv_01_wildcard" {
 resource "dns_a_record_set" "docker_srv_02_wildcard" {
     zone = "home.soniiit.net."
     name = "*.docker-srv-02"
-    addresses = [ "192.168.178.20" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "docker_srv_03_wildcard" {
-    zone = "home.soniiit.net."
-    name = "*.docker-srv-03"
     addresses = [ "192.168.178.20" ]
     ttl = 3600
 }
@@ -112,13 +105,6 @@ resource "dns_a_record_set" "argocd" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "checkmk-collector" {
-    zone = "home.soniiit.net."
-    name = "checkmk-collector"
-    addresses = [ "192.168.178.20" ]
-    ttl = 3600
-}
-
 # LXC
 resource "dns_a_record_set" "wazuh" {
     zone = "home.soniiit.net."
@@ -126,17 +112,3 @@ resource "dns_a_record_set" "wazuh" {
     addresses = [ "192.168.178.20" ]
     ttl = 3600
 }
-
-resource "dns_a_record_set" "checkmk" {
-    zone = "home.soniiit.net."
-    name = "checkmk"
-    addresses = [ "192.168.178.20" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "pihole" {
-    zone = "home.soniiit.net."
-    name = "pihole"
-    addresses = [ "192.168.178.20" ]
-    ttl = 3600
-} */

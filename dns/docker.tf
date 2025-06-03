@@ -1,4 +1,4 @@
-/* # Hier sind die A-Records für die Docker Hosts
+# Hier sind die A-Records für die Docker Hosts
 
 # Hosts
 resource "dns_a_record_set" "docker_srv_01" {
@@ -14,10 +14,3 @@ resource "dns_a_record_set" "docker_srv_02" {
     addresses = [ "192.168.178.31" ]
     ttl = 3600
 }
-
-resource "dns_a_record_set" "docker_srv_03" {
-    zone = "home.soniiit.net."
-    name = "docker-srv-03"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-} */

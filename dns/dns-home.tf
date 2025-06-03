@@ -1,4 +1,4 @@
-/* # Hier sind die A-Records für das Home Network
+# Hier sind die A-Records für das Home Network
 
 # Home Network
 resource "dns_a_record_set" "gw_01" {
@@ -24,18 +24,10 @@ resource "dns_a_record_set" "pve-srv-01" {
 }
 
 # Backup Server
-resource "dns_a_record_set" "pbs_backup_01" {
+resource "dns_a_record_set" "pbs_bak_01" {
     zone = "home.soniiit.net."
-    name = "pbs-backup-01"
+    name = "pbs-bak-01"
     addresses = [ "192.168.178.5" ]
-    ttl = 3600
-}
-
-# Twingate Connector Hosts
-resource "dns_a_record_set" "twingate_connector_01" {
-    zone = "home.soniiit.net."
-    name = "tg-cn-01"
-    addresses = [ "192.168.178.7" ]
     ttl = 3600
 }
 
@@ -45,7 +37,7 @@ resource "dns_a_record_set" "jellyfin-home-01" {
     name = "jellyfin-home-01"
     addresses = [ "192.168.178.98" ]
     ttl = 3600
-} */
+}
 
 resource "dns_a_record_set" "nodejs-test" {
     zone = "home.soniiit.net."
