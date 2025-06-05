@@ -129,7 +129,7 @@ resource "proxmox_vm_qemu" "app-srv-02" {
         virtio {
             virtio0 {
                 disk {
-                    size               = "32G"
+                    size               = "128G"
                     storage            = "M2-Storage"
                 }
             }
