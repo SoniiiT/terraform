@@ -132,3 +132,59 @@ resource "twingate_resource" "jellyfin_home_01" {
 
     is_active = true
 }
+
+resource "twingate_resource" "app_srv_01" {
+    name = "app-srv-01"
+    address = "192.168.178.80"
+    alias = "app-srv-01.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_home.id
+
+    security_policy_id = data.twingate_security_policy.policy_home.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    access_group {
+        group_id = twingate_group.home_group.id
+        security_policy_id = data.twingate_security_policy.policy_home.id
+        usage_based_autolock_duration_days = 30
+    }
+
+    is_active = true
+}
+
+resource "twingate_resource" "app_srv_02" {
+    name = "app-srv-02"
+    address = "192.168.178.81"
+    alias = "app-srv-02.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_home.id
+
+    security_policy_id = data.twingate_security_policy.policy_home.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    access_group {
+        group_id = twingate_group.home_group.id
+        security_policy_id = data.twingate_security_policy.policy_home.id
+        usage_based_autolock_duration_days = 30
+    }
+
+    is_active = true
+}
