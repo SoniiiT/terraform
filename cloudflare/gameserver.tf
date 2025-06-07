@@ -105,3 +105,21 @@ resource "cloudflare_dns_record" "minecraft_create_srv" {
   ttl = 1  # Auto TTL
   comment = "Created and Managed by Terraform"
 }
+
+# Minecraft Life in the Village 4 Selection Server SRV Record
+resource "cloudflare_dns_record" "minecraft_litv4_srv" {
+  zone_id = "4ec5c5258e769e7f6d96ba75c3ef514a"
+  name    = "_minecraft._tcp.create"  # Der Service und Protokoll
+  type    = "SRV"
+  data = {
+    service  = "_minecraft"
+    proto    = "_tcp"
+    name     = "litv4"  # Der Name des Eintrags
+    priority = 0
+    weight   = 0
+    port     = 26008       # Der Port des Minecraft Servers
+    target   = "litv4.soniiit.net"  # Der Zielhost
+  }
+  ttl = 1  # Auto TTL
+  comment = "Created and Managed by Terraform"
+}
