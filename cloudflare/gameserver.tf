@@ -109,7 +109,7 @@ resource "cloudflare_dns_record" "minecraft_create_srv" {
 # Minecraft Life in the Village 4 Selection Server SRV Record
 resource "cloudflare_dns_record" "minecraft_litv4_srv" {
   zone_id = "4ec5c5258e769e7f6d96ba75c3ef514a"
-  name    = "_minecraft._tcp.create"  # Der Service und Protokoll
+  name    = "_minecraft._tcp.litv4"  # Der Service und Protokoll
   type    = "SRV"
   data = {
     service  = "_minecraft"
