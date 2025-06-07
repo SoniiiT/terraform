@@ -82,7 +82,7 @@ resource "proxmox_vm_qemu" "app-srv-02" {
     vmid = 201
     name = "app-srv-02"
     tags = "ubuntu;application"
-    desc = "Ansible Server"
+    desc = "HashiCorp Vault Server"
     automatic_reboot = false
 
     # The destination resource pool for the new VM
@@ -103,12 +103,12 @@ resource "proxmox_vm_qemu" "app-srv-02" {
     agent = 1
 
     # VM cpu_type Settings
-    cores = 1
+    cores = 4
     sockets = 1
     cpu_type = "kvm64"
 
     # VM Memory Settings
-    memory = 4096
+    memory = 32768
 
     # VM Network Settings
     network {
@@ -129,7 +129,7 @@ resource "proxmox_vm_qemu" "app-srv-02" {
         virtio {
             virtio0 {
                 disk {
-                    size               = "32G"
+                    size               = "128G"
                     storage            = "M2-Storage"
                 }
             }
