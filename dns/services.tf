@@ -97,6 +97,49 @@ resource "dns_a_record_set" "argocd" {
     ttl = 3600
 }
 
+# Jellifin
+resource "dns_a_record_set" "jellifin" {
+    zone = "home.soniiit.net."
+    name = "jellifin"
+    addresses = [ "192.168.178.20" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "jellifin_vue" {
+    zone = "home.soniiit.net."
+    name = "jellifin-vue"
+    addresses = [ "192.168.178.20" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "sabnzbd" {
+    zone = "home.soniiit.net."
+    name = "sabnzbd"
+    addresses = [ "192.168.178.20" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "sonarr" {
+    zone = "home.soniiit.net."
+    name = "sonarr"
+    addresses = [ "192.168.178.20" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "radarr" {
+    zone = "home.soniiit.net."
+    name = "radarr"
+    addresses = [ "192.168.178.20" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "prowlarr" {
+    zone = "home.soniiit.net."
+    name = "prowlarr"
+    addresses = [ "192.168.178.20" ]
+    ttl = 3600
+}
+
 # LXC
 resource "dns_a_record_set" "wazuh" {
     zone = "home.soniiit.net."
