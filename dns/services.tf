@@ -98,16 +98,16 @@ resource "dns_a_record_set" "argocd" {
 }
 
 # Jellifin
-resource "dns_a_record_set" "jellifin" {
+resource "dns_a_record_set" "jellyfin" {
     zone = "home.soniiit.net."
-    name = "jellifin"
+    name = "jellyfin"
     addresses = [ "192.168.178.20" ]
     ttl = 3600
 }
 
-resource "dns_a_record_set" "jellifin_vue" {
+resource "dns_a_record_set" "jellyfin_vue" {
     zone = "home.soniiit.net."
-    name = "jellifin-vue"
+    name = "jellyfin-vue"
     addresses = [ "192.168.178.20" ]
     ttl = 3600
 }
