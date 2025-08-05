@@ -47,6 +47,13 @@ resource "dns_a_record_set" "homepage" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "n8n" {
+    zone = "home.soniiit.net."
+    name = "n8n"
+    addresses = [ "192.168.178.20" ]
+    ttl = 3600
+}
+
 # Kubernetes Containers
 resource "dns_a_record_set" "traefik" {
     zone = "home.soniiit.net."
