@@ -162,11 +162,40 @@ resource "twingate_resource" "lxc_pterodactyl_wings" {
     is_active = true
 }
 
-# Wazuh
-resource "twingate_resource" "lxc_wazuh" {
-    name = "lxc-wazuh"
-    address = "192.168.178.46"
-    alias = "lxc-wazuh.home.soniiit.net"
+# Harbor
+resource "twingate_resource" "lxc_harbor" {
+    name = "lxc-harbor"
+    address = "192.168.178.44"
+    alias = "lxc-harbor.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_lxc.id
+
+    security_policy_id = data.twingate_security_policy.policy_lxc.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    access_group {
+        group_id = twingate_group.lxc_group.id
+        security_policy_id = data.twingate_security_policy.policy_lxc.id
+        usage_based_autolock_duration_days = 30
+    }
+
+    is_active = true
+}
+
+# Syncthing
+resource "twingate_resource" "lxc_syncthing" {
+    name = "lxc-syncthing"
+    address = "192.168.178.48"
+    alias = "lxc-syncthing.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_lxc.id
 
     security_policy_id = data.twingate_security_policy.policy_lxc.id
