@@ -129,32 +129,3 @@ resource "twingate_resource" "docker_srv_02_wildcard" {
 
     is_active = true
 }
-
-# Docker-SRV-03
-resource "twingate_resource" "docker_srv_03" {
-    name = "docker-srv-03"
-    address = "192.168.178.32"
-    alias = "docker-srv-03.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_docker.id
-
-    security_policy_id = data.twingate_security_policy.policy_docker.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    access_group {
-        group_id = twingate_group.docker_group.id
-        security_policy_id = data.twingate_security_policy.policy_docker.id
-        usage_based_autolock_duration_days = 30
-    }
-
-    is_active = true
-}
