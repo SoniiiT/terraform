@@ -171,7 +171,7 @@ resource "proxmox_vm_qemu" "docker_srv_03" {
 
     # VM General Settings
     target_node = "pve-srv-01"
-    vmid = 501
+    vmid = 502
     name = "docker-srv-03"
     tags = "docker;ubuntu"
     desc = "Docker Server 03"
