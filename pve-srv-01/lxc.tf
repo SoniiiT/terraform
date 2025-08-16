@@ -181,7 +181,7 @@ resource "proxmox_lxc" "lxc-syncthing" {
 resource "proxmox_lxc" "lxc-omni" {
     target_node  = "pve-srv-01"
     hostname     = "lxc-omni"
-    vmid         = 110
+    vmid         = 108
     ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
     password     = var.lxc_password
     ostype       = "ubuntu"
