@@ -54,14 +54,14 @@ resource "dns_a_record_set" "n8n" {
     ttl = 3600
 }
 
-# Kubernetes Containers
 resource "dns_a_record_set" "traefik" {
     zone = "home.soniiit.net."
     name = "traefik"
-    addresses = [ "192.168.178.20" ]
+    addresses = [ "192.168.178.32" ]
     ttl = 3600
 }
 
+# Kubernetes Containers
 resource "dns_a_record_set" "portainer" {
     zone = "home.soniiit.net."
     name = "portainer"
