@@ -219,3 +219,32 @@ resource "twingate_resource" "lxc_syncthing" {
 
     is_active = true
 }
+
+# Omni
+resource "twingate_resource" "lxc_omni" {
+    name = "lxc-omni"
+    address = "192.168.178.45"
+    alias = "lxc-omni.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_lxc.id
+
+    security_policy_id = data.twingate_security_policy.policy_lxc.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    access_group {
+        group_id = twingate_group.lxc_group.id
+        security_policy_id = data.twingate_security_policy.policy_lxc.id
+        usage_based_autolock_duration_days = 30
+    }
+
+    is_active = true
+}

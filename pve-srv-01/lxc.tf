@@ -178,6 +178,40 @@ resource "proxmox_lxc" "lxc-syncthing" {
     onboot = true
 }
 
+resource "proxmox_lxc" "lxc-omni" {
+    target_node  = "pve-srv-01"
+    hostname     = "lxc-omni"
+    vmid         = 109
+    ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
+    password     = var.lxc_password
+    ostype       = "ubuntu"
+    unprivileged = true
+    cores     = 1
+    memory    = 4096
+    pool      = "LXC"
+    nameserver = "192.168.178.3,1.1.1.1,8.8.8.8"
+
+  // Terraform will crash without rootfs defined
+    rootfs {
+        storage = "M2-Storage"
+        size    = "32G"
+  }
+
+    network {
+        name   = "eth0"
+        bridge = "vmbr0"
+        ip     = "192.168.178.45/24"
+        ip6    = "auto"
+        gw     = "192.168.178.1"
+  }
+
+    features {
+        nesting = true
+    }
+
+    onboot = true
+}
+
 /*
 resource "proxmox_lxc" "lxc-netdata-02" {
     target_node  = "pve-srv-01"

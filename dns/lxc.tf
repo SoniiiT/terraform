@@ -55,3 +55,11 @@ resource "dns_a_record_set" "lxc_harbor" {
     addresses = [ "192.168.178.44" ]
     ttl = 3600
 }
+
+# Omni
+resource "dns_a_record_set" "lxc_omni" {
+    zone = "home.soniiit.net."
+    name = "lxc-harbor"
+    addresses = [ "192.168.178.45" ]
+    ttl = 3600
+}
