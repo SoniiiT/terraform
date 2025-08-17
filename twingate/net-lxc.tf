@@ -248,3 +248,61 @@ resource "twingate_resource" "lxc_omni" {
 
     is_active = true
 }
+
+# Teleport-Server
+resource "twingate_resource" "lxc_teleport_server" {
+    name = "lxc-teleport-server"
+    address = "192.168.178.46"
+    alias = "lxc-teleport-server.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_lxc.id
+
+    security_policy_id = data.twingate_security_policy.policy_lxc.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    access_group {
+        group_id = twingate_group.lxc_group.id
+        security_policy_id = data.twingate_security_policy.policy_lxc.id
+        usage_based_autolock_duration_days = 30
+    }
+
+    is_active = true
+}
+
+# Teleport-Proxy
+resource "twingate_resource" "lxc_teleport_proxy" {
+    name = "lxc-teleport-proxy"
+    address = "192.168.178.49"
+    alias = "lxc-teleport-proxy.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_lxc.id
+
+    security_policy_id = data.twingate_security_policy.policy_lxc.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    access_group {
+        group_id = twingate_group.lxc_group.id
+        security_policy_id = data.twingate_security_policy.policy_lxc.id
+        usage_based_autolock_duration_days = 30
+    }
+
+    is_active = true
+}
