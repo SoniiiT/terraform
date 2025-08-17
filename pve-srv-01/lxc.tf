@@ -302,7 +302,7 @@ resource "proxmox_lxc" "lxc-teleport-proxy" {
     network {
         name   = "eth0"
         bridge = "vmbr0"
-        ip     = "192.168.178.47/24"
+        ip     = "192.168.178.49/24"
         ip6    = "auto"
         gw     = "192.168.178.1"
   }
