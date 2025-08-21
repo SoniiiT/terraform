@@ -29,10 +29,11 @@ resource "twingate_resource" "lxc_bind9" {
         allow_icmp = true
         tcp = {
             policy = "RESTRICTED"
-            ports = ["22"]
+            ports = ["22", "53"]
         }
         udp = {
-            policy = "DENY_ALL"
+            policy = "RESTRICTED"
+            ports = ["53"]
         }
     }
 

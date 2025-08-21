@@ -19,8 +19,7 @@ resource "twingate_group" "home_group" {
 # Wildcard-Route für Home
 resource "twingate_resource" "wildcard_dns_home" {
     name = "Wildcard Home"
-    address = "192.168.178.32"
-    alias = "*.home.soniiit.net"
+    address = "*.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_home.id
 
     security_policy_id = data.twingate_security_policy.policy_home.id
