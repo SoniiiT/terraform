@@ -25,7 +25,7 @@ resource "dns_a_record_set" "sw_01" {
 }
 
 # Adguard
-resource "dns_a_record_set" "pi-adguard" {
+resource "dns_a_record_set" "adguard" {
     zone = "home.soniiit.net."
     name = "adguard"
     addresses = [ "192.168.178.32" ]
