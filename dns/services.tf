@@ -24,6 +24,14 @@ resource "dns_a_record_set" "sw_01" {
     ttl = 3600
 }
 
+# Adguard
+resource "dns_a_record_set" "pi-adguard" {
+    zone = "home.soniiit.net."
+    name = "adguard"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
+
 # NAS
 resource "dns_a_record_set" "truenas" {
     zone = "home.soniiit.net."

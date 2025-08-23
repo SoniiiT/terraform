@@ -38,3 +38,11 @@ resource "dns_a_record_set" "jellyfin-home-01" {
     addresses = [ "192.168.178.98" ]
     ttl = 3600
 }
+
+# Pi-Adguard
+resource "dns_a_record_set" "pi-adguard" {
+    zone = "home.soniiit.net."
+    name = "pi-adguard"
+    addresses = [ "192.168.178.7" ]
+    ttl = 3600
+}
