@@ -16,35 +16,6 @@ resource "twingate_group" "lxc_group" {
   is_authoritative = true
 }
 
-# Authentik
-resource "twingate_resource" "lxc_authentik" {
-    name = "lxc-authentik"
-    address = "192.168.178.44"
-    alias = "lxc-authentik.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_lxc.id
-
-    security_policy_id = data.twingate_security_policy.policy_lxc.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    access_group {
-        group_id = twingate_group.lxc_group.id
-        security_policy_id = data.twingate_security_policy.policy_lxc.id
-        usage_based_autolock_duration_days = 30
-    }
-
-    is_active = true
-}
-
 # Bind9
 resource "twingate_resource" "lxc_bind9" {
     name = "lxc-bind9"
@@ -58,39 +29,11 @@ resource "twingate_resource" "lxc_bind9" {
         allow_icmp = true
         tcp = {
             policy = "RESTRICTED"
-            ports = ["22"]
+            ports = ["22", "53"]
         }
         udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    access_group {
-        group_id = twingate_group.lxc_group.id
-        security_policy_id = data.twingate_security_policy.policy_lxc.id
-        usage_based_autolock_duration_days = 30
-    }
-
-    is_active = true
-}
-
-# CheckMK
-resource "twingate_resource" "lxc_checkmk" {
-    name = "lxc-checkmk"
-    address = "192.168.178.48"
-    alias = "lxc-checkmk.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_lxc.id
-
-    security_policy_id = data.twingate_security_policy.policy_lxc.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
             policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
+            ports = ["53"]
         }
     }
 
@@ -132,98 +75,12 @@ resource "twingate_resource" "lxc_cloudflared" {
     is_active = true
 }
 
-# CloudflareDDNS
-resource "twingate_resource" "lxc_cloudflareddns" {
-    name = "lxc-cloudflareddns"
-    address = "192.168.178.42"
-    alias = "lxc-cloudflareddns.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_lxc.id
-
-    security_policy_id = data.twingate_security_policy.policy_lxc.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    access_group {
-        group_id = twingate_group.lxc_group.id
-        security_policy_id = data.twingate_security_policy.policy_lxc.id
-        usage_based_autolock_duration_days = 30
-    }
-
-    is_active = true
-}
-
-# Lancache
-resource "twingate_resource" "lxc_lancache" {
-    name = "lxc-lancache"
-    address = "192.168.178.4"
-    alias = "lxc-lancache.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_lxc.id
-
-    security_policy_id = data.twingate_security_policy.policy_lxc.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    access_group {
-        group_id = twingate_group.lxc_group.id
-        security_policy_id = data.twingate_security_policy.policy_lxc.id
-        usage_based_autolock_duration_days = 30
-    }
-
-    is_active = true
-}
 
 # Nextcloud
 resource "twingate_resource" "lxc_nextcloud" {
     name = "lxc-nextcloud"
     address = "192.168.178.47"
     alias = "lxc-nextcloud.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_lxc.id
-
-    security_policy_id = data.twingate_security_policy.policy_lxc.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    access_group {
-        group_id = twingate_group.lxc_group.id
-        security_policy_id = data.twingate_security_policy.policy_lxc.id
-        usage_based_autolock_duration_days = 30
-    }
-
-    is_active = true
-}
-
-# PiHole
-resource "twingate_resource" "lxc_pihole" {
-    name = "lxc-pihole"
-    address = "192.168.178.99"
-    alias = "lxc-pihole.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_lxc.id
 
     security_policy_id = data.twingate_security_policy.policy_lxc.id
@@ -306,11 +163,69 @@ resource "twingate_resource" "lxc_pterodactyl_wings" {
     is_active = true
 }
 
-# Remotely
-resource "twingate_resource" "lxc_remotely" {
-    name = "lxc-remotely"
+# Harbor
+resource "twingate_resource" "lxc_harbor" {
+    name = "lxc-harbor"
+    address = "192.168.178.44"
+    alias = "lxc-harbor.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_lxc.id
+
+    security_policy_id = data.twingate_security_policy.policy_lxc.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    access_group {
+        group_id = twingate_group.lxc_group.id
+        security_policy_id = data.twingate_security_policy.policy_lxc.id
+        usage_based_autolock_duration_days = 30
+    }
+
+    is_active = true
+}
+
+# Syncthing
+resource "twingate_resource" "lxc_syncthing" {
+    name = "lxc-syncthing"
+    address = "192.168.178.48"
+    alias = "lxc-syncthing.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_lxc.id
+
+    security_policy_id = data.twingate_security_policy.policy_lxc.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    access_group {
+        group_id = twingate_group.lxc_group.id
+        security_policy_id = data.twingate_security_policy.policy_lxc.id
+        usage_based_autolock_duration_days = 30
+    }
+
+    is_active = true
+}
+
+# Omni
+resource "twingate_resource" "lxc_omni" {
+    name = "lxc-omni"
     address = "192.168.178.45"
-    alias = "lxc-remotely.home.soniiit.net"
+    alias = "lxc-omni.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_lxc.id
 
     security_policy_id = data.twingate_security_policy.policy_lxc.id
@@ -335,11 +250,11 @@ resource "twingate_resource" "lxc_remotely" {
     is_active = true
 }
 
-# Wazuh
-resource "twingate_resource" "lxc_wazuh" {
-    name = "lxc-wazuh"
+# Teleport-Server
+resource "twingate_resource" "lxc_teleport_server" {
+    name = "lxc-teleport-server"
     address = "192.168.178.46"
-    alias = "lxc-wazuh.home.soniiit.net"
+    alias = "lxc-teleport-server.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_lxc.id
 
     security_policy_id = data.twingate_security_policy.policy_lxc.id
@@ -364,11 +279,11 @@ resource "twingate_resource" "lxc_wazuh" {
     is_active = true
 }
 
-# Nomad
-resource "twingate_resource" "lxc_nomad" {
-    name = "lxc-wazuh"
-    address = "192.168.178.53"
-    alias = "lxc-wazuh.home.soniiit.net"
+# Teleport-Proxy
+resource "twingate_resource" "lxc_teleport_proxy" {
+    name = "lxc-teleport-proxy"
+    address = "192.168.178.49"
+    alias = "lxc-teleport-proxy.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_lxc.id
 
     security_policy_id = data.twingate_security_policy.policy_lxc.id
@@ -377,7 +292,7 @@ resource "twingate_resource" "lxc_nomad" {
         allow_icmp = true
         tcp = {
             policy = "RESTRICTED"
-            ports = ["22", "4646"]
+            ports = ["22"]
         }
         udp = {
             policy = "DENY_ALL"

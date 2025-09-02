@@ -44,3 +44,32 @@ resource "twingate_resource" "github_runner_terraform" {
 
     is_active = true
 }
+
+# GitHub-Runner-Packer
+resource "twingate_resource" "github_runner_packer" {
+    name = "github-runner-packer"
+    address = "192.168.178.72"
+    alias = "gr-packer.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_runners.id
+
+    security_policy_id = data.twingate_security_policy.policy_runners.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    access_group {
+        group_id = twingate_group.runners_group.id
+        security_policy_id = data.twingate_security_policy.policy_runners.id
+        usage_based_autolock_duration_days = 30
+    }
+
+    is_active = true
+}
