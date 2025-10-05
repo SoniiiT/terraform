@@ -69,45 +69,9 @@ resource "dns_a_record_set" "traefik" {
     ttl = 3600
 }
 
-# Kubernetes Containers
-resource "dns_a_record_set" "portainer" {
+resource "dns_a_record_set" "wud" {
     zone = "home.soniiit.net."
-    name = "portainer"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "prometheus" {
-    zone = "home.soniiit.net."
-    name = "prometheus"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "grafana" {
-    zone = "home.soniiit.net."
-    name = "grafana"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "alertmanager" {
-    zone = "home.soniiit.net."
-    name = "alertmanager"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "longhorn" {
-    zone = "home.soniiit.net."
-    name = "longhorn"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "argocd" {
-    zone = "home.soniiit.net."
-    name = "argocd"
+    name = "wud"
     addresses = [ "192.168.178.32" ]
     ttl = 3600
 }
