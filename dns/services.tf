@@ -147,3 +147,17 @@ resource "dns_a_record_set" "wazuh" {
     addresses = [ "192.168.178.32" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "wgdashboard" {
+    zone = "home.soniiit.net."
+    name = "wgdashboard"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "myip" {
+    zone = "home.soniiit.net."
+    name = "myip"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
