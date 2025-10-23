@@ -24,14 +24,6 @@ resource "dns_a_record_set" "sw_01" {
     ttl = 3600
 }
 
-# Adguard
-resource "dns_a_record_set" "adguard" {
-    zone = "home.soniiit.net."
-    name = "adguard"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
 # NAS
 resource "dns_a_record_set" "truenas" {
     zone = "home.soniiit.net."
@@ -79,13 +71,6 @@ resource "dns_a_record_set" "wud" {
 resource "dns_a_record_set" "portainer" {
     zone = "home.soniiit.net."
     name = "portainer"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "uptimekuma" {
-    zone = "home.soniiit.net."
-    name = "uptimekuma"
     addresses = [ "192.168.178.32" ]
     ttl = 3600
 }
