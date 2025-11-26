@@ -75,6 +75,13 @@ resource "dns_a_record_set" "portainer" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "dns" {
+    zone = "home.soniiit.net."
+    name = "dns"
+    addresses = [ "192.168.178.31" ]
+    ttl = 3600
+}
+
 # Jellifin
 resource "dns_a_record_set" "jellyfin" {
     zone = "home.soniiit.net."
