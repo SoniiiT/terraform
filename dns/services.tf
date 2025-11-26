@@ -82,6 +82,13 @@ resource "dns_a_record_set" "dns" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "it" {
+    zone = "home.soniiit.net."
+    name = "it"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
+
 # Jellifin
 resource "dns_a_record_set" "jellyfin" {
     zone = "home.soniiit.net."
