@@ -78,7 +78,7 @@ resource "dns_a_record_set" "portainer" {
 resource "dns_a_record_set" "dns" {
     zone = "home.soniiit.net."
     name = "dns"
-    addresses = [ "192.168.178.31" ]
+    addresses = [ "192.168.178.32" ]
     ttl = 3600
 }
 
