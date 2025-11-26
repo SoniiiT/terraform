@@ -153,10 +153,3 @@ resource "dns_a_record_set" "myip" {
     addresses = [ "192.168.178.32" ]
     ttl = 3600
 }
-
-resource "dns_a_record_set" "wazuh" {
-    zone = "home.soniiit.net."
-    name = "wazuh"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
