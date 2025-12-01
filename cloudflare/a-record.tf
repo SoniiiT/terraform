@@ -5,10 +5,6 @@ resource "cloudflare_dns_record" "minecraft_gme_a" {
   content = "116.203.182.97"
   type    = "A"
   proxied = false
-  settings = {
-    ipv4_only = true
-    ipv6_only = false
-  }
   ttl = 3600
   comment = "Created and Managed by Terraform"
 }
@@ -18,10 +14,6 @@ resource "cloudflare_dns_record" "minecraft_mc_a" {
   content = "116.203.182.97"
   type    = "A"
   proxied = false
-  settings = {
-    ipv4_only = true
-    ipv6_only = false
-  }
   ttl = 3600
   comment = "Created and Managed by Terraform"
 }
