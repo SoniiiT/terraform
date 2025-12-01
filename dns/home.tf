@@ -23,15 +23,14 @@ resource "dns_a_record_set" "pve-srv-01" {
     ttl = 3600
 }
 
-# Backup Server
-resource "dns_a_record_set" "pbs_bak_01" {
+# Home
+resource "dns_a_record_set" "home-srv-01" {
     zone = "home.soniiit.net."
-    name = "pbs-bak-01"
-    addresses = [ "192.168.178.5" ]
+    name = "home-srv-01"
+    addresses = [ "192.168.178.8" ]
     ttl = 3600
 }
 
-# Home
 resource "dns_a_record_set" "jellyfin-home-01" {
     zone = "home.soniiit.net."
     name = "jellyfin-home-01"
@@ -39,10 +38,9 @@ resource "dns_a_record_set" "jellyfin-home-01" {
     ttl = 3600
 }
 
-# Pi-Adguard
-resource "dns_a_record_set" "pi-adguard" {
+resource "dns_a_record_set" "truenas-nas-01" {
     zone = "home.soniiit.net."
-    name = "pi-adguard"
-    addresses = [ "192.168.178.7" ]
+    name = "truenas-nas-01"
+    addresses = [ "192.168.178.9" ]
     ttl = 3600
 }

@@ -8,14 +8,6 @@ resource "dns_a_record_set" "proxmox" {
     ttl = 3600
 }
 
-# Backup Server
-resource "dns_a_record_set" "pbs" {
-    zone = "home.soniiit.net."
-    name = "pbs"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
 # Switch
 resource "dns_a_record_set" "sw_01" {
     zone = "home.soniiit.net."
@@ -28,6 +20,56 @@ resource "dns_a_record_set" "sw_01" {
 resource "dns_a_record_set" "truenas" {
     zone = "home.soniiit.net."
     name = "truenas"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
+
+# Jellifin
+resource "dns_a_record_set" "jellyfin" {
+    zone = "home.soniiit.net."
+    name = "jellyfin"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "jellyfin_vue" {
+    zone = "home.soniiit.net."
+    name = "jellyfin-vue"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "sonarr" {
+    zone = "home.soniiit.net."
+    name = "sonarr"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "radarr" {
+    zone = "home.soniiit.net."
+    name = "radarr"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "prowlarr" {
+    zone = "home.soniiit.net."
+    name = "prowlarr"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "qbittorrent" {
+    zone = "home.soniiit.net."
+    name = "qbittorrent"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "jellyseerr" {
+    zone = "home.soniiit.net."
+    name = "jellyseerr"
     addresses = [ "192.168.178.32" ]
     ttl = 3600
 }
@@ -89,56 +131,6 @@ resource "dns_a_record_set" "it" {
     ttl = 3600
 }
 
-# Jellifin
-resource "dns_a_record_set" "jellyfin" {
-    zone = "home.soniiit.net."
-    name = "jellyfin"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "jellyfin_vue" {
-    zone = "home.soniiit.net."
-    name = "jellyfin-vue"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "sonarr" {
-    zone = "home.soniiit.net."
-    name = "sonarr"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "radarr" {
-    zone = "home.soniiit.net."
-    name = "radarr"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "prowlarr" {
-    zone = "home.soniiit.net."
-    name = "prowlarr"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "qbittorrent" {
-    zone = "home.soniiit.net."
-    name = "qbittorrent"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "jellyseerr" {
-    zone = "home.soniiit.net."
-    name = "jellyseerr"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
 # LXC
 resource "dns_a_record_set" "wazuh" {
     zone = "home.soniiit.net."
@@ -157,6 +149,13 @@ resource "dns_a_record_set" "wgdashboard" {
 resource "dns_a_record_set" "myip" {
     zone = "home.soniiit.net."
     name = "myip"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "unifi" {
+    zone = "home.soniiit.net."
+    name = "unifi"
     addresses = [ "192.168.178.32" ]
     ttl = 3600
 }
