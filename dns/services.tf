@@ -24,14 +24,6 @@ resource "dns_a_record_set" "sw_01" {
     ttl = 3600
 }
 
-# Adguard
-resource "dns_a_record_set" "adguard" {
-    zone = "home.soniiit.net."
-    name = "adguard"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
 # NAS
 resource "dns_a_record_set" "truenas" {
     zone = "home.soniiit.net."
@@ -69,7 +61,13 @@ resource "dns_a_record_set" "traefik" {
     ttl = 3600
 }
 
-# Kubernetes Containers
+resource "dns_a_record_set" "wud" {
+    zone = "home.soniiit.net."
+    name = "wud"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
+
 resource "dns_a_record_set" "portainer" {
     zone = "home.soniiit.net."
     name = "portainer"
@@ -77,37 +75,16 @@ resource "dns_a_record_set" "portainer" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "prometheus" {
+resource "dns_a_record_set" "dns" {
     zone = "home.soniiit.net."
-    name = "prometheus"
+    name = "dns"
     addresses = [ "192.168.178.32" ]
     ttl = 3600
 }
 
-resource "dns_a_record_set" "grafana" {
+resource "dns_a_record_set" "it" {
     zone = "home.soniiit.net."
-    name = "grafana"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "alertmanager" {
-    zone = "home.soniiit.net."
-    name = "alertmanager"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "longhorn" {
-    zone = "home.soniiit.net."
-    name = "longhorn"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "argocd" {
-    zone = "home.soniiit.net."
-    name = "argocd"
+    name = "it"
     addresses = [ "192.168.178.32" ]
     ttl = 3600
 }
@@ -166,6 +143,20 @@ resource "dns_a_record_set" "jellyseerr" {
 resource "dns_a_record_set" "wazuh" {
     zone = "home.soniiit.net."
     name = "wazuh"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "wgdashboard" {
+    zone = "home.soniiit.net."
+    name = "wgdashboard"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "myip" {
+    zone = "home.soniiit.net."
+    name = "myip"
     addresses = [ "192.168.178.32" ]
     ttl = 3600
 }
