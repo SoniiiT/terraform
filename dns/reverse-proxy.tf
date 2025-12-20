@@ -75,9 +75,9 @@ resource "dns_a_record_set" "jellyseerr" {
 }
 
 # Docker Containers
-resource "dns_a_record_set" "kestra" {
+resource "dns_a_record_set" "semaphore" {
     zone = "home.soniiit.net."
-    name = "kestra"
+    name = "semaphore"
     addresses = [ "192.168.178.32" ]
     ttl = 3600
 }
