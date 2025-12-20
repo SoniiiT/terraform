@@ -29,7 +29,7 @@ resource "proxmox_vm_qemu" "docker_srv_01" {
     # VM cpu_type Settings
     cores = 2
     sockets = 1
-    cpu_type = "kvm64"
+    cpu_type = "host"
 
     # VM Memory Settings
     memory = 16384
@@ -113,7 +113,7 @@ resource "proxmox_vm_qemu" "docker_srv_02" {
     # VM cpu_type Settings
     cores = 1
     sockets = 1
-    cpu_type = "kvm64"
+    cpu_type = "host"
 
     # VM Memory Settings
     memory = 16384
@@ -197,7 +197,7 @@ resource "proxmox_vm_qemu" "docker_srv_03" {
     # VM cpu_type Settings
     cores = 1
     sockets = 1
-    cpu_type = "kvm64"
+    cpu_type = "host"
 
     # VM Memory Settings
     memory = 8192
