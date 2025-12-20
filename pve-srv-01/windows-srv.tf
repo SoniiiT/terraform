@@ -6,7 +6,8 @@
 #     name = "dc-srv-01"
 #     tags = "windows"
 #     desc = "Domain Controller for soniiit.home"
-#     automatic_reboot = false
+#     automatic_reboot = true
+#     automatic_reboot_severity = "warning"
 
 #     # The destination resource pool for the new VM
 #     pool = "Windows"
@@ -72,7 +73,8 @@
 #     name = "dc-srv-02"
 #     tags = "windows"
 #     desc = "Domain Controller for soniiit.home"
-#     automatic_reboot = false
+#     automatic_reboot = true
+#     automatic_reboot_severity = "warning"
 
 #     # The destination resource pool for the new VM
 #     pool = "Windows"

@@ -7,7 +7,8 @@ resource "proxmox_vm_qemu" "docker_srv_01" {
     name = "docker-srv-01"
     tags = "docker;ubuntu"
     desc = "Docker Server 01 only for Twingate Connector"
-    automatic_reboot = false
+    automatic_reboot = true
+    automatic_reboot_severity = "warning"
 
     # The destination resource pool for the new VM
     pool = "Docker"
@@ -91,7 +92,8 @@ resource "proxmox_vm_qemu" "docker_srv_02" {
     name = "docker-srv-02"
     tags = "docker;ubuntu"
     desc = "Docker Server 02"
-    automatic_reboot = false
+    automatic_reboot = true
+    automatic_reboot_severity = "warning"
 
     # The destination resource pool for the new VM
     pool = "Docker"
@@ -175,7 +177,8 @@ resource "proxmox_vm_qemu" "docker_srv_03" {
     name = "docker-srv-03"
     tags = "docker;ubuntu"
     desc = "Docker Server 03"
-    automatic_reboot = false
+    automatic_reboot = true
+    automatic_reboot_severity = "warning"
 
     # The destination resource pool for the new VM
     pool = "Docker"

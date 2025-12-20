@@ -6,7 +6,8 @@
 #     name = "k3s-soniiit-prod1-server01"
 #     tags = "kubernetes;ubuntu"
 #     desc = "Server 01 for K3s Kubernetes Cluster"
-#     automatic_reboot = false
+#     automatic_reboot = true
+#     automatic_reboot_severity = "warning"
 
 #     # The destination resource pool for the new VM
 #     pool = "K3s-SoniiiT-Prod-01"
@@ -89,7 +90,8 @@
 #     name = "k3s-soniiit-prod1-agent01"
 #     tags = "kubernetes;ubuntu"
 #     desc = "Agent 01 for K3s Kubernetes Cluster"
-#     automatic_reboot = false
+#     automatic_reboot = true
+#     automatic_reboot_severity = "warning"
 
 #     # The destination resource pool for the new VM
 #     pool = "K3s-SoniiiT-Prod-01"
@@ -172,7 +174,8 @@
 #     name = "k3s-soniiit-prod1-agent02"
 #     tags = "kubernetes;ubuntu"
 #     desc = "Agent 02 for K3s Kubernetes Cluster"
-#     automatic_reboot = false
+#     automatic_reboot = true
+#     automatic_reboot_severity = "warning"
 
 #     # The destination resource pool for the new VM
 #     pool = "K3s-SoniiiT-Prod-01"
@@ -255,7 +258,8 @@
 #     name = "k3s-soniiit-prod1-agent03"
 #     tags = "kubernetes;ubuntu"
 #     desc = "Agent 03 for K3s Kubernetes Cluster"
-#     automatic_reboot = false
+#     automatic_reboot = true
+#     automatic_reboot_severity = "warning"
 
 #     # The destination resource pool for the new VM
 #     pool = "K3s-SoniiiT-Prod-01"
@@ -338,7 +342,8 @@
 #     name = "k3s-soniiit-prod1-agent04"
 #     tags = "kubernetes;ubuntu"
 #     desc = "Agent 04 for K3s Kubernetes Cluster"
-#     automatic_reboot = false
+#     automatic_reboot = true
+#     automatic_reboot_severity = "warning"
 
 #     # The destination resource pool for the new VM
 #     pool = "K3s-SoniiiT-Prod-01"
@@ -421,7 +426,8 @@
 #     name = "k3s-soniiit-prod1-agent05"
 #     tags = "kubernetes;ubuntu"
 #     desc = "Agent 05 for K3s Kubernetes Cluster"
-#     automatic_reboot = false
+#     automatic_reboot = true
+#     automatic_reboot_severity = "warning"
 
 #     # The destination resource pool for the new VM
 #     pool = "K3s-SoniiiT-Prod-01"

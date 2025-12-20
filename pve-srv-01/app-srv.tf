@@ -6,7 +6,8 @@ resource "proxmox_vm_qemu" "app-srv-01" {
     name = "app-srv-01"
     tags = "ubuntu;application"
     desc = "HashiCorp Vault Server"
-    automatic_reboot = false
+    automatic_reboot = true
+    automatic_reboot_severity = "warning"
 
     # The destination resource pool for the new VM
     pool = "Application"
@@ -83,7 +84,8 @@ resource "proxmox_vm_qemu" "app-srv-02" {
     name = "app-srv-02"
     tags = "ubuntu;application"
     desc = "HashiCorp Vault Server"
-    automatic_reboot = false
+    automatic_reboot = true
+    automatic_reboot_severity = "warning"
 
     # The destination resource pool for the new VM
     pool = "Application"
@@ -160,7 +162,8 @@ resource "proxmox_vm_qemu" "app-srv-03" {
     name = "app-srv-03"
     tags = "ubuntu;application"
     desc = "Minecraft Bot"
-    automatic_reboot = false
+    automatic_reboot = true
+    automatic_reboot_severity = "warning"
 
     # The destination resource pool for the new VM
     pool = "Application"
