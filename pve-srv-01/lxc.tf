@@ -2,6 +2,7 @@
 # VMID 100; LXC-Pterodactyl-Panel
 # VMID 101; LXC-Pterodactyl-Wings
 # VMID 103; Github-Runner-Docker
+# VMID 108; LXC-Wireguard
 # VMID 110; Github-Runner-Terraform
 # VMID 115; Github-Runner-Packer
 # VMID 128; LXC-Nextcloud
