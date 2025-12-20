@@ -159,3 +159,10 @@ resource "dns_a_record_set" "unifi" {
     addresses = [ "192.168.178.32" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "netbox" {
+    zone = "home.soniiit.net."
+    name = "netbox"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
