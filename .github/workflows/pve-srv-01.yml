@@ -45,7 +45,7 @@ jobs:
     needs: validate
     runs-on: self-hosted
     container:
-      image: hashicorp/terraform:1.6.2
+      image: hashicorp/terraform:1.14.3
     permissions:
       contents: write
     steps:
@@ -78,7 +78,7 @@ jobs:
     needs: plan
     runs-on: self-hosted
     container:
-      image: hashicorp/terraform:1.6.2
+      image: hashicorp/terraform:1.14.3
     if: github.ref == 'refs/heads/main'
     permissions:
       contents: write
