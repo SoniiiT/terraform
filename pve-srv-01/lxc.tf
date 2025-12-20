@@ -266,7 +266,7 @@ resource "proxmox_lxc" "lxc-netbox" {
     network {
         name   = "eth0"
         bridge = "vmbr0"
-        ip     = "192.168.178.51/24"
+        ip     = "192.168.178.52/24"
         ip6    = "auto"
         gw     = "192.168.178.1"
   }
