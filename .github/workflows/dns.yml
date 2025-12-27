@@ -22,6 +22,8 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Fix Permissions
+        run: sudo chown -R $USER:$USER .
       - uses: actions/checkout@v4
       
       - name: Setup Terraform
@@ -45,6 +47,8 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Fix Permissions
+        run: sudo chown -R $USER:$USER .
       - uses: actions/checkout@v4
       
       - name: Setup Terraform
@@ -75,7 +79,9 @@ jobs:
     runs-on: self-hosted
     if: github.ref == 'refs/heads/main'
     permissions:
-      contents: write
+      coname: Fix Permissions
+        run: sudo chown -R $USER:$USER .
+      - ntents: write
     steps:
       - uses: actions/checkout@v4
       
