@@ -16,60 +16,33 @@ resource "twingate_group" "runners_group" {
   is_authoritative = true
 }
 
-# GitHub-Runner-Terraform
-resource "twingate_resource" "github_runner_terraform" {
-    name = "github-runner-terraform"
-    address = "192.168.178.70"
-    alias = "gr-terraform.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_runners.id
+resource "twingate_resource" "runners" {
+  for_each = var.runner_resources
 
-    security_policy_id = data.twingate_security_policy.policy_runners.id
+  name              = each.value.name
+  address           = each.value.address
+  alias             = each.value.alias
+  remote_network_id = twingate_remote_network.net_runners.id
 
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
+  security_policy_id = data.twingate_security_policy.policy_runners.id
+
+  protocols = {
+    allow_icmp = true
+    tcp = {
+      policy = each.value.tcp_policy
+      ports  = each.value.ports
     }
-
-    access_group {
-        group_id = twingate_group.runners_group.id
-        security_policy_id = data.twingate_security_policy.policy_runners.id
-        usage_based_autolock_duration_days = 30
+    udp = {
+      policy = each.value.udp_policy
+      ports  = each.value.udp_ports
     }
+  }
 
-    is_active = true
-}
+  access_group {
+    group_id                           = twingate_group.runners_group.id
+    security_policy_id                 = data.twingate_security_policy.policy_runners.id
+    usage_based_autolock_duration_days = 30
+  }
 
-# GitHub-Runner-Packer
-resource "twingate_resource" "github_runner_packer" {
-    name = "github-runner-packer"
-    address = "192.168.178.72"
-    alias = "gr-packer.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_runners.id
-
-    security_policy_id = data.twingate_security_policy.policy_runners.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    access_group {
-        group_id = twingate_group.runners_group.id
-        security_policy_id = data.twingate_security_policy.policy_runners.id
-        usage_based_autolock_duration_days = 30
-    }
-
-    is_active = true
+  is_active = true
 }

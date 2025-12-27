@@ -1,0 +1,116 @@
+---
+- name: Base Setup for all Hosts
+  hosts: all
+  become: true
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Upgrade all packages
+      apt:
+        upgrade: dist
+
+    - name: Install common dependencies
+      apt:
+        pkg:
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
+          - git
+          - htop
+        state: present
+
+- name: Docker Setup
+  hosts: docker
+  become: true
+  vars:
+    # Docker Configuration
+    docker_users: ["soniiit"]
+    
+  tasks:
+    # 1. Clean Installation via Official Repo (Idempotent & Secure)
+    - name: Create keyrings directory
+      file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: '0755'
+
+    - name: Add Docker's official GPG key
+      get_url:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        dest: /etc/apt/keyrings/docker.asc
+        mode: '0644'
+
+    - name: Add Docker repository
+      copy:
+        dest: /etc/apt/sources.list.d/docker.list
+        content: |
+          deb [arch={{ ansible_architecture }} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+        mode: '0644'
+
+    - name: Install Docker Engine
+      apt:
+        update_cache: true
+        pkg:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+        state: present
+
+    # 2. User Configuration
+    - name: Add users to docker group
+      user:
+        name: "{{ item }}"
+        groups: docker
+        append: true
+      loop: "{{ docker_users }}"
+
+    # 3. Secure Socket Configuration (Optional - SSH is preferred over TCP!)
+    # Warnung: TCP 0.0.0.0 ist unsicher. Besser wäre Zugriff über SSH Context.
+    # Wenn TCP nötig ist, binden wir es hier, aber idealerweise sollte eine Firewall davor sein.
+    - name: Create docker service directory
+      file:
+        path: /etc/systemd/system/docker.service.d
+        state: directory
+        mode: '0755'
+
+    - name: Configure Docker Daemon (TCP + Socket)
+      copy:
+        dest: /etc/systemd/system/docker.service.d/override.conf
+        content: |
+          [Service]
+          ExecStart=
+          ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375
+        mode: '0644'
+      notify: Restart Docker
+
+  handlers:
+    - name: Restart Docker
+      systemd:
+        name: docker
+        state: restarted
+        daemon_reload: true
+
+- name: Finalize
+  hosts: all
+  become: true
+  tasks:
+    - name: Check if reboot is required
+      stat:
+        path: /var/run/reboot-required
+      register: reboot_required_file
+
+    - name: Reboot if necessary
+      reboot:
+        msg: "Rebooting due to system updates"
+        connect_timeout: 5
+        reboot_timeout: 600
+        pre_reboot_delay: 0
+        post_reboot_delay: 30
+        test_command: whoami
+      when: reboot_required_file.stat.exists

@@ -19,23 +19,24 @@ jobs:
   validate:
     name: Validate PVE Terraform
     runs-on: self-hosted
-    container:
-      image: hashicorp/terraform:1.14.3
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
       
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.14.3
+
       - name: Validate
         working-directory: pve-srv-01
         env:
-          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
-          TF_VAR_proxmox_api_url: "https://192.168.178.6:8006/api2/json"
-          TF_VAR_proxmox_api_token_id: "terraform@pam!terraform"
+          TF_TOKEN_app_terraform_io: ${{ secrets.TERRAFORM_API_TOKEN }}
+          TF_VAR_proxmox_api_url: ${{ secrets.PROXMOX_API_URL }}
+          TF_VAR_proxmox_api_token_id: ${{ secrets.PROXMOX_API_TOKEN_ID }}
           TF_VAR_proxmox_api_token_secret: ${{ secrets.PROXMOX_API_TOKEN_SECRET }}
-          TF_VAR_lxc_password: ${{ secrets.LXC_PASSWORD }}
+          TF_VAR_lxc_password: ${{ secrets.PROXMOX_LXC_PASSWORD }}
         run: |
           terraform init
           terraform validate
@@ -44,23 +45,24 @@ jobs:
     name: Plan PVE Terraform
     needs: validate
     runs-on: self-hosted
-    container:
-      image: hashicorp/terraform:1.6.2
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
       
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.14.3
+
       - name: Plan
         working-directory: pve-srv-01
         env:
-          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
-          TF_VAR_proxmox_api_url: "https://192.168.178.6:8006/api2/json"
-          TF_VAR_proxmox_api_token_id: "terraform@pam!terraform"
+          TF_TOKEN_app_terraform_io: ${{ secrets.TERRAFORM_API_TOKEN }}
+          TF_VAR_proxmox_api_url: ${{ secrets.PROXMOX_API_URL }}
+          TF_VAR_proxmox_api_token_id: ${{ secrets.PROXMOX_API_TOKEN_ID }}
           TF_VAR_proxmox_api_token_secret: ${{ secrets.PROXMOX_API_TOKEN_SECRET }}
-          TF_VAR_lxc_password: ${{ secrets.LXC_PASSWORD }}
+          TF_VAR_lxc_password: ${{ secrets.PROXMOX_LXC_PASSWORD }}
         run: |
           terraform init
           terraform providers lock
@@ -77,16 +79,17 @@ jobs:
     name: Apply PVE Terraform
     needs: plan
     runs-on: self-hosted
-    container:
-      image: hashicorp/terraform:1.6.2
     if: github.ref == 'refs/heads/main'
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
       
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.14.3
+
       - name: Download Plan Artifact
         uses: actions/download-artifact@v4
         with:
@@ -96,11 +99,11 @@ jobs:
       - name: Apply
         working-directory: pve-srv-01
         env:
-          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
-          TF_VAR_proxmox_api_url: "https://192.168.178.6:8006/api2/json"
-          TF_VAR_proxmox_api_token_id: "terraform@pam!terraform"
+          TF_TOKEN_app_terraform_io: ${{ secrets.TERRAFORM_API_TOKEN }}
+          TF_VAR_proxmox_api_url: ${{ secrets.PROXMOX_API_URL }}
+          TF_VAR_proxmox_api_token_id: ${{ secrets.PROXMOX_API_TOKEN_ID }}
           TF_VAR_proxmox_api_token_secret: ${{ secrets.PROXMOX_API_TOKEN_SECRET }}
-          TF_VAR_lxc_password: ${{ secrets.LXC_PASSWORD }}
+          TF_VAR_lxc_password: ${{ secrets.PROXMOX_LXC_PASSWORD }}
         run: |
           terraform init
           terraform apply -auto-approve tfplan 

@@ -1,503 +1,87 @@
-# resource "proxmox_vm_qemu" "k3s_soniiit_server01" {
-
-#     # VM General Settings
-#     target_node = "pve-srv-01"
-#     vmid = 600
-#     name = "k3s-soniiit-prod1-server01"
-#     tags = "kubernetes;ubuntu"
-#     desc = "Server 01 for K3s Kubernetes Cluster"
-#     automatic_reboot = true
-#     automatic_reboot_severity = "warning"
-
-#     # The destination resource pool for the new VM
-#     pool = "K3s-SoniiiT-Prod-01"
-
-#     # VM Advanced General Settings
-#     onboot = true
-#     boot = "order=virtio0;net0"
-#     bootdisk = "virtio"
-#     scsihw = "virtio-scsi-pci"
-
-#     # VM OS Settings
-#     full_clone = true
-#     clone = "ubuntu-server-24-04-02"
-#     bios = "seabios"
-
-#     # VM System Settings
-#     agent = 1
-
-#     # VM CPU Settings
-#     cores = 1
-#     sockets = 1
-#     cpu_type = "host"
-
-#     # VM Memory Settings
-#     memory = 8192
-
-#     # VM Network Settings
-#     network {
-#         id = 0
-#         bridge = "vmbr0"
-#         model  = "virtio"
-#     }
-
-#     # VM Disk Settings Cloud-Init
-#     disks {
-#         ide {
-#             ide0 {
-#                 cloudinit {
-#                     storage = "M2-Storage"
-#                 }
-#             }
-#         }
-#         virtio {
-#             virtio0 {
-#                 disk {
-#                     size               = "32G"
-#                     storage            = "M2-Storage"
-#                 }
-#             }
-#             virtio1 {
-#                 disk {
-#                     size               = "256G"
-#                     storage            = "HDD-Storage"
-#                 }
-#             }
-#         }
-#     }
-
-#     # VM Cloud-Init Settings
-#     os_type = "cloud-init"
-
-#     # (Optional) IP Address and Gateway
-#     ipconfig0 = "ip=192.168.178.11/24,gw=192.168.178.1,ip6=dhcp"
-
-#     # (Optional) DNS Servers
-#     nameserver = "192.168.178.3"
-
-#     # (Optional) Default User
-#     ciuser = "soniiit"
-
-#     # (Optional) Add your Public SSH KEY
-#     sshkeys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCwS2E+9u7DXG01ViDPKTObWcqb3MZ1+bkHrfOl2e0FokVv8QI6v0LtJgPc5i8eEunQlK29GsLmf9s1cKLN8LdgT7VXknSg2tsNtL1/nDFrSwRnuu5HJXmxjrdpPFyBSq5h/hOwwImhT5vSRdwfNF9Y4N0kwEghzu1/7JJDF8eAW66DBrBeMgz28U4IohCiRm+YvGhsvRfqeD9ztd+Wb0xcb485yotE8LnDAzGsfSwQ4GrOaoiLYdzZAVNiqXKrZhs7YpyvTu6ngnA+sGH+w0Igms++eF9ElQkfgz4LHVUdjVaySC41YWqE2nQacVqefEPcCIKnaAwRlvtBzBSXujCCI4//py/538SWLYrcmGjtNBKkBA0KVbPP+R7qq387Hr+bjjoXtIARsuqqj6gCzmYxrGiors84vt+dYMWNzTj9tvOVkNFpsIu3NER2e1yXgjVXSpPZDKERTCcDoNIwLI91+6EpMnXYz8MtH80CIHFJNSwflc5wud2ebSEGmSfGgJ0djAN4KWIhg/J+RgcZ/o/dvew6GxRYbv9EDZ3UXSaSEeKvjGLXAPV5MhQuIB1iavzV6CO3ntTKvqYHFyxSkWTXTyllGtsAj3N2DLA8CSnswsBXmO0FleEhjwAUzCA3itDK+/oBipPFbna3x0c+qcb8GJSsYpNIvTqdFb92DgUiPQ== "
-# }
-
-# resource "proxmox_vm_qemu" "k3s_soniiit_agent01" {
-
-#     # VM General Settings
-#     target_node = "pve-srv-01"
-#     vmid = 601
-#     name = "k3s-soniiit-prod1-agent01"
-#     tags = "kubernetes;ubuntu"
-#     desc = "Agent 01 for K3s Kubernetes Cluster"
-#     automatic_reboot = true
-#     automatic_reboot_severity = "warning"
-
-#     # The destination resource pool for the new VM
-#     pool = "K3s-SoniiiT-Prod-01"
-
-#     # VM Advanced General Settings
-#     onboot = true
-#     boot = "order=virtio0;net0"
-#     bootdisk = "virtio"
-#     scsihw = "virtio-scsi-pci"
-
-#     # VM OS Settings
-#     full_clone = true
-#     clone = "ubuntu-server-24-04-02"
-#     bios = "seabios"
-
-#     # VM System Settings
-#     agent = 1
-
-#     # VM CPU Settings
-#     cores = 2
-#     sockets = 1
-#     cpu_type = "host"
-
-#     # VM Memory Settings
-#     memory = 16384
-
-#     # VM Network Settings
-#     network {
-#         id = 0
-#         bridge = "vmbr0"
-#         model  = "virtio"
-#     }
-
-#     # VM Disk Settings Cloud-Init
-#     disks {
-#         ide {
-#             ide0 {
-#                 cloudinit {
-#                     storage = "M2-Storage"
-#                 }
-#             }
-#         }
-#         virtio {
-#             virtio0 {
-#                 disk {
-#                     size               = "32G"
-#                     storage            = "M2-Storage"
-#                 }
-#             }
-#             virtio1 {
-#                 disk {
-#                     size               = "256G"
-#                     storage            = "HDD-Storage"
-#                 }
-#             }
-#         }
-#     }
-
-#     # VM Cloud-Init Settings
-#     os_type = "cloud-init"
-
-#     # (Optional) IP Address and Gateway
-#     ipconfig0 = "ip=192.168.178.12/24,gw=192.168.178.1,ip6=dhcp"
-
-#     # (Optional) DNS Servers
-#     nameserver = "192.168.178.3"
-
-#     # (Optional) Default User
-#     ciuser = "soniiit"
-
-#     # (Optional) Add your Public SSH KEY
-#     sshkeys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCwS2E+9u7DXG01ViDPKTObWcqb3MZ1+bkHrfOl2e0FokVv8QI6v0LtJgPc5i8eEunQlK29GsLmf9s1cKLN8LdgT7VXknSg2tsNtL1/nDFrSwRnuu5HJXmxjrdpPFyBSq5h/hOwwImhT5vSRdwfNF9Y4N0kwEghzu1/7JJDF8eAW66DBrBeMgz28U4IohCiRm+YvGhsvRfqeD9ztd+Wb0xcb485yotE8LnDAzGsfSwQ4GrOaoiLYdzZAVNiqXKrZhs7YpyvTu6ngnA+sGH+w0Igms++eF9ElQkfgz4LHVUdjVaySC41YWqE2nQacVqefEPcCIKnaAwRlvtBzBSXujCCI4//py/538SWLYrcmGjtNBKkBA0KVbPP+R7qq387Hr+bjjoXtIARsuqqj6gCzmYxrGiors84vt+dYMWNzTj9tvOVkNFpsIu3NER2e1yXgjVXSpPZDKERTCcDoNIwLI91+6EpMnXYz8MtH80CIHFJNSwflc5wud2ebSEGmSfGgJ0djAN4KWIhg/J+RgcZ/o/dvew6GxRYbv9EDZ3UXSaSEeKvjGLXAPV5MhQuIB1iavzV6CO3ntTKvqYHFyxSkWTXTyllGtsAj3N2DLA8CSnswsBXmO0FleEhjwAUzCA3itDK+/oBipPFbna3x0c+qcb8GJSsYpNIvTqdFb92DgUiPQ== "
-# }
-
-# resource "proxmox_vm_qemu" "k3s_soniiit_agent02" {
-
-#     # VM General Settings
-#     target_node = "pve-srv-01"
-#     vmid = 602
-#     name = "k3s-soniiit-prod1-agent02"
-#     tags = "kubernetes;ubuntu"
-#     desc = "Agent 02 for K3s Kubernetes Cluster"
-#     automatic_reboot = true
-#     automatic_reboot_severity = "warning"
-
-#     # The destination resource pool for the new VM
-#     pool = "K3s-SoniiiT-Prod-01"
-
-#     # VM Advanced General Settings
-#     onboot = true
-#     boot = "order=virtio0;net0"
-#     bootdisk = "virtio"
-#     scsihw = "virtio-scsi-pci"
-
-#     # VM OS Settings
-#     full_clone = true
-#     clone = "ubuntu-server-24-04-02"
-#     bios = "seabios"
-
-#     # VM System Settings
-#     agent = 1
-
-#     # VM CPU Settings
-#     cores = 2
-#     sockets = 1
-#     cpu_type = "host"
-
-#     # VM Memory Settings
-#     memory = 16384
-
-#     # VM Network Settings
-#     network {
-#         id = 0
-#         bridge = "vmbr0"
-#         model  = "virtio"
-#     }
-
-#     # VM Disk Settings Cloud-Init
-#     disks {
-#         ide {
-#             ide0 {
-#                 cloudinit {
-#                     storage = "M2-Storage"
-#                 }
-#             }
-#         }
-#         virtio {
-#             virtio0 {
-#                 disk {
-#                     size               = "32G"
-#                     storage            = "M2-Storage"
-#                 }
-#             }
-#             virtio1 {
-#                 disk {
-#                     size               = "256G"
-#                     storage            = "HDD-Storage"
-#                 }
-#             }
-#         }
-#     }
-
-#     # VM Cloud-Init Settings
-#     os_type = "cloud-init"
-
-#     # (Optional) IP Address and Gateway
-#     ipconfig0 = "ip=192.168.178.13/24,gw=192.168.178.1,ip6=dhcp"
-
-#     # (Optional) DNS Servers
-#     nameserver = "192.168.178.3"
-
-#     # (Optional) Default User
-#     ciuser = "soniiit"
-
-#     # (Optional) Add your Public SSH KEY
-#     sshkeys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCwS2E+9u7DXG01ViDPKTObWcqb3MZ1+bkHrfOl2e0FokVv8QI6v0LtJgPc5i8eEunQlK29GsLmf9s1cKLN8LdgT7VXknSg2tsNtL1/nDFrSwRnuu5HJXmxjrdpPFyBSq5h/hOwwImhT5vSRdwfNF9Y4N0kwEghzu1/7JJDF8eAW66DBrBeMgz28U4IohCiRm+YvGhsvRfqeD9ztd+Wb0xcb485yotE8LnDAzGsfSwQ4GrOaoiLYdzZAVNiqXKrZhs7YpyvTu6ngnA+sGH+w0Igms++eF9ElQkfgz4LHVUdjVaySC41YWqE2nQacVqefEPcCIKnaAwRlvtBzBSXujCCI4//py/538SWLYrcmGjtNBKkBA0KVbPP+R7qq387Hr+bjjoXtIARsuqqj6gCzmYxrGiors84vt+dYMWNzTj9tvOVkNFpsIu3NER2e1yXgjVXSpPZDKERTCcDoNIwLI91+6EpMnXYz8MtH80CIHFJNSwflc5wud2ebSEGmSfGgJ0djAN4KWIhg/J+RgcZ/o/dvew6GxRYbv9EDZ3UXSaSEeKvjGLXAPV5MhQuIB1iavzV6CO3ntTKvqYHFyxSkWTXTyllGtsAj3N2DLA8CSnswsBXmO0FleEhjwAUzCA3itDK+/oBipPFbna3x0c+qcb8GJSsYpNIvTqdFb92DgUiPQ== "
-# }
-
-# resource "proxmox_vm_qemu" "k3s_soniiit_agent03" {
-
-#     # VM General Settings
-#     target_node = "pve-srv-01"
-#     vmid = 603
-#     name = "k3s-soniiit-prod1-agent03"
-#     tags = "kubernetes;ubuntu"
-#     desc = "Agent 03 for K3s Kubernetes Cluster"
-#     automatic_reboot = true
-#     automatic_reboot_severity = "warning"
-
-#     # The destination resource pool for the new VM
-#     pool = "K3s-SoniiiT-Prod-01"
-
-#     # VM Advanced General Settings
-#     onboot = true
-#     boot = "order=virtio0;net0"
-#     bootdisk = "virtio"
-#     scsihw = "virtio-scsi-pci"
-
-#     # VM OS Settings
-#     full_clone = true
-#     clone = "ubuntu-server-24-04-02"
-#     bios = "seabios"
-
-#     # VM System Settings
-#     agent = 1
-
-#     # VM CPU Settings
-#     cores = 2
-#     sockets = 1
-#     cpu_type = "host"
-
-#     # VM Memory Settings
-#     memory = 16384
-
-#     # VM Network Settings
-#     network {
-#         id = 0
-#         bridge = "vmbr0"
-#         model  = "virtio"
-#     }
-
-#     # VM Disk Settings Cloud-Init
-#     disks {
-#         ide {
-#             ide0 {
-#                 cloudinit {
-#                     storage = "M2-Storage"
-#                 }
-#             }
-#         }
-#         virtio {
-#             virtio0 {
-#                 disk {
-#                     size               = "32G"
-#                     storage            = "M2-Storage"
-#                 }
-#             }
-#             virtio1 {
-#                 disk {
-#                     size               = "256G"
-#                     storage            = "HDD-Storage"
-#                 }
-#             }
-#         }
-#     }
-
-#     # VM Cloud-Init Settings
-#     os_type = "cloud-init"
-
-#     # (Optional) IP Address and Gateway
-#     ipconfig0 = "ip=192.168.178.14/24,gw=192.168.178.1,ip6=dhcp"
-
-#     # (Optional) DNS Servers
-#     nameserver = "192.168.178.3"
-
-#     # (Optional) Default User
-#     ciuser = "soniiit"
-
-#     # (Optional) Add your Public SSH KEY
-#     sshkeys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCwS2E+9u7DXG01ViDPKTObWcqb3MZ1+bkHrfOl2e0FokVv8QI6v0LtJgPc5i8eEunQlK29GsLmf9s1cKLN8LdgT7VXknSg2tsNtL1/nDFrSwRnuu5HJXmxjrdpPFyBSq5h/hOwwImhT5vSRdwfNF9Y4N0kwEghzu1/7JJDF8eAW66DBrBeMgz28U4IohCiRm+YvGhsvRfqeD9ztd+Wb0xcb485yotE8LnDAzGsfSwQ4GrOaoiLYdzZAVNiqXKrZhs7YpyvTu6ngnA+sGH+w0Igms++eF9ElQkfgz4LHVUdjVaySC41YWqE2nQacVqefEPcCIKnaAwRlvtBzBSXujCCI4//py/538SWLYrcmGjtNBKkBA0KVbPP+R7qq387Hr+bjjoXtIARsuqqj6gCzmYxrGiors84vt+dYMWNzTj9tvOVkNFpsIu3NER2e1yXgjVXSpPZDKERTCcDoNIwLI91+6EpMnXYz8MtH80CIHFJNSwflc5wud2ebSEGmSfGgJ0djAN4KWIhg/J+RgcZ/o/dvew6GxRYbv9EDZ3UXSaSEeKvjGLXAPV5MhQuIB1iavzV6CO3ntTKvqYHFyxSkWTXTyllGtsAj3N2DLA8CSnswsBXmO0FleEhjwAUzCA3itDK+/oBipPFbna3x0c+qcb8GJSsYpNIvTqdFb92DgUiPQ== "
-# }
-
-# resource "proxmox_vm_qemu" "k3s_soniiit_agent04" {
-
-#     # VM General Settings
-#     target_node = "pve-srv-01"
-#     vmid = 604
-#     name = "k3s-soniiit-prod1-agent04"
-#     tags = "kubernetes;ubuntu"
-#     desc = "Agent 04 for K3s Kubernetes Cluster"
-#     automatic_reboot = true
-#     automatic_reboot_severity = "warning"
-
-#     # The destination resource pool for the new VM
-#     pool = "K3s-SoniiiT-Prod-01"
-
-#     # VM Advanced General Settings
-#     onboot = true
-#     boot = "order=virtio0;net0"
-#     bootdisk = "virtio"
-#     scsihw = "virtio-scsi-pci"
-
-#     # VM OS Settings
-#     full_clone = true
-#     clone = "ubuntu-server-24-04-02"
-#     bios = "seabios"
-
-#     # VM System Settings
-#     agent = 1
-
-#     # VM CPU Settings
-#     cores = 2
-#     sockets = 1
-#     cpu_type = "host"
-
-#     # VM Memory Settings
-#     memory = 16384
-
-#     # VM Network Settings
-#     network {
-#         id = 0
-#         bridge = "vmbr0"
-#         model  = "virtio"
-#     }
-
-#     # VM Disk Settings Cloud-Init
-#     disks {
-#         ide {
-#             ide0 {
-#                 cloudinit {
-#                     storage = "M2-Storage"
-#                 }
-#             }
-#         }
-#         virtio {
-#             virtio0 {
-#                 disk {
-#                     size               = "32G"
-#                     storage            = "M2-Storage"
-#                 }
-#             }
-#             virtio1 {
-#                 disk {
-#                     size               = "256G"
-#                     storage            = "HDD-Storage"
-#                 }
-#             }
-#         }
-#     }
-
-#     # VM Cloud-Init Settings
-#     os_type = "cloud-init"
-
-#     # (Optional) IP Address and Gateway
-#     ipconfig0 = "ip=192.168.178.15/24,gw=192.168.178.1,ip6=dhcp"
-
-#     # (Optional) DNS Servers
-#     nameserver = "192.168.178.3"
-
-#     # (Optional) Default User
-#     ciuser = "soniiit"
-
-#     # (Optional) Add your Public SSH KEY
-#     sshkeys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCwS2E+9u7DXG01ViDPKTObWcqb3MZ1+bkHrfOl2e0FokVv8QI6v0LtJgPc5i8eEunQlK29GsLmf9s1cKLN8LdgT7VXknSg2tsNtL1/nDFrSwRnuu5HJXmxjrdpPFyBSq5h/hOwwImhT5vSRdwfNF9Y4N0kwEghzu1/7JJDF8eAW66DBrBeMgz28U4IohCiRm+YvGhsvRfqeD9ztd+Wb0xcb485yotE8LnDAzGsfSwQ4GrOaoiLYdzZAVNiqXKrZhs7YpyvTu6ngnA+sGH+w0Igms++eF9ElQkfgz4LHVUdjVaySC41YWqE2nQacVqefEPcCIKnaAwRlvtBzBSXujCCI4//py/538SWLYrcmGjtNBKkBA0KVbPP+R7qq387Hr+bjjoXtIARsuqqj6gCzmYxrGiors84vt+dYMWNzTj9tvOVkNFpsIu3NER2e1yXgjVXSpPZDKERTCcDoNIwLI91+6EpMnXYz8MtH80CIHFJNSwflc5wud2ebSEGmSfGgJ0djAN4KWIhg/J+RgcZ/o/dvew6GxRYbv9EDZ3UXSaSEeKvjGLXAPV5MhQuIB1iavzV6CO3ntTKvqYHFyxSkWTXTyllGtsAj3N2DLA8CSnswsBXmO0FleEhjwAUzCA3itDK+/oBipPFbna3x0c+qcb8GJSsYpNIvTqdFb92DgUiPQ== "
-# }
-
-# resource "proxmox_vm_qemu" "k3s_soniiit_agent05" {
-
-#     # VM General Settings
-#     target_node = "pve-srv-01"
-#     vmid = 605
-#     name = "k3s-soniiit-prod1-agent05"
-#     tags = "kubernetes;ubuntu"
-#     desc = "Agent 05 for K3s Kubernetes Cluster"
-#     automatic_reboot = true
-#     automatic_reboot_severity = "warning"
-
-#     # The destination resource pool for the new VM
-#     pool = "K3s-SoniiiT-Prod-01"
-
-#     # VM Advanced General Settings
-#     onboot = true
-#     boot = "order=virtio0;net0"
-#     bootdisk = "virtio"
-#     scsihw = "virtio-scsi-pci"
-
-#     # VM OS Settings
-#     full_clone = true
-#     clone = "ubuntu-server-24-04-02"
-#     bios = "seabios"
-
-#     # VM System Settings
-#     agent = 1
-
-#     # VM CPU Settings
-#     cores = 2
-#     sockets = 1
-#     cpu_type = "host"
-
-#     # VM Memory Settings
-#     memory = 16384
-
-#     # VM Network Settings
-#     network {
-#         id = 0
-#         bridge = "vmbr0"
-#         model  = "virtio"
-#     }
-
-#     # VM Disk Settings Cloud-Init
-#     disks {
-#         ide {
-#             ide0 {
-#                 cloudinit {
-#                     storage = "M2-Storage"
-#                 }
-#             }
-#         }
-#         virtio {
-#             virtio0 {
-#                 disk {
-#                     size               = "32G"
-#                     storage            = "M2-Storage"
-#                 }
-#             }
-#             virtio1 {
-#                 disk {
-#                     size               = "256G"
-#                     storage            = "HDD-Storage"
-#                 }
-#             }
-#         }
-#     }
-
-#     # VM Cloud-Init Settings
-#     os_type = "cloud-init"
-
-#     # (Optional) IP Address and Gateway
-#     ipconfig0 = "ip=192.168.178.16/24,gw=192.168.178.1,ip6=dhcp"
-
-#     # (Optional) DNS Servers
-#     nameserver = "192.168.178.3"
-
-#     # (Optional) Default User
-#     ciuser = "soniiit"
-
-#     # (Optional) Add your Public SSH KEY
-#     sshkeys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCwS2E+9u7DXG01ViDPKTObWcqb3MZ1+bkHrfOl2e0FokVv8QI6v0LtJgPc5i8eEunQlK29GsLmf9s1cKLN8LdgT7VXknSg2tsNtL1/nDFrSwRnuu5HJXmxjrdpPFyBSq5h/hOwwImhT5vSRdwfNF9Y4N0kwEghzu1/7JJDF8eAW66DBrBeMgz28U4IohCiRm+YvGhsvRfqeD9ztd+Wb0xcb485yotE8LnDAzGsfSwQ4GrOaoiLYdzZAVNiqXKrZhs7YpyvTu6ngnA+sGH+w0Igms++eF9ElQkfgz4LHVUdjVaySC41YWqE2nQacVqefEPcCIKnaAwRlvtBzBSXujCCI4//py/538SWLYrcmGjtNBKkBA0KVbPP+R7qq387Hr+bjjoXtIARsuqqj6gCzmYxrGiors84vt+dYMWNzTj9tvOVkNFpsIu3NER2e1yXgjVXSpPZDKERTCcDoNIwLI91+6EpMnXYz8MtH80CIHFJNSwflc5wud2ebSEGmSfGgJ0djAN4KWIhg/J+RgcZ/o/dvew6GxRYbv9EDZ3UXSaSEeKvjGLXAPV5MhQuIB1iavzV6CO3ntTKvqYHFyxSkWTXTyllGtsAj3N2DLA8CSnswsBXmO0FleEhjwAUzCA3itDK+/oBipPFbna3x0c+qcb8GJSsYpNIvTqdFb92DgUiPQ== "
-# }
+resource "proxmox_vm_qemu" "k3s_srv" {
+  for_each = var.k3s_vms
+
+  # VM General Settings
+  target_node               = "pve-srv-01"
+  vmid                      = each.value.vmid
+  name                      = each.key
+  tags                      = each.value.tags
+  desc                      = each.value.desc
+  automatic_reboot          = true
+  automatic_reboot_severity = "warning"
+
+  # The destination resource pool for the new VM
+  pool = "K3s-SoniiiT-Prod-01"
+
+  # VM Advanced General Settings
+  onboot   = true
+  boot     = "order=virtio0;net0"
+  bootdisk = "virtio"
+  scsihw   = "virtio-scsi-pci"
+
+  # VM OS Settings
+  full_clone = true
+  clone      = "ubuntu-server-24-04-02"
+  bios       = "seabios"
+
+  # VM System Settings
+  agent = 1
+
+  # VM cpu_type Settings
+  cores    = each.value.cores
+  sockets  = 1
+  cpu_type = "host"
+
+  # VM Memory Settings
+  memory = each.value.memory
+
+  # VM Network Settings
+  network {
+    id     = 0
+    bridge = "vmbr0"
+    model  = "virtio"
+  }
+
+  # VM Disk Settings Cloud-Init
+  disks {
+    ide {
+      ide0 {
+        cloudinit {
+          storage = "M2-Storage"
+        }
+      }
+    }
+    virtio {
+      virtio0 {
+        disk {
+          size    = each.value.os_disk_size
+          storage = "M2-Storage"
+        }
+      }
+      dynamic "virtio1" {
+        for_each = each.value.data_disk_size != null ? [1] : []
+        content {
+          disk {
+            size    = each.value.data_disk_size
+            storage = "HDD-Storage"
+          }
+        }
+      }
+    }
+  }
+
+  # VM Cloud-Init Settings
+  os_type = "cloud-init"
+
+  # (Optional) IP Address and Gateway
+  ipconfig0 = "ip=${each.value.ip}/24,gw=192.168.178.1,ip6=dhcp"
+
+  # (Optional) DNS Servers
+  nameserver = "192.168.178.3"
+
+  # (Optional) Default User
+  ciuser = "soniiit"
+
+  # (Optional) Add your Public SSH KEY
+  sshkeys = var.ci_ssh_public_key
+}

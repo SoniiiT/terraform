@@ -1,14 +1,8 @@
-# Domain Controller
-resource "dns_a_record_set" "dc_srv_01" {
-    zone = "home.soniiit.net."
-    name = "dc-srv-01"
-    addresses = [ "192.168.178.90" ]
-    ttl = 3600
-}
+resource "dns_a_record_set" "windows" {
+  for_each = var.windows_records
 
-resource "dns_a_record_set" "dc_srv_02" {
-    zone = "home.soniiit.net."
-    name = "dc-srv-02"
-    addresses = [ "192.168.178.91" ]
-    ttl = 3600
+  zone      = var.dns_zone
+  name      = each.value.name
+  addresses = each.value.addresses
+  ttl       = coalesce(each.value.ttl, var.dns_ttl)
 }

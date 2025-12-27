@@ -16,32 +16,33 @@ resource "twingate_group" "demo_group" {
   is_authoritative = true
 }
 
-# Wildcard-Route für Demo
-resource "twingate_resource" "wildcard_dns_demo" {
-    name = "Wildcard Demo"
-    address = "*.demo.soniiit.net"
-    remote_network_id = twingate_remote_network.net_demo.id
+resource "twingate_resource" "demo" {
+  for_each = var.demo_resources
 
-    security_policy_id = data.twingate_security_policy.policy_demo.id
+  name              = each.value.name
+  address           = each.value.address
+  alias             = each.value.alias
+  remote_network_id = twingate_remote_network.net_demo.id
 
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "ALLOW_ALL"
-        }
-        udp = {
-            policy = "ALLOW_ALL"
-        }
+  security_policy_id = data.twingate_security_policy.policy_demo.id
+
+  protocols = {
+    allow_icmp = true
+    tcp = {
+      policy = each.value.tcp_policy
+      ports  = each.value.ports
     }
-
-    dynamic "access_group" {
-        for_each = [twingate_group.demo_group.id]
-        content {
-            group_id = access_group.value
-            security_policy_id = data.twingate_security_policy.policy_demo.id
-            usage_based_autolock_duration_days = 30
-        }
+    udp = {
+      policy = each.value.udp_policy
+      ports  = each.value.udp_ports
     }
+  }
 
-    is_active = true
+  access_group {
+    group_id                           = twingate_group.demo_group.id
+    security_policy_id                 = data.twingate_security_policy.policy_demo.id
+    usage_based_autolock_duration_days = 30
+  }
+
+  is_active = true
 }

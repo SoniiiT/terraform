@@ -19,20 +19,21 @@ jobs:
   validate:
     name: Validate Twingate Terraform
     runs-on: ubuntu-latest
-    container:
-      image: hashicorp/terraform:1.14.3
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
       
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.14.3
+
       - name: Validate
         working-directory: twingate
         env:
-          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
-          TF_VAR_tg_api_token: ${{ secrets.TG_API_TOKEN }}
+          TF_TOKEN_app_terraform_io: ${{ secrets.TERRAFORM_API_TOKEN }}
+          TF_VAR_tg_api_token: ${{ secrets.TWINGATE_API_TOKEN }}
         run: |
           terraform init
           terraform validate
@@ -41,20 +42,21 @@ jobs:
     name: Plan Twingate Terraform
     needs: validate
     runs-on: ubuntu-latest
-    container:
-      image: hashicorp/terraform:1.6.2
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
       
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.14.3
+
       - name: Plan
         working-directory: twingate
         env:
-          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
-          TF_VAR_tg_api_token: ${{ secrets.TG_API_TOKEN }}
+          TF_TOKEN_app_terraform_io: ${{ secrets.TERRAFORM_API_TOKEN }}
+          TF_VAR_tg_api_token: ${{ secrets.TWINGATE_API_TOKEN }}
         run: |
           terraform init
           terraform providers lock
@@ -71,16 +73,17 @@ jobs:
     name: Apply Twingate Terraform
     needs: plan
     runs-on: ubuntu-latest
-    container:
-      image: hashicorp/terraform:1.6.2
     if: github.ref == 'refs/heads/main'
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
       
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.14.3
+
       - name: Download Plan Artifact
         uses: actions/download-artifact@v4
         with:
@@ -90,8 +93,8 @@ jobs:
       - name: Apply
         working-directory: twingate
         env:
-          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
-          TF_VAR_tg_api_token: ${{ secrets.TG_API_TOKEN }}
+          TF_TOKEN_app_terraform_io: ${{ secrets.TERRAFORM_API_TOKEN }}
+          TF_VAR_tg_api_token: ${{ secrets.TWINGATE_API_TOKEN }}
         run: |
           terraform init
           terraform apply -auto-approve tfplan 

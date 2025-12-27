@@ -16,89 +16,33 @@ resource "twingate_group" "app_group" {
   is_authoritative = true
 }
 
-# APP-SRV-01
-resource "twingate_resource" "app_srv_01" {
-    name = "app-srv-01"
-    address = "192.168.178.80"
-    alias = "app-srv-01.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_app.id
+resource "twingate_resource" "app" {
+  for_each = var.app_resources
 
-    security_policy_id = data.twingate_security_policy.policy_app.id
+  name              = each.value.name
+  address           = each.value.address
+  alias             = each.value.alias
+  remote_network_id = twingate_remote_network.net_app.id
 
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
+  security_policy_id = data.twingate_security_policy.policy_app.id
+
+  protocols = {
+    allow_icmp = true
+    tcp = {
+      policy = each.value.tcp_policy
+      ports  = each.value.ports
     }
-
-    access_group {
-        group_id = twingate_group.app_group.id
-        security_policy_id = data.twingate_security_policy.policy_app.id
-        usage_based_autolock_duration_days = 30
+    udp = {
+      policy = each.value.udp_policy
+      ports  = each.value.udp_ports
     }
+  }
 
-    is_active = true
-}
+  access_group {
+    group_id                           = twingate_group.app_group.id
+    security_policy_id                 = data.twingate_security_policy.policy_app.id
+    usage_based_autolock_duration_days = 30
+  }
 
-# APP-SRV-02
-resource "twingate_resource" "app_srv_02" {
-    name = "app-srv-02"
-    address = "192.168.178.81"
-    alias = "app-srv-02.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_app.id
-
-    security_policy_id = data.twingate_security_policy.policy_app.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    access_group {
-        group_id = twingate_group.app_group.id
-        security_policy_id = data.twingate_security_policy.policy_app.id
-        usage_based_autolock_duration_days = 30
-    }
-
-    is_active = true
-}
-
-# APP-SRV-03
-resource "twingate_resource" "app_srv_03" {
-    name = "app-srv-03"
-    address = "192.168.178.82"
-    alias = "app-srv-03.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_app.id
-
-    security_policy_id = data.twingate_security_policy.policy_app.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    access_group {
-        group_id = twingate_group.app_group.id
-        security_policy_id = data.twingate_security_policy.policy_app.id
-        usage_based_autolock_duration_days = 30
-    }
-
-    is_active = true
+  is_active = true
 }

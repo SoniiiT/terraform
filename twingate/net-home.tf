@@ -16,148 +16,33 @@ resource "twingate_group" "home_group" {
   is_authoritative = true
 }
 
-# Wildcard-Route für Home
-resource "twingate_resource" "wildcard_dns_home" {
-    name = "Wildcard Home"
-    address = "*.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_home.id
+resource "twingate_resource" "home" {
+  for_each = var.home_resources
 
-    security_policy_id = data.twingate_security_policy.policy_home.id
+  name              = each.value.name
+  address           = each.value.address
+  alias             = each.value.alias
+  remote_network_id = twingate_remote_network.net_home.id
 
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "ALLOW_ALL"
-        }
-        udp = {
-            policy = "ALLOW_ALL"
-        }
+  security_policy_id = data.twingate_security_policy.policy_home.id
+
+  protocols = {
+    allow_icmp = true
+    tcp = {
+      policy = each.value.tcp_policy
+      ports  = each.value.ports
     }
-
-    dynamic "access_group" {
-        for_each = [twingate_group.home_group.id]
-        content {
-            group_id = access_group.value
-            security_policy_id = data.twingate_security_policy.policy_home.id
-            usage_based_autolock_duration_days = 30
-        }
+    udp = {
+      policy = each.value.udp_policy
+      ports  = each.value.udp_ports
     }
+  }
 
-    is_active = true
-}
+  access_group {
+    group_id                           = twingate_group.home_group.id
+    security_policy_id                 = data.twingate_security_policy.policy_home.id
+    usage_based_autolock_duration_days = 30
+  }
 
-# PVE-SRV-01
-resource "twingate_resource" "pve_srv_01" {
-    name = "pve-srv-01"
-    address = "192.168.178.6"
-    alias = "pve-srv-01.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_home.id
-
-    security_policy_id = data.twingate_security_policy.policy_home.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22", "8006"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    access_group {
-        group_id = twingate_group.home_group.id
-        security_policy_id = data.twingate_security_policy.policy_home.id
-        usage_based_autolock_duration_days = 30
-    }
-
-    is_active = true
-}
-
-# PBS-BAK-01
-resource "twingate_resource" "pbs_bak_01" {
-    name = "pbs-bak-01"
-    address = "192.168.178.5"
-    alias = "pbs-bak-01.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_home.id
-
-    security_policy_id = data.twingate_security_policy.policy_home.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22", "8007"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    access_group {
-        group_id = twingate_group.home_group.id
-        security_policy_id = data.twingate_security_policy.policy_home.id
-        usage_based_autolock_duration_days = 30
-    }
-
-    is_active = true
-}
-
-# jellyfin-home-01
-resource "twingate_resource" "jellyfin_home_01" {
-    name = "jellyfin-home-01"
-    address = "192.168.178.7"
-    alias = "jellyfin-home-01.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_home.id
-
-    security_policy_id = data.twingate_security_policy.policy_home.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    access_group {
-        group_id = twingate_group.home_group.id
-        security_policy_id = data.twingate_security_policy.policy_home.id
-        usage_based_autolock_duration_days = 30
-    }
-
-    is_active = true
-}
-
-# Pi-Adguard
-resource "twingate_resource" "pi_adguard" {
-    name = "pi-adguard"
-    address = "192.168.178.7"
-    alias = "pi-adguard.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_home.id
-
-    security_policy_id = data.twingate_security_policy.policy_home.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    access_group {
-        group_id = twingate_group.home_group.id
-        security_policy_id = data.twingate_security_policy.policy_home.id
-        usage_based_autolock_duration_days = 30
-    }
-
-    is_active = true
+  is_active = true
 }
