@@ -30,7 +30,7 @@ resource "twingate_resource" "docker" {
     allow_icmp = true
     tcp = {
       policy = each.value.tcp_policy
-      ports  = each.value.ports
+      ports  = each.value.tcp_policy == "ALLOW_ALL" ? null : each.value.ports
     }
     udp = {
       policy = each.value.udp_policy
