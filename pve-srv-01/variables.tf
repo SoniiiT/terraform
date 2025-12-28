@@ -2,7 +2,7 @@ variable "docker_vms" {
   description = "Map of Docker VMs to create"
   type = map(object({
     vmid           = number
-    desc           = optional(string, "")
+    description    = optional(string, "")
     tags           = optional(string, "docker")
     cores          = optional(number, 1)
     memory         = optional(number, 4096)
@@ -15,9 +15,9 @@ variable "docker_vms" {
 variable "app_vms" {
   description = "Map of Application VMs to create"
   type = map(object({
-    vmid      = number
-    desc      = optional(string, "")
-    tags      = optional(string, "application")
+    vmid        = number
+    description = optional(string, "")
+    tags        = optional(string, "application")
     cores     = optional(number, 1)
     memory    = optional(number, 4096)
     ip        = string
@@ -63,7 +63,7 @@ variable "k3s_vms" {
   description = "Map of K3s VMs to create"
   type = map(object({
     vmid           = number
-    desc           = optional(string, "")
+    description    = optional(string, "")
     tags           = optional(string, "kubernetes")
     cores          = optional(number, 1)
     memory         = optional(number, 4096)

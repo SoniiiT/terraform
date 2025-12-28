@@ -1,7 +1,7 @@
 app_vms = {
   "app-srv-01" = {
     vmid      = 200
-    desc      = "HashiCorp Vault Server"
+    description = "HashiCorp Vault Server"
     tags      = "ubuntu;application"
     cores     = 2
     memory    = 8192
@@ -10,7 +10,7 @@ app_vms = {
   }
   "app-srv-02" = {
     vmid      = 201
-    desc      = "VSCode Remote Development Server"
+    description = "VSCode Remote Development Server"
     tags      = "ubuntu;application"
     cores     = 4
     memory    = 32768
@@ -19,7 +19,7 @@ app_vms = {
   }
   "app-srv-03" = {
     vmid      = 202
-    desc      = "Minecraft Bot"
+    description = "Minecraft Bot"
     tags      = "ubuntu;application"
     cores     = 2
     memory    = 8192

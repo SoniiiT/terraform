@@ -1,7 +1,7 @@
 docker_vms = {
   "docker-srv-01" = {
     vmid           = 500
-    desc           = "Docker Server 01 only for Twingate Connector"
+    description    = "Docker Server 01 only for Twingate Connector"
     tags           = "ubuntu;docker"
     cores          = 2
     memory         = 16384
@@ -11,7 +11,7 @@ docker_vms = {
   }
   "docker-srv-02" = {
     vmid           = 501
-    desc           = "Docker Server 02"
+    description    = "Docker Server 02"
     tags           = "ubuntu;docker"
     cores          = 1
     memory         = 16384
@@ -21,7 +21,7 @@ docker_vms = {
   }
   "docker-srv-03" = {
     vmid           = 502
-    desc           = "Docker Server 03"
+    description    = "Docker Server 03"
     tags           = "ubuntu;docker"
     cores          = 1
     memory         = 8192

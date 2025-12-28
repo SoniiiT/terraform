@@ -6,7 +6,7 @@ resource "proxmox_vm_qemu" "k3s_srv" {
   vmid                      = each.value.vmid
   name                      = each.key
   tags                      = each.value.tags
-  desc                      = each.value.desc
+  description               = each.value.description
   automatic_reboot          = true
   automatic_reboot_severity = "warning"
 
