@@ -28,8 +28,10 @@ resource "proxmox_vm_qemu" "k3s_srv" {
   agent = 1
 
   # VM cpu_type Settings
-  cores    = each.value.cores
-  sockets  = 1
+  cpu {
+    cores   = each.value.cores
+    sockets = each.value.sockets
+  }
   cpu_type = "host"
 
   # VM Memory Settings

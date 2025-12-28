@@ -5,6 +5,7 @@ variable "docker_vms" {
     description    = optional(string, "")
     tags           = optional(string, "docker")
     cores          = optional(number, 1)
+    sockets        = optional(number, 1)
     memory         = optional(number, 4096)
     ip             = string
     os_disk_size   = optional(string, "32G")
@@ -18,8 +19,9 @@ variable "app_vms" {
     vmid        = number
     description = optional(string, "")
     tags        = optional(string, "application")
-    cores     = optional(number, 1)
-    memory    = optional(number, 4096)
+    cores       = optional(number, 1)
+    sockets     = optional(number, 1)
+    memory      = optional(number, 4096)
     ip        = string
     disk_size = optional(string, "32G")
   }))
@@ -66,6 +68,7 @@ variable "k3s_vms" {
     description    = optional(string, "")
     tags           = optional(string, "kubernetes")
     cores          = optional(number, 1)
+    sockets        = optional(number, 1)
     memory         = optional(number, 4096)
     ip             = string
     os_disk_size   = optional(string, "32G")
