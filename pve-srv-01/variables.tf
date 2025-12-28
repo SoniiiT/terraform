@@ -75,3 +75,51 @@ variable "k3s_vms" {
     data_disk_size = optional(string, null)
   }))
 }
+
+variable "demo_vms" {
+  description = "Map of Demo VMs to create"
+  type = map(object({
+    vmid           = number
+    description    = optional(string, "")
+    tags           = optional(string, "demo")
+    cores          = optional(number, 1)
+    sockets        = optional(number, 1)
+    memory         = optional(number, 4096)
+    ip             = string
+    os_disk_size   = optional(string, "32G")
+    data_disk_size = optional(string, null)
+  }))
+  default = {}
+}
+
+variable "dev_vms" {
+  description = "Map of Development VMs to create"
+  type = map(object({
+    vmid           = number
+    description    = optional(string, "")
+    tags           = optional(string, "development")
+    cores          = optional(number, 1)
+    sockets        = optional(number, 1)
+    memory         = optional(number, 4096)
+    ip             = string
+    os_disk_size   = optional(string, "32G")
+    data_disk_size = optional(string, null)
+  }))
+  default = {}
+}
+
+variable "windows_vms" {
+  description = "Map of Windows VMs to create"
+  type = map(object({
+    vmid           = number
+    description    = optional(string, "")
+    tags           = optional(string, "windows")
+    cores          = optional(number, 2)
+    sockets        = optional(number, 1)
+    memory         = optional(number, 4096)
+    ip             = optional(string, "dhcp")
+    os_disk_size   = optional(string, "32G")
+    data_disk_size = optional(string, null)
+  }))
+  default = {}
+}

@@ -1,3 +1,4 @@
+#VMID: 600 - 699
 k3s_vms = {
   # "k3s-soniiit-prod1-server01" = {
   #   vmid           = 600

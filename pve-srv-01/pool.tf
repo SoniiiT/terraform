@@ -3,19 +3,9 @@ resource "proxmox_pool" "application" {
   comment = "Application pool"
 }
 
-resource "proxmox_pool" "backup" {
-  poolid  = "Backup" 
-  comment = "Backup pool"
-}
-
 resource "proxmox_pool" "demo" {
   poolid  = "Demo" 
   comment = "Demo pool"
-}
-
-resource "proxmox_pool" "desktop" {
-  poolid  = "Desktop" 
-  comment = "Desktop pool"
 }
 
 resource "proxmox_pool" "development" {
@@ -36,11 +26,6 @@ resource "proxmox_pool" "runners" {
 resource "proxmox_pool" "home" {
   poolid  = "Home" 
   comment = "Home pool"
-}
-
-resource "proxmox_pool" "k3s_soniiit_prod_01" {
-  poolid  = "K3s-SoniiiT-Prod-01" 
-  comment = "K3s-SoniiiT-Prod-01 pool"
 }
 
 resource "proxmox_pool" "lxc" {

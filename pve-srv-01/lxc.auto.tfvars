@@ -1,3 +1,4 @@
+#VMID: 100 - 199
 lxc_containers = {
   "lxc-bind9" = {
     vmid   = 121

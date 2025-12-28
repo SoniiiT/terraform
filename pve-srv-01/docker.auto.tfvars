@@ -1,3 +1,4 @@
+#VMID: 500 - 599
 docker_vms = {
   "docker-srv-01" = {
     vmid           = 500
