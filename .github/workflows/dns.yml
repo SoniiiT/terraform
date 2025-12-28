@@ -24,7 +24,7 @@ jobs:
       contents: write
     steps:
       - name: Fix Permissions
-        run: sudo chown -R $USER:$USER .
+        run: docker run --rm -v ${{ github.workspace }}:/work -w /work alpine chown -R $(id -u):$(id -g) .
       - uses: actions/checkout@v4
       
       - name: Setup Terraform
@@ -49,7 +49,7 @@ jobs:
       contents: write
     steps:
       - name: Fix Permissions
-        run: sudo chown -R $USER:$USER .
+        run: docker run --rm -v ${{ github.workspace }}:/work -w /work alpine chown -R $(id -u):$(id -g) .
       - uses: actions/checkout@v4
       
       - name: Setup Terraform
@@ -83,7 +83,7 @@ jobs:
       contents: write
     steps:
       - name: Fix Permissions
-        run: sudo chown -R $USER:$USER .
+        run: docker run --rm -v ${{ github.workspace }}:/work -w /work alpine chown -R $(id -u):$(id -g) .
       - uses: actions/checkout@v4
       
       - name: Setup Terraform
