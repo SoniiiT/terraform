@@ -37,7 +37,7 @@ jobs:
         working-directory: dns
         env:
           TF_TOKEN_app_terraform_io: ${{ secrets.TERRAFORM_API_TOKEN }}
-          TF_VAR_tsig_key: ${{ secrets.BIND9_TSIG_SECRET }}
+          TF_VAR_tsig_key: ${{ secrets.BIND9_TSIG_KEY }}
         run: |
           terraform init
           terraform validate
@@ -63,7 +63,7 @@ jobs:
         working-directory: dns
         env:
           TF_TOKEN_app_terraform_io: ${{ secrets.TERRAFORM_API_TOKEN }}
-          TF_VAR_tsig_key: ${{ secrets.BIND9_TSIG_SECRET }}
+          TF_VAR_tsig_key: ${{ secrets.BIND9_TSIG_KEY }}
         run: |
           terraform init
           terraform providers lock
@@ -104,7 +104,7 @@ jobs:
         working-directory: dns
         env:
           TF_TOKEN_app_terraform_io: ${{ secrets.TERRAFORM_API_TOKEN }}
-          TF_VAR_tsig_key: ${{ secrets.BIND9_TSIG_SECRET }}
+          TF_VAR_tsig_key: ${{ secrets.BIND9_TSIG_KEY }}
         run: |
           terraform init
           terraform apply -auto-approve tfplan 
