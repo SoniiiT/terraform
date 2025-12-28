@@ -54,10 +54,13 @@ variable "lxc_password" {
 variable "lxc_containers" {
   description = "Map of LXC containers to create"
   type = map(object({
-    vmid   = number
-    cores  = optional(number, 1)
-    memory = optional(number, 4096)
-    ip     = string
+    vmid                 = number
+    cores                = optional(number, 1)
+    memory               = optional(number, 4096)
+    ip                   = string
+    os_disk_size         = optional(string, "32G")
+    data_disk_size       = optional(string, null)
+    data_disk_mountpoint = optional(string, "/mnt/data")
   }))
 }
 

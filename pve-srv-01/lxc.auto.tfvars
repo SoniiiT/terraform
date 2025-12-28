@@ -10,17 +10,21 @@ lxc_containers = {
     vmid   = 101
     cores  = 4
     memory = 8192
+    data_disk_size = "128G"
+    data_disk_mountpoint = "/mnt/docker"
     ip     = "192.168.178.42"
   }
   "lxc-paperless-ngx" = {
     vmid   = 102
     cores  = 1
     memory = 4096
+    data_disk_size = "64G"
+    data_disk_mountpoint = "/mnt/docker"
     ip     = "192.168.178.43"
   }
   "lxc-remotely" = {
     vmid   = 103
-    cores  = 2
+    cores  = 1
     memory = 8192
     ip     = "192.168.178.46"
   }

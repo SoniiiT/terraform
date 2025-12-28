@@ -17,7 +17,18 @@ resource "proxmox_lxc" "lxc_container" {
   // Terraform will crash without rootfs defined
   rootfs {
     storage = "M2-Storage"
-    size    = "32G"
+    size    = each.value.os_disk_size
+  }
+
+  dynamic "mountpoint" {
+    for_each = each.value.data_disk_size != null ? [1] : []
+    content {
+      key     = "mp0"
+      slot    = 0
+      storage = "HDD-Storage"
+      mp      = each.value.data_disk_mountpoint
+      size    = each.value.data_disk_size
+    }
   }
 
   network {
