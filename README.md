@@ -7,7 +7,7 @@ Dieses Repository enthält Konfigurationen für die Verwaltung von Cloud-Infrast
 Die VM-IDs sind nach folgendem Schema strukturiert:
 
 - LXC-Container: 100-199
-- Persistent-LXC-Container: 200 - 299
+- Persistent-LXC-Container: 200-299
 - Application-Server: 300-399
 - Demo-Server: 400-449
 - Development: 450-499

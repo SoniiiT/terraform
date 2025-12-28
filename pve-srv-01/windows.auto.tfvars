@@ -1,3 +1,4 @@
+#VMID: 700-799
 windows_vms = {
   # "dc-srv-01" = {
   #   vmid           = 700
