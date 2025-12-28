@@ -39,6 +39,7 @@ resource "proxmox_vm_qemu" "windows_srv" {
 
   # VM Network Settings
   network {
+    id     = 0
     bridge = "vmbr0"
     model  = "virtio"
   }
