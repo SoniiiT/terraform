@@ -14,7 +14,7 @@ resource "proxmox_vm_qemu" "k3s_srv" {
   pool = "K3s-SoniiiT-Prod-01"
 
   # VM Advanced General Settings
-  onboot   = true
+  start_at_node_boot   = true
   boot     = "order=virtio0;net0"
   bootdisk = "virtio"
   scsihw   = "virtio-scsi-pci"

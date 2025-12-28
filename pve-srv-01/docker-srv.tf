@@ -14,7 +14,7 @@ resource "proxmox_vm_qemu" "docker_srv" {
   pool = "Docker"
 
   # VM Advanced General Settings
-  onboot   = true
+  start_at_node_boot   = true
   boot     = "order=virtio0;net0"
   bootdisk = "virtio"
   scsihw   = "virtio-scsi-pci"

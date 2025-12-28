@@ -13,7 +13,7 @@
 #     pool = "Windows"
 
 #     # VM Advanced General Settings
-#     onboot = true
+#     start_at_node_boot = true
 #     boot = "order=scsi0"
 #     bootdisk = "virtio"
 #     scsihw = "virtio-scsi-pci"
@@ -80,7 +80,7 @@
 #     pool = "Windows"
 
 #     # VM Advanced General Settings
-#     onboot = true
+#     start_at_node_boot = true
 #     boot = "order=scsi0"
 #     bootdisk = "virtio"
 #     scsihw = "virtio-scsi-pci"

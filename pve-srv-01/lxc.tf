@@ -31,5 +31,5 @@ resource "proxmox_lxc" "lxc_container" {
     nesting = true
   }
 
-  onboot = true
+  start_at_node_boot = true
 }
