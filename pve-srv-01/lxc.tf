@@ -6,6 +6,7 @@ resource "proxmox_lxc" "lxc_container" {
   vmid         = each.value.vmid
   ostemplate   = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
   password     = var.lxc_password
+  ssh_public_keys = var.ci_ssh_public_key
   ostype       = "ubuntu"
   unprivileged = true
   cores        = each.value.cores
