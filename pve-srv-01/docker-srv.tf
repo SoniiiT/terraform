@@ -31,8 +31,8 @@ resource "proxmox_vm_qemu" "docker_srv" {
   cpu {
     cores   = each.value.cores
     sockets = each.value.sockets
+    type    = "host"
   }
-  cpu_type = "host"
 
   # VM Memory Settings
   memory = each.value.memory
