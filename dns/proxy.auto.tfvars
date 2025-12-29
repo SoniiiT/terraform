@@ -31,6 +31,10 @@ proxy_records = {
     addresses = ["192.168.178.30"]
   }
   # --- Services ---
+  "traefik" = {
+    name      = "traefik"
+    addresses = ["192.168.178.30"]
+  }
   "homepage" = {
     name      = "homepage"
     addresses = ["192.168.178.30"]
