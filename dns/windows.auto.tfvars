@@ -1,3 +1,4 @@
+# Generated Windows DNS records
 windows_records = {
   "dc-srv-01" = {
     name      = "dc-srv-01"

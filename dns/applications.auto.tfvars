@@ -1,3 +1,4 @@
+# Generated application DNS records
 app_records = {
   "app-srv-01" = {
     name      = "app-srv-01"
@@ -6,9 +7,5 @@ app_records = {
   "app-srv-02" = {
     name      = "app-srv-02"
     addresses = ["192.168.178.81"]
-  }
-  "app-srv-03" = {
-    name      = "app-srv-03"
-    addresses = ["192.168.178.82"]
   }
 }

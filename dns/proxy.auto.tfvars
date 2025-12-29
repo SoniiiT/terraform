@@ -1,30 +1,78 @@
+# Generated proxy DNS records
 proxy_records = {
+  # --- Home ---
   "proxmox" = {
     name      = "proxmox"
-    addresses = ["192.168.178.32"]
-  }
-  "sw-01" = {
-    name      = "sw-01"
-    addresses = ["192.168.178.32"]
+    addresses = ["192.168.178.30"]
   }
   "truenas" = {
     name      = "truenas"
-    addresses = ["192.168.178.32"]
+    addresses = ["192.168.178.30"]
   }
+  # --- Media-Stack ---
   "jellyfin" = {
     name      = "jellyfin"
-    addresses = ["192.168.178.32"]
+    addresses = ["192.168.178.30"]
   }
   "jellyfin-vue" = {
     name      = "jellyfin-vue"
-    addresses = ["192.168.178.32"]
+    addresses = ["192.168.178.30"]
   }
   "sonarr" = {
     name      = "sonarr"
-    addresses = ["192.168.178.32"]
+    addresses = ["192.168.178.30"]
   }
   "radarr" = {
     name      = "radarr"
-    addresses = ["192.168.178.32"]
+    addresses = ["192.168.178.30"]
+  }
+  "jellyseerr" = {
+    name      = "jellyseerr"
+    addresses = ["192.168.178.30"]
+  }
+  # --- Services ---
+  "homepage" = {
+    name      = "homepage"
+    addresses = ["192.168.178.30"]
+  }
+  "portainer" = {
+    name      = "portainer"
+    addresses = ["192.168.178.30"]
+  }
+  "semaphore" = {
+    name      = "semaphore"
+    addresses = ["192.168.178.30"]
+  }
+  "dns" = {
+    name      = "dns"
+    addresses = ["192.168.178.30"]
+  }
+  "it" = {
+    name      = "it"
+    addresses = ["192.168.178.30"]
+  }
+  "n8n" = {
+    name      = "n8n"
+    addresses = ["192.168.178.30"]
+  }
+  "wud" = {
+    name      = "wud"
+    addresses = ["192.168.178.30"]
+  }
+  "netbox" = {
+    name      = "netbox"
+    addresses = ["192.168.178.30"]
+  }
+  "unify" = {
+    name      = "unify"
+    addresses = ["192.168.178.30"]
+  }
+  "wgdashboard" = {
+    name      = "wgdashboard"
+    addresses = ["192.168.178.30"]
+  }
+  "filestash" = {
+    name      = "filestash"
+    addresses = ["192.168.178.30"]
   }
 }

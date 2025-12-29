@@ -1,3 +1,4 @@
+# Generated home DNS records
 home_records = {
   "gw-01" = {
     name      = "gw-01"
@@ -22,5 +23,9 @@ home_records = {
   "truenas-nas-01" = {
     name      = "truenas-nas-01"
     addresses = ["192.168.178.9"]
+  }
+  "sw-01" = {
+    name      = "sw-01"
+    addresses = ["192.168.178.30"]
   }
 }
