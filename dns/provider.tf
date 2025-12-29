@@ -22,8 +22,9 @@ variable "tsig_key" {
 provider "dns" {
     update {
         server        = "192.168.178.3"
-        key_name      = "tsig-key"
+        key_name      = "tsig-key."
         key_algorithm = "hmac-sha256"
         key_secret    = var.tsig_key
+        transport     = "tcp"
     }
 }
