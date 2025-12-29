@@ -10,8 +10,6 @@ lxc_containers = {
     vmid   = 101
     cores  = 4
     memory = 8192
-    data_disk_size = "128G"
-    data_disk_mountpoint = "/mnt/docker"
     ip     = "192.168.178.42"
   }
   "lxc-paperless-ngx" = {
