@@ -30,6 +30,10 @@ proxy_records = {
     name      = "jellyseerr"
     addresses = ["192.168.178.30"]
   }
+  "prowlarr" = (
+    name      = "prowlarr"
+    addresses = ["192.168.178.30"]
+  )
   # --- Services ---
   "traefik" = {
     name      = "traefik"
