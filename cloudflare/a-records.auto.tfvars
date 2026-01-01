@@ -11,4 +11,10 @@ a_records = {
     proxied = false
     ttl     = 3600
   }
+  "authentik" = {
+    name    = "sso.soniiit.net"
+    content = "46.224.184.186"
+    proxied = false
+    ttl     = 3600
+  }
 }
