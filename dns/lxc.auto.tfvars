@@ -48,8 +48,8 @@ lxc_records = {
     name      = "lxc-semaphore"
     addresses = ["192.168.178.50"]
   }
-  "lxc-unifi-controller" = {
-    name      = "lxc-unifi-controller"
+  "lxc-omanda" = {
+    name      = "lxc-omanda"
     addresses = ["192.168.178.51"]
   }
 }
