@@ -17,4 +17,10 @@ a_records = {
     proxied = false
     ttl     = 3600
   }
+  "status" = {
+    name    = "status.soniiit.net"
+    content = "46.224.184.186"
+    proxied = false
+    ttl     = 3600
+  }
 }
