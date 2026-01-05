@@ -53,4 +53,13 @@ srv_records = {
     port     = 26006
     target   = "create.soniiit.net"
   }
+  "minecraft_atm10sky_srv" = {
+    name     = "atm10sky"
+    service  = "_minecraft"
+    proto    = "_tcp"
+    priority = 0
+    weight   = 0
+    port     = 26009
+    target   = "atm10sky.soniiit.net"
+  }
 }

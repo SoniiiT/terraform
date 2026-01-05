@@ -11,6 +11,12 @@ a_records = {
     proxied = false
     ttl     = 3600
   }
+  "minecraft_atm10sky_a" = {
+    name    = "atm10sky.soniiit.net"
+    content = "116.203.182.97"
+    proxied = false
+    ttl     = 3600
+  }
   "authentik" = {
     name    = "sso.soniiit.net"
     content = "46.224.184.186"
