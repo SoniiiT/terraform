@@ -14,7 +14,7 @@ resource "proxmox_vm_qemu" "dev_srv" {
   pool = "Development"
 
   # VM Advanced General Settings
-  start_at_node_boot   = true
+  start_at_node_boot   = false
   boot     = "order=virtio0;net0"
   bootdisk = "virtio"
   scsihw   = "virtio-scsi-pci"

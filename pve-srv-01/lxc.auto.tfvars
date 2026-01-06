@@ -8,17 +8,9 @@ lxc_containers = {
   }
   "lxc-harbor" = {
     vmid   = 101
-    cores  = 4
+    cores  = 2
     memory = 8192
     ip     = "192.168.178.42"
-  }
-  "lxc-paperless-ngx" = {
-    vmid   = 102
-    cores  = 1
-    memory = 4096
-    data_disk_size = "64G"
-    data_disk_mountpoint = "/mnt/docker"
-    ip     = "192.168.178.43"
   }
   "lxc-remotely" = {
     vmid   = 103
@@ -37,11 +29,5 @@ lxc_containers = {
     cores  = 1
     memory = 4096
     ip     = "192.168.178.48"
-  }
-  "lxc-twingate-connectors" = {
-    vmid   = 106
-    cores  = 1
-    memory = 6144
-    ip     = "192.168.178.49"
   }
 }
