@@ -48,8 +48,8 @@ lxc_records = {
     name      = "lxc-semaphore"
     addresses = ["192.168.178.50"]
   }
-  "lxc-omanda" = {
-    name      = "lxc-omanda"
+  "lxc-omada" = {
+    name      = "lxc-omada"
     addresses = ["192.168.178.51"]
   }
 }

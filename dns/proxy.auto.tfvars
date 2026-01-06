@@ -71,8 +71,8 @@ proxy_records = {
     name      = "netbox"
     addresses = ["192.168.178.30"]
   }
-  "omanda" = {
-    name      = "omanda"
+  "omada" = {
+    name      = "omada"
     addresses = ["192.168.178.30"]
   }
   "wgdashboard" = {
