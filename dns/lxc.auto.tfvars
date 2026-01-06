@@ -16,10 +16,6 @@ lxc_records = {
     name      = "lxc-harbor"
     addresses = ["192.168.178.42"]
   }
-  "lxc-paperless-ngx" = {
-    name      = "lxc-paperless-ngx"
-    addresses = ["192.168.178.43"]
-  }
   "lxc-cloudflared-01" = {
     name      = "lxc-cloudflared-01"
     addresses = ["192.168.178.44"]
@@ -40,10 +36,6 @@ lxc_records = {
     name      = "lxc-teleport-proxy"
     addresses = ["192.168.178.48"]
   }
-  "lxc-twingate-connectors" = {
-    name      = "lxc-twingate-connectors"
-    addresses = ["192.168.178.49"]
-  }
   "lxc-semaphore" = {
     name      = "lxc-semaphore"
     addresses = ["192.168.178.50"]
@@ -51,5 +43,13 @@ lxc_records = {
   "lxc-omada" = {
     name      = "lxc-omada"
     addresses = ["192.168.178.51"]
+  }
+  "lxc-scanopy" = {
+    name      = "lxc-scanopy"
+    addresses = ["192.168.178.52"]
+  }
+  "lxc-scanopy-daemon" = {
+    name      = "lxc-scanopy-daemon"
+    addresses = ["192.168.178.53"]
   }
 }

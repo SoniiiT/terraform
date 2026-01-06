@@ -5,10 +5,6 @@ proxy_records = {
     name      = "proxmox"
     addresses = ["192.168.178.30"]
   }
-  "truenas" = {
-    name      = "truenas"
-    addresses = ["192.168.178.30"]
-  }
   # --- Media-Stack ---
   "jellyfin" = {
     name      = "jellyfin"
@@ -65,10 +61,6 @@ proxy_records = {
   }
   "wud" = {
     name      = "wud"
-    addresses = ["192.168.178.30"]
-  }
-  "netbox" = {
-    name      = "netbox"
     addresses = ["192.168.178.30"]
   }
   "omada" = {

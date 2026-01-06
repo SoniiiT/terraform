@@ -16,6 +16,12 @@ variable "demo_dns_zone" {
   default     = "demo.soniiit.net."
 }
 
+variable "reverse_dns_zone" {
+  description = "Reverse DNS zone (192.168.178.0/24)"
+  type        = string
+  default     = "178.168.192.in-addr.arpa."
+}
+
 variable "dns_ttl" {
   description = "Default TTL for DNS records"
   type        = number
@@ -108,6 +114,16 @@ variable "demo_records" {
     name      = string
     addresses = list(string)
     ttl       = optional(number)
+  }))
+  default = {}
+}
+
+variable "ptr_records" {
+  description = "Map of PTR records"
+  type = map(object({
+    name = string
+    ptr  = string
+    ttl  = optional(number)
   }))
   default = {}
 }
