@@ -88,8 +88,8 @@ proxy_records = {
     name      = "dokploy"
     addresses = ["192.168.178.30"]
   }
-  "colify" = {
-    name      = "colify"
+  "coolify" = {
+    name      = "coolify"
     addresses = ["192.168.178.30"]
   }
 }
