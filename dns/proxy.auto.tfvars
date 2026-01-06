@@ -92,4 +92,8 @@ proxy_records = {
     name      = "coolify"
     addresses = ["192.168.178.30"]
   }
+  "network" = {
+    name      = "network"
+    addresses = ["192.168.178.30"]
+  }
 }
