@@ -83,4 +83,13 @@ proxy_records = {
     name      = "filestash"
     addresses = ["192.168.178.30"]
   }
+  # --- Development ---
+  "dokploy" = {
+    name      = "dokploy"
+    addresses = ["192.168.178.30"]
+  }
+  "colify" = {
+    name      = "colify"
+    addresses = ["192.168.178.30"]
+  }
 }
