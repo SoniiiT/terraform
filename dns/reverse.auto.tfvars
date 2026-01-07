@@ -68,10 +68,6 @@ ptr_records = {
     name = "52"
     ptr  = "lxc-scanopy.home.soniiit.net."
   }
-  "lxc-scanopy-daemon" = {
-    name = "53"
-    ptr  = "lxc-scanopy-daemon.home.soniiit.net."
-  }
   "dev-srv-01" = {
     name = "60"
     ptr  = "dev-srv-01.dev.soniiit.net."

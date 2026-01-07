@@ -48,8 +48,4 @@ lxc_records = {
     name      = "lxc-scanopy"
     addresses = ["192.168.178.52"]
   }
-  "lxc-scanopy-daemon" = {
-    name      = "lxc-scanopy-daemon"
-    addresses = ["192.168.178.53"]
-  }
 }
