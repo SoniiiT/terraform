@@ -29,4 +29,16 @@ a_records = {
     proxied = false
     ttl     = 3600
   }
+  "teleport" = {
+    name    = "teleport.soniiit.net"
+    content = "46.224.192.134"
+    proxied = false
+    ttl     = 3600
+  }
+  "wildcard_teleport" = {
+    name    = "*.teleport.soniiit.net"
+    content = "46.224.192.134"
+    proxied = false
+    ttl     = 3600
+  }
 }
