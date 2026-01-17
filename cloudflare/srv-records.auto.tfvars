@@ -26,4 +26,13 @@ srv_records = {
     port     = 26007
     target   = "hsmc.soniiit.net"
   }
+  "minecraft_hytale_srv" = {
+    name     = "hytale"
+    service  = "_minecraft"
+    proto    = "_tcp"
+    priority = 0
+    weight   = 0
+    port     = 26010
+    target   = "hytale.soniiit.net"
+  }
 }
