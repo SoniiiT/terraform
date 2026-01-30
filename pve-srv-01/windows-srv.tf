@@ -5,7 +5,6 @@ resource "proxmox_vm_qemu" "windows_srv" {
   target_node               = "pve-srv-01"
   vmid                      = each.value.vmid
   name                      = each.key
-  tags                      = each.value.tags
   description               = each.value.description
   automatic_reboot          = true
   automatic_reboot_severity = "warning"

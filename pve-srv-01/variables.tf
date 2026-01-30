@@ -116,7 +116,6 @@ variable "windows_vms" {
   type = map(object({
     vmid           = number
     description    = optional(string, "")
-    tags           = optional(string, "windows")
     cores          = optional(number, 2)
     sockets        = optional(number, 1)
     memory         = optional(number, 4096)
