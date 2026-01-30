@@ -122,6 +122,7 @@ variable "windows_vms" {
     ip             = optional(string, "dhcp")
     os_disk_size   = optional(string, "32G")
     data_disk_size = optional(string, null)
+    os             = string
   }))
   default = {}
 }

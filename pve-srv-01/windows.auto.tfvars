@@ -8,5 +8,6 @@ windows_vms = {
     memory         = 4096
     ip             = "192.168.178.80"
     os_disk_size   = "32G"
+    os             = "windows-server-2025-standard"
   }
 }

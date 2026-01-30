@@ -20,7 +20,7 @@ resource "proxmox_vm_qemu" "windows_srv" {
 
   # VM OS Settings
   full_clone = true
-  clone      = "windows-server-2k22"
+  clone      = each.value.os
   bios       = "ovmf"
 
   # VM System Settings
