@@ -1,2 +1,12 @@
 # VMID: 300-399
-app_vms = {}
+app_vms = {
+  "ai-srv-01" = {
+    vmid        = 300
+    description = "AI Application Server 01 - CLI Tools (Claude, Copilot, etc.)"
+    cores       = 4
+    sockets     = 1
+    memory      = 32768
+    ip          = "192.168.178.90"
+    disk_size   = "128G"
+  }
+}

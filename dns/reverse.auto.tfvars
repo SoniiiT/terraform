@@ -88,4 +88,8 @@ ptr_records = {
     name = "98"
     ptr  = "jellyfin-home-01.home.soniiit.net."
   }
+  "ai-srv-01" = {
+    name = "90"
+    ptr  = "ai-srv-01.home.soniiit.net."
+  }
 }
