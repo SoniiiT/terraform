@@ -21,6 +21,7 @@ variable "app_vms" {
     tags        = optional(string, "application")
     cores       = optional(number, 1)
     sockets     = optional(number, 1)
+    cpu_type    = optional(string, "kvm64")
     memory      = optional(number, 4096)
     ip        = string
     disk_size = optional(string, "32G")

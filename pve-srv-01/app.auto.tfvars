@@ -5,6 +5,7 @@ app_vms = {
     description = "AI Application Server 01 - CLI Tools (Claude, Copilot, etc.)"
     cores       = 4
     sockets     = 1
+    cpu_type    = "x86-64-v2-AES"
     memory      = 32768
     ip          = "192.168.178.90"
     disk_size   = "128G"

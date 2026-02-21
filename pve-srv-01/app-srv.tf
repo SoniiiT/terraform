@@ -31,7 +31,7 @@ resource "proxmox_vm_qemu" "app_srv" {
   cpu {
     cores   = each.value.cores
     sockets = each.value.sockets
-    type    = "kvm64"
+    type    = each.value.cpu_type
   }
 
   # VM Memory Settings
