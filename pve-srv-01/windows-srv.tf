@@ -24,7 +24,8 @@ resource "proxmox_vm_qemu" "windows_srv" {
   bios       = "ovmf"
 
   # VM System Settings
-  agent = 1
+  agent                  = 1
+  define_connection_info = false
 
   # VM CPU Settings
   cpu {
