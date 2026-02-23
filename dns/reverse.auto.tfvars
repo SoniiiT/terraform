@@ -92,4 +92,8 @@ ptr_records = {
     name = "90"
     ptr  = "ai-srv-01.home.soniiit.net."
   }
+  "app-srv-01" = {
+    name = "91"
+    ptr  = "app-srv-01.home.soniiit.net."
+  }
 }
