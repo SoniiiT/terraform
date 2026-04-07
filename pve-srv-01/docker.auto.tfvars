@@ -20,16 +20,16 @@ docker_vms = {
     os_disk_size   = "32G"
     data_disk_size = "128G"
   }
-  # "docker-srv-03" = {
-  #   vmid           = 502
-  #   description    = "Docker Server 03"
-  #   tags           = "ubuntu;docker"
-  #   cores          = 1
-  #   memory         = 8192
-  #   ip             = "192.168.178.32"
-  #   os_disk_size   = "32G"
-  #   data_disk_size = "128G"
-  # }
+  "docker-srv-03" = {
+    vmid           = 502
+    description    = "Docker Server 03"
+    tags           = "ubuntu;docker"
+    cores          = 1
+    memory         = 8192
+    ip             = "192.168.178.32"
+    os_disk_size   = "32G"
+    data_disk_size = "128G"
+  }
 }
 
 
