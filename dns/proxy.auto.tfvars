@@ -88,4 +88,9 @@ proxy_records = {
     name      = "network"
     addresses = ["192.168.178.30"]
   }
+  # --- Dokploy ---
+  "ffxiv-gil-tracker" = {
+    name      = "ffxiv-gil-tracker"
+    addresses = ["192.168.178.32"]
+  }
 }
