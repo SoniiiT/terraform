@@ -25,7 +25,8 @@ resource "proxmox_vm_qemu" "docker_srv" {
   bios       = "seabios"
 
   # VM System Settings
-  agent = 1
+  agent                  = 1
+  define_connection_info = false
 
   # VM cpu_type Settings
   cpu {
@@ -77,6 +78,9 @@ resource "proxmox_vm_qemu" "docker_srv" {
 
   # (Optional) IP Address and Gateway
   ipconfig0 = "ip=${each.value.ip}/24,gw=192.168.178.1,ip6=dhcp"
+
+  # Skip IPv6 validation (no IPv6 in this network)
+  skip_ipv6 = true
 
   # (Optional) DNS Servers
   nameserver = "192.168.178.3"
