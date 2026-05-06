@@ -18,12 +18,6 @@ lxc_containers = {
     memory = 8192
     ip     = "192.168.178.46"
   }
-  "lxc-teleport-server" = {
-    vmid   = 104
-    cores  = 2
-    memory = 8192
-    ip     = "192.168.178.47"
-  }
   "lxc-teleport-proxy" = {
     vmid   = 105
     cores  = 1
