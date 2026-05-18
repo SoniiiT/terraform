@@ -5,6 +5,31 @@ proxy_records = {
     name      = "proxmox"
     addresses = ["192.168.178.30"]
   }
+  # --- Books / Games ---
+  "kapowarr" = {
+    name      = "kapowarr"
+    addresses = ["192.168.178.30"]
+  }
+  "calibre-web" = {
+    name      = "calibre-web"
+    addresses = ["192.168.178.30"]
+  }
+  "readarr" = {
+    name      = "readarr"
+    addresses = ["192.168.178.30"]
+  }
+  "kavita" = {
+    name      = "kavita"
+    addresses = ["192.168.178.30"]
+  }
+  "romm" = {
+    name      = "romm"
+    addresses = ["192.168.178.30"]
+  }
+  "questarr" = {
+    name      = "questarr"
+    addresses = ["192.168.178.30"]
+  }
   # --- Media-Stack ---
   "jellyfin" = {
     name      = "jellyfin"
@@ -73,6 +98,15 @@ proxy_records = {
   }
   "filestash" = {
     name      = "filestash"
+    addresses = ["192.168.178.30"]
+  }
+  # --- AI Tools ---
+  "open-design" = {
+    name      = "open-design"
+    addresses = ["192.168.178.30"]
+  }
+  "agentsview" = {
+    name      = "agentsview"
     addresses = ["192.168.178.30"]
   }
   # --- Development ---
