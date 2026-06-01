@@ -101,6 +101,10 @@ proxy_records = {
     addresses = ["192.168.178.30"]
   }
   # --- AI Tools ---
+  "odysseus" = {
+    name      = "odysseus"
+    addresses = ["192.168.178.30"]
+  }
   "open-design" = {
     name      = "open-design"
     addresses = ["192.168.178.30"]
