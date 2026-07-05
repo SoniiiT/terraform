@@ -120,8 +120,8 @@ proxy_records = {
     name      = "cosmos"
     addresses = ["192.168.178.30"]
   }
-  "unbrelos" = {
-    name      = "unbrelos"
+  "umbrelos" = {
+    name      = "umbrelos"
     addresses = ["192.168.178.30"]
   }
   "casaos" = {
