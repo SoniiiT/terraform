@@ -98,6 +98,16 @@ variable "windows_records" {
   default = {}
 }
 
+variable "nas_records" {
+  description = "Map of NAS A records"
+  type = map(object({
+    name      = string
+    addresses = list(string)
+    ttl       = optional(number)
+  }))
+  default = {}
+}
+
 variable "dev_records" {
   description = "Map of Development A records"
   type = map(object({

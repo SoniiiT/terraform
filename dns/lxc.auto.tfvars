@@ -48,4 +48,16 @@ lxc_records = {
     name      = "lxc-scanopy"
     addresses = ["192.168.178.52"]
   }
+  "lxc-pve-helper-scripts" = {
+    name      = "lxc-pve-helper-scripts"
+    addresses = ["192.168.178.52"]
+  }
+  "lxc-adguard" = {
+    name      = "lxc-adguard"
+    addresses = ["192.168.178.52"]
+  }
+  "lxc-cosmos" = {
+    name      = "lxc-cosmos"
+    addresses = ["192.168.178.52"]
+  }
 }

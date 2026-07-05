@@ -10,6 +10,10 @@ proxy_records = {
     name      = "kapowarr"
     addresses = ["192.168.178.30"]
   }
+  "kaizoku" = {
+    name      = "kaizoku"
+    addresses = ["192.168.178.30"]
+  }
   "calibre-web" = {
     name      = "calibre-web"
     addresses = ["192.168.178.30"]
@@ -96,10 +100,43 @@ proxy_records = {
     name      = "wgdashboard"
     addresses = ["192.168.178.30"]
   }
-  "filestash" = {
-    name      = "filestash"
+  "network" = {
+    name      = "network"
     addresses = ["192.168.178.30"]
   }
+  "glance" = {
+    name      = "glance"
+    addresses = ["192.168.178.30"]
+  }
+  "pve-helper" = {
+    name      = "pve-helper"
+    addresses = ["192.168.178.30"]
+  }
+  "adguard" = {
+    name      = "adguard"
+    addresses = ["192.168.178.30"]
+  }
+  "cosmos" = {
+    name      = "cosmos"
+    addresses = ["192.168.178.30"]
+  }
+  "unbrelos" = {
+    name      = "unbrelos"
+    addresses = ["192.168.178.30"]
+  }
+  "casaos" = {
+    name      = "casaos"
+    addresses = ["192.168.178.30"]
+  }
+  "wallos" = {
+    name      = "wallos"
+    addresses = ["192.168.178.30"]
+  }
+  "speedtest" = {
+    name      = "speedtest"
+    addresses = ["192.168.178.30"]
+  }
+
   # --- AI Tools ---
   "odysseus" = {
     name      = "odysseus"
@@ -122,10 +159,7 @@ proxy_records = {
     name      = "coolify"
     addresses = ["192.168.178.30"]
   }
-  "network" = {
-    name      = "network"
-    addresses = ["192.168.178.30"]
-  }
+
   # --- Dokploy ---
   "ffxiv-gil-tracker" = {
     name      = "ffxiv-gil-tracker"
