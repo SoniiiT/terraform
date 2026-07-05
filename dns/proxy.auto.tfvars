@@ -116,10 +116,6 @@ proxy_records = {
     name      = "adguard"
     addresses = ["192.168.178.30"]
   }
-  "cosmos" = {
-    name      = "cosmos"
-    addresses = ["192.168.178.30"]
-  }
   "umbrelos" = {
     name      = "umbrelos"
     addresses = ["192.168.178.30"]
