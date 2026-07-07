@@ -53,4 +53,10 @@ a_records = {
     proxied = false
     ttl     = 3600
   }
+  "rustdesk" = {
+    name    = "rustdesk.soniiit.net"
+    content = "46.224.192.134"
+    proxied = false
+    ttl     = 3600
+  }
 }
