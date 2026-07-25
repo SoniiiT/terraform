@@ -78,6 +78,16 @@ variable "home_records" {
   default = {}
 }
 
+variable "mcp_records" {
+  description = "Map of MCP A records"
+  type = map(object({
+    name      = string
+    addresses = list(string)
+    ttl       = optional(number)
+  }))
+  default = {}
+}
+
 variable "runner_records" {
   description = "Map of GitHub Runner A records"
   type = map(object({
