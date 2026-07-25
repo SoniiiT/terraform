@@ -144,6 +144,16 @@ variable "mcp_records" {
   default = {}
 }
 
+variable "mcp_cname_records" {
+  description = "Map of internal MCP CNAME records"
+  type = map(object({
+    name  = string
+    cname = string
+    ttl   = optional(number)
+  }))
+  default = {}
+}
+
 variable "ptr_records" {
   description = "Map of PTR records"
   type = map(object({
