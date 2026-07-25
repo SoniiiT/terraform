@@ -16,12 +16,6 @@ variable "demo_dns_zone" {
   default     = "demo.soniiit.net."
 }
 
-variable "mcp_dns_zone" {
-  description = "Internal MCP DNS zone"
-  type        = string
-  default     = "mcp.soniiit.net."
-}
-
 variable "reverse_dns_zone" {
   description = "Reverse DNS zone (192.168.178.0/24)"
   type        = string
@@ -130,26 +124,6 @@ variable "demo_records" {
     name      = string
     addresses = list(string)
     ttl       = optional(number)
-  }))
-  default = {}
-}
-
-variable "mcp_records" {
-  description = "Map of internal MCP A records"
-  type = map(object({
-    name      = string
-    addresses = list(string)
-    ttl       = optional(number)
-  }))
-  default = {}
-}
-
-variable "mcp_cname_records" {
-  description = "Map of internal MCP CNAME records"
-  type = map(object({
-    name  = string
-    cname = string
-    ttl   = optional(number)
   }))
   default = {}
 }
