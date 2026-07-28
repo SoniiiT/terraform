@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "project_root": ".",
+  "analysis_mode": "initialized",
+  "analyzed_at": "2026-07-28T11:51:55+02:00",
+  "analyzed_areas": [
+    "infrastructure",
+    "cloudflare",
+    "dns",
+    "proxmox",
+    "twingate",
+    "ci"
+  ],
+  "source_fingerprints": {
+    "cloudflare": {
+      "file_count": 4,
+      "terraform_fingerprint": "7ae28020a4b3431235de06e05390447eeecde950a9176f4d0068bd507104cade"
+    },
+    "dns": {
+      "file_count": 14,
+      "terraform_fingerprint": "f16dee2ef14ac526c6fc5404b29c64a40f540078cfb20de894c040bb93f38915"
+    },
+    "pve-srv-01": {
+      "file_count": 11,
+      "terraform_fingerprint": "8f0d355330fdd2166c6e8d546f1a276b2a68bfa1fed06b43714847a02837e0f8"
+    },
+    "twingate": {
+      "file_count": 14,
+      "terraform_fingerprint": "bc35886a551e3f032eed1ce5d7c3caae76e3c1e259ba825b5fba89023adc82ed"
+    }
+  },
+  "excluded_from_content_index": [
+    ".git",
+    ".terraform",
+    "tfplan",
+    "terraform.tfstate*",
+    "build output",
+    "secret values in auto.tfvars and CI secrets"
+  ],
+  "refresh_status": {
+    "status": "complete",
+    "stale_references": [],
+    "uncertainties": [
+      "Cross-root relationships between DNS, Proxmox, and Twingate are inferred from shared naming and addresses, not explicit module references."
+    ]
+  }
+}

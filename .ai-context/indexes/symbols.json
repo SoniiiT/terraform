@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0",
+  "extraction": "static top-level HCL declarations",
+  "symbols": [
+    {
+      "kind": "terraform-root",
+      "name": "cloudflare",
+      "path": "cloudflare/provider.tf",
+      "details": "Terraform Cloud workspace cloudflare; cloudflare/cloudflare 5.3.0"
+    },
+    {
+      "kind": "terraform-root",
+      "name": "dns",
+      "path": "dns/provider.tf",
+      "details": "Terraform Cloud workspace dns; hashicorp/dns 3.4.1"
+    },
+    {
+      "kind": "terraform-root",
+      "name": "pve-srv-01",
+      "path": "pve-srv-01/provider.tf",
+      "details": "Terraform Cloud workspace pve-srv-01; Telmate/proxmox 3.0.2-rc07"
+    },
+    {
+      "kind": "terraform-root",
+      "name": "twingate",
+      "path": "twingate/provider.tf",
+      "details": "Terraform Cloud workspace twingate; Twingate/twingate 3.0.19"
+    },
+    {
+      "kind": "resource",
+      "name": "cloudflare_dns_record.a_record",
+      "path": "cloudflare/a-record.tf",
+      "details": "for_each var.a_records"
+    },
+    {
+      "kind": "resource",
+      "name": "cloudflare_dns_record.srv_record",
+      "path": "cloudflare/gameserver.tf",
+      "details": "for_each var.srv_records"
+    },
+    {
+      "kind": "resource",
+      "name": "dns_a_record_set.<category>",
+      "path": "dns/*.tf",
+      "details": "A-record categories consume typed maps"
+    },
+    {
+      "kind": "resource",
+      "name": "dns_ptr_record.ptr",
+      "path": "dns/reverse.tf",
+      "details": "Consumes var.ptr_records"
+    },
+    {
+      "kind": "resource",
+      "name": "proxmox_pool.<category>",
+      "path": "pve-srv-01/pool.tf",
+      "details": "Ten named Proxmox pools"
+    },
+    {
+      "kind": "resource",
+      "name": "proxmox_vm_qemu.<family>",
+      "path": "pve-srv-01/*-srv.tf",
+      "details": "Application, demo, development, Docker, K3s, and Windows families"
+    },
+    {
+      "kind": "resource",
+      "name": "proxmox_lxc.lxc_container",
+      "path": "pve-srv-01/lxc.tf",
+      "details": "for_each var.lxc_containers"
+    },
+    {
+      "kind": "output",
+      "name": "<family>_hosts",
+      "path": "pve-srv-01/outputs.tf",
+      "details": "Provider-reported IP maps"
+    },
+    {
+      "kind": "output",
+      "name": "<family>_hosts_config_ips",
+      "path": "pve-srv-01/outputs.tf",
+      "details": "Configured input IP maps"
+    },
+    {
+      "kind": "data",
+      "name": "twingate_users.all",
+      "path": "twingate/users.tf",
+      "details": "User lookup used by all access groups"
+    },
+    {
+      "kind": "resource-topology",
+      "name": "twingate.net-<environment>",
+      "path": "twingate/net-*.tf",
+      "details": "Security policy, remote network, group, and resource per environment"
+    }
+  ]
+}
