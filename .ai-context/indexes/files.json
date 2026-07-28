@@ -1,0 +1,203 @@
+{
+  "schema_version": "1.0",
+  "entries": [
+    {
+      "path": "README.md",
+      "purpose": "Repository overview, VM-ID ranges, Terraform usage, and security guidance",
+      "area": "documentation",
+      "status": "observed"
+    },
+    {
+      "path": ".github/workflows/cloudflare.yml",
+      "purpose": "Cloudflare validate-plan-apply pipeline",
+      "area": "ci",
+      "status": "observed"
+    },
+    {
+      "path": ".github/workflows/dns.yml",
+      "purpose": "DNS validate-plan-apply pipeline",
+      "area": "ci",
+      "status": "observed"
+    },
+    {
+      "path": ".github/workflows/pve-srv-01.yml",
+      "purpose": "Proxmox validate-plan-apply pipeline",
+      "area": "ci",
+      "status": "observed"
+    },
+    {
+      "path": ".github/workflows/twingate.yml",
+      "purpose": "Twingate validate-plan-apply pipeline",
+      "area": "ci",
+      "status": "observed"
+    },
+    {
+      "path": "renovate.json",
+      "purpose": "Renovate recommended configuration",
+      "area": "maintenance",
+      "status": "observed"
+    },
+    {
+      "path": ".gitignore",
+      "purpose": "Repository ignore rules",
+      "area": "repository",
+      "status": "observed"
+    },
+    {
+      "path": "cloudflare/",
+      "purpose": "Cloudflare root module: provider.tf, variables.tf, a-record.tf, gameserver.tf, and auto.tfvars inputs",
+      "area": "cloudflare",
+      "status": "observed"
+    },
+    {
+      "path": "cloudflare/provider.tf",
+      "purpose": "Terraform Cloud workspace and Cloudflare provider",
+      "area": "cloudflare",
+      "status": "observed"
+    },
+    {
+      "path": "cloudflare/variables.tf",
+      "purpose": "Token, zone, A-record, and SRV-record contracts",
+      "area": "cloudflare",
+      "status": "observed"
+    },
+    {
+      "path": "cloudflare/a-record.tf",
+      "purpose": "for_each Cloudflare A records",
+      "area": "cloudflare",
+      "status": "observed"
+    },
+    {
+      "path": "cloudflare/gameserver.tf",
+      "purpose": "for_each Cloudflare SRV records",
+      "area": "cloudflare",
+      "status": "observed"
+    },
+    {
+      "path": "cloudflare/*.auto.tfvars",
+      "purpose": "Zone, A-record, and SRV-record inventory inputs; values excluded",
+      "area": "cloudflare",
+      "status": "observed-values-excluded"
+    },
+    {
+      "path": "dns/",
+      "purpose": "Internal DNS root module: provider, typed record variables, category resources, and auto.tfvars inputs",
+      "area": "dns",
+      "status": "observed"
+    },
+    {
+      "path": "dns/provider.tf",
+      "purpose": "Terraform Cloud workspace, BIND9 update provider, and sensitive TSIG input",
+      "area": "dns",
+      "status": "observed"
+    },
+    {
+      "path": "dns/variables.tf",
+      "purpose": "Zones, default TTL, category A-record maps, and PTR map",
+      "area": "dns",
+      "status": "observed"
+    },
+    {
+      "path": "dns/{applications,demo,dev,docker,home,lxc,mcp,nas,proxy,runners,windows}.tf",
+      "purpose": "Category-specific dns_a_record_set resources",
+      "area": "dns",
+      "status": "observed"
+    },
+    {
+      "path": "dns/reverse.tf",
+      "purpose": "PTR record resource",
+      "area": "dns",
+      "status": "observed"
+    },
+    {
+      "path": "dns/*.auto.tfvars",
+      "purpose": "Internal record inventories; values excluded",
+      "area": "dns",
+      "status": "observed-values-excluded"
+    },
+    {
+      "path": "pve-srv-01/",
+      "purpose": "Proxmox root module: pools, VM/LXC families, outputs, variables, and auto.tfvars inputs",
+      "area": "proxmox",
+      "status": "observed"
+    },
+    {
+      "path": "pve-srv-01/provider.tf",
+      "purpose": "Terraform Cloud workspace and Proxmox provider",
+      "area": "proxmox",
+      "status": "observed"
+    },
+    {
+      "path": "pve-srv-01/variables.tf",
+      "purpose": "Typed VM/LXC inventories, SSH key, API credentials, and password contracts",
+      "area": "proxmox",
+      "status": "observed"
+    },
+    {
+      "path": "pve-srv-01/pool.tf",
+      "purpose": "Application, demo, development, Docker, runners, home, LXC, NAS, template, and Windows pools",
+      "area": "proxmox",
+      "status": "observed"
+    },
+    {
+      "path": "pve-srv-01/{app-srv,demo-srv,dev-srv,docker-srv,k3s,windows-srv}.tf",
+      "purpose": "VM family resources driven by matching typed maps",
+      "area": "proxmox",
+      "status": "observed"
+    },
+    {
+      "path": "pve-srv-01/lxc.tf",
+      "purpose": "Ubuntu LXC resources with optional data mount",
+      "area": "proxmox",
+      "status": "observed"
+    },
+    {
+      "path": "pve-srv-01/outputs.tf",
+      "purpose": "Provider-reported and configured IP maps for VM/LXC families",
+      "area": "proxmox",
+      "status": "observed"
+    },
+    {
+      "path": "pve-srv-01/*.auto.tfvars",
+      "purpose": "VM/LXC inventories and SSH key input; values excluded",
+      "area": "proxmox",
+      "status": "observed-values-excluded"
+    },
+    {
+      "path": "twingate/",
+      "purpose": "Twingate root module: provider, user lookup, repeated network files, variables, and auto.tfvars inputs",
+      "area": "twingate",
+      "status": "observed"
+    },
+    {
+      "path": "twingate/provider.tf",
+      "purpose": "Terraform Cloud workspace and Twingate provider/network",
+      "area": "twingate",
+      "status": "observed"
+    },
+    {
+      "path": "twingate/variables.tf",
+      "purpose": "Typed resource maps and sensitive API token contract",
+      "area": "twingate",
+      "status": "observed"
+    },
+    {
+      "path": "twingate/users.tf",
+      "purpose": "Twingate user data lookup for access groups",
+      "area": "twingate",
+      "status": "observed"
+    },
+    {
+      "path": "twingate/net-*.tf",
+      "purpose": "Environment-specific security policy lookup, remote network, group, and resource topology",
+      "area": "twingate",
+      "status": "observed"
+    },
+    {
+      "path": "twingate/*.auto.tfvars",
+      "purpose": "Resource inventories; values excluded",
+      "area": "twingate",
+      "status": "observed-values-excluded"
+    }
+  ]
+}
