@@ -18,7 +18,7 @@ There is no shared Terraform module, root-level Terraform configuration, applica
 - `*/provider.tf`: Terraform Cloud workspace and provider configuration.
 - `*/variables.tf`: typed input contracts and defaults.
 - `*.auto.tfvars`: committed per-root inventory and record data; values are intentionally not copied into this context.
-- `pve-srv-01/*-srv.tf`: VM/LXC resource families; `pool.tf` creates Proxmox pools; `outputs.tf` exposes discovered and configured IPs.
+- `pve-srv-01/*-srv.tf`: VM resource families; `lxc.tf` defines LXC containers; `pool.tf` creates Proxmox pools; `outputs.tf` exposes discovered and configured IPs.
 - `dns/*.tf`: one resource family per DNS record category.
 - `cloudflare/a-record.tf` and `gameserver.tf`: Cloudflare A and SRV record resources.
 - `twingate/net-*.tf`: one remote network, access group, and resource family per environment; `users.tf` resolves the Twingate user.
