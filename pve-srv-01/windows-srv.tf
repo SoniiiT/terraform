@@ -15,7 +15,7 @@ resource "proxmox_vm_qemu" "windows_srv" {
   # VM Advanced General Settings
   start_at_node_boot = true
   boot               = "order=scsi0"
-  bootdisk           = "virtio"
+  bootdisk           = "scsi0"
   scsihw             = "virtio-scsi-pci"
 
   # VM OS Settings
