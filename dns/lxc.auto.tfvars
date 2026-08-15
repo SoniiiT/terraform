@@ -16,6 +16,10 @@ lxc_records = {
     name      = "lxc-harbor"
     addresses = ["192.168.178.42"]
   }
+  "lxc-hermes-agent" = {
+    name      = "lxc-hermes-agent"
+    addresses = ["192.168.178.90"]
+  }
   "lxc-cloudflared-01" = {
     name      = "lxc-cloudflared-01"
     addresses = ["192.168.178.44"]
