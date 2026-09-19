@@ -39,9 +39,13 @@ resource "twingate_resource" "home" {
   }
 
   access_group {
-    group_id                           = twingate_group.home_group.id
-    security_policy_id                 = data.twingate_security_policy.policy_home.id
-    usage_based_autolock_duration_days = 30
+    group_id           = twingate_group.home_group.id
+    security_policy_id = data.twingate_security_policy.policy_home.id
+    access_policy {
+      mode          = "AUTO_LOCK"
+      approval_mode = "AUTOMATIC"
+      duration      = "30d"
+    }
   }
 
   is_active = true
