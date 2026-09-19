@@ -6,10 +6,10 @@ This is a Terraform/OpenTofu repository with four independent root modules. Each
 
 | Root | Purpose | Workspace | Provider |
 |---|---|---|---|
-| `cloudflare/` | Public Cloudflare A and SRV records | `cloudflare` | `cloudflare/cloudflare` 5.3.0 |
-| `dns/` | Internal BIND9 A and PTR records | `dns` | `hashicorp/dns` 3.4.1 |
-| `pve-srv-01/` | Proxmox pools, VMs, and LXC containers | `pve-srv-01` | `Telmate/proxmox` 3.0.2-rc07 |
-| `twingate/` | Twingate remote networks, groups, and resources | `twingate` | `Twingate/twingate` 3.0.19 |
+| `cloudflare/` | Public Cloudflare A and SRV records | `cloudflare` | `cloudflare/cloudflare` 5.25.0 |
+| `dns/` | Internal BIND9 A and PTR records | `dns` | `hashicorp/dns` 3.6.2 |
+| `pve-srv-01/` | Proxmox pools, VMs, and LXC containers | `pve-srv-01` | `Telmate/proxmox` 3.0.2-rc10 |
+| `twingate/` | Twingate remote networks, groups, and resources | `twingate` | `Twingate/twingate` 5.0.2 |
 
 There is no shared Terraform module, root-level Terraform configuration, application runtime, or test suite. Root `README.md` documents the repository purpose and VM-ID ranges.
 

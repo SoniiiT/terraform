@@ -6,25 +6,25 @@
       "kind": "terraform-root",
       "name": "cloudflare",
       "path": "cloudflare/provider.tf",
-      "details": "Terraform Cloud workspace cloudflare; cloudflare/cloudflare 5.3.0"
+      "details": "Terraform Cloud workspace cloudflare; cloudflare/cloudflare 5.25.0"
     },
     {
       "kind": "terraform-root",
       "name": "dns",
       "path": "dns/provider.tf",
-      "details": "Terraform Cloud workspace dns; hashicorp/dns 3.4.1"
+      "details": "Terraform Cloud workspace dns; hashicorp/dns 3.6.2"
     },
     {
       "kind": "terraform-root",
       "name": "pve-srv-01",
       "path": "pve-srv-01/provider.tf",
-      "details": "Terraform Cloud workspace pve-srv-01; Telmate/proxmox 3.0.2-rc07"
+      "details": "Terraform Cloud workspace pve-srv-01; Telmate/proxmox 3.0.2-rc10"
     },
     {
       "kind": "terraform-root",
       "name": "twingate",
       "path": "twingate/provider.tf",
-      "details": "Terraform Cloud workspace twingate; Twingate/twingate 3.0.19"
+      "details": "Terraform Cloud workspace twingate; Twingate/twingate 5.0.2"
     },
     {
       "kind": "resource",

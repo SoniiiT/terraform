@@ -25,12 +25,12 @@ jobs:
     steps:
       - name: Fix Permissions
         run: docker run --rm -v ${{ github.workspace }}:/work -w /work alpine chown -R $(id -u):$(id -g) .
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@v4
         with:
-          terraform_version: 1.14.3
+          terraform_version: 1.16.3
           terraform_wrapper: false
 
       - name: Validate
@@ -54,12 +54,12 @@ jobs:
     steps:
       - name: Fix Permissions
         run: docker run --rm -v ${{ github.workspace }}:/work -w /work alpine chown -R $(id -u):$(id -g) .
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@v4
         with:
-          terraform_version: 1.14.3
+          terraform_version: 1.16.3
           terraform_wrapper: false
 
       - name: Plan
@@ -76,7 +76,7 @@ jobs:
           terraform plan -out=tfplan
       
       - name: Upload Plan Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: tfplan-pve-srv-01
           path: pve-srv-01/tfplan
@@ -92,16 +92,16 @@ jobs:
     steps:
       - name: Fix Permissions
         run: docker run --rm -v ${{ github.workspace }}:/work -w /work alpine chown -R $(id -u):$(id -g) .
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@v4
         with:
-          terraform_version: 1.14.3
+          terraform_version: 1.16.3
           terraform_wrapper: false
 
       - name: Download Plan Artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: tfplan-pve-srv-01
           path: pve-srv-01

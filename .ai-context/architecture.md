@@ -28,7 +28,7 @@ committed *.auto.tfvars + CI TF_VAR_* secrets
 
 ## CI control flow
 
-Each workflow is path-filtered to one root and runs `validate -> plan -> apply`. The plan is uploaded as a one-day artifact and then applied automatically only when the ref is `main`. Cloudflare and Twingate use GitHub-hosted runners; DNS and Proxmox use self-hosted runners and a Docker permissions-fix step. CI uses Terraform 1.14.3 and Terraform Cloud credentials from GitHub secrets.
+Each workflow is path-filtered to one root and runs `validate -> plan -> apply`. The plan is uploaded as a one-day artifact and then applied automatically only when the ref is `main`. Cloudflare and Twingate use GitHub-hosted runners; DNS and Proxmox use self-hosted runners and a Docker permissions-fix step. CI uses Terraform 1.16.3 and Terraform Cloud credentials from GitHub secrets.
 
 ## Boundaries and inferred links
 
