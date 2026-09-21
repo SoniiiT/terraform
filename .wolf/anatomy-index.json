@@ -1,0 +1,946 @@
+{
+  "version": 1,
+  "meta": {
+    "lastScanned": "2026-09-21T16:32:36.994Z",
+    "fileCount": 103,
+    "hits": 0,
+    "misses": 0,
+    "renderedHash": "6ff7249621e4d274878fd394d8bd7e526077de1ac0dd04070adb8773f52bfc4e",
+    "storeUpdatedAt": "2026-09-21T16:32:36.994Z",
+    "rootHash": "2d24d529e44b700c"
+  },
+  "files": {
+    ".ai-context/architecture.md": {
+      "description": "Architecture",
+      "tokens": 684,
+      "hash": "0e60f4b684711c12",
+      "size": 2734,
+      "mtimeMs": 1787554045424.43,
+      "updatedAt": "2026-09-21T16:32:36.973Z",
+      "source": "scan"
+    },
+    ".ai-context/conventions.md": {
+      "description": "Conventions",
+      "tokens": 491,
+      "hash": "c3b91e9423fcbb5e",
+      "size": 1961,
+      "mtimeMs": 1787554045424.5286,
+      "updatedAt": "2026-09-21T16:32:36.973Z",
+      "source": "scan"
+    },
+    ".ai-context/dependencies.md": {
+      "description": "Dependencies",
+      "tokens": 371,
+      "hash": "de1f105a599116c9",
+      "size": 1484,
+      "mtimeMs": 1787554045424.61,
+      "updatedAt": "2026-09-21T16:32:36.973Z",
+      "source": "scan"
+    },
+    ".ai-context/indexes/files.json": {
+      "description": "",
+      "tokens": 1738,
+      "hash": "bf7fd861258dc841",
+      "size": 6083,
+      "mtimeMs": 1787554045424.7383,
+      "updatedAt": "2026-09-21T16:32:36.974Z",
+      "source": "scan"
+    },
+    ".ai-context/indexes/symbols.json": {
+      "description": "",
+      "tokens": 783,
+      "hash": "3c5535643afecb4d",
+      "size": 2738,
+      "mtimeMs": 1787554045424.8298,
+      "updatedAt": "2026-09-21T16:32:36.974Z",
+      "source": "scan"
+    },
+    ".ai-context/knowledge/business-rules/infrastructure-invariants.md": {
+      "description": "Infrastructure invariants",
+      "tokens": 229,
+      "hash": "6e36d2200b6a3c6c",
+      "size": 915,
+      "mtimeMs": 1787554045425.0518,
+      "updatedAt": "2026-09-21T16:32:36.974Z",
+      "source": "scan"
+    },
+    ".ai-context/knowledge/decisions/README.md": {
+      "description": "Project documentation",
+      "tokens": 134,
+      "hash": "dba1830b8c8e433b",
+      "size": 533,
+      "mtimeMs": 1787554045425.1812,
+      "updatedAt": "2026-09-21T16:32:36.974Z",
+      "source": "scan"
+    },
+    ".ai-context/knowledge/feature-guides/cloudflare.md": {
+      "description": "Cloudflare DNS feature guide",
+      "tokens": 236,
+      "hash": "e1df7cb44cae6e60",
+      "size": 942,
+      "mtimeMs": 1787554045425.302,
+      "updatedAt": "2026-09-21T16:32:36.975Z",
+      "source": "scan"
+    },
+    ".ai-context/knowledge/feature-guides/dns.md": {
+      "description": "Internal DNS feature guide",
+      "tokens": 256,
+      "hash": "1419f5c9bfb09a39",
+      "size": 1023,
+      "mtimeMs": 1787554045425.3782,
+      "updatedAt": "2026-09-21T16:32:36.975Z",
+      "source": "scan"
+    },
+    ".ai-context/knowledge/feature-guides/proxmox.md": {
+      "description": "Proxmox feature guide",
+      "tokens": 272,
+      "hash": "d8a1d13c4ac515d3",
+      "size": 1085,
+      "mtimeMs": 1787554045425.4543,
+      "updatedAt": "2026-09-21T16:32:36.975Z",
+      "source": "scan"
+    },
+    ".ai-context/knowledge/feature-guides/twingate.md": {
+      "description": "Twingate access feature guide",
+      "tokens": 270,
+      "hash": "745852350fe68687",
+      "size": 1080,
+      "mtimeMs": 1787554045425.5322,
+      "updatedAt": "2026-09-21T16:32:36.975Z",
+      "source": "scan"
+    },
+    ".ai-context/knowledge/README.md": {
+      "description": "Project documentation",
+      "tokens": 221,
+      "hash": "3ef017024f1156d4",
+      "size": 881,
+      "mtimeMs": 1787554045424.9348,
+      "updatedAt": "2026-09-21T16:32:36.975Z",
+      "source": "scan"
+    },
+    ".ai-context/knowledge/removal-guides/README.md": {
+      "description": "Project documentation",
+      "tokens": 230,
+      "hash": "b3c517bf090f2b1c",
+      "size": 920,
+      "mtimeMs": 1787554045425.6396,
+      "updatedAt": "2026-09-21T16:32:36.975Z",
+      "source": "scan"
+    },
+    ".ai-context/knowledge/risks/README.md": {
+      "description": "Project documentation",
+      "tokens": 283,
+      "hash": "6350266d9461edb6",
+      "size": 1130,
+      "mtimeMs": 1787554045425.7576,
+      "updatedAt": "2026-09-21T16:32:36.975Z",
+      "source": "scan"
+    },
+    ".ai-context/manifest.json": {
+      "description": "",
+      "tokens": 373,
+      "hash": "d2250f4f7373a5a2",
+      "size": 1305,
+      "mtimeMs": 1787554045425.8306,
+      "updatedAt": "2026-09-21T16:32:36.975Z",
+      "source": "scan"
+    },
+    ".ai-context/project-map.md": {
+      "description": "Project map",
+      "tokens": 493,
+      "hash": "5e9a1b9bfe1a8291",
+      "size": 1972,
+      "mtimeMs": 1787554045425.9036,
+      "updatedAt": "2026-09-21T16:32:36.976Z",
+      "source": "scan"
+    },
+    ".github/copilot-instructions.md": {
+      "description": "Copilot project context",
+      "tokens": 78,
+      "hash": "3a7305ef86945536",
+      "size": 309,
+      "mtimeMs": 1787554045426.0151,
+      "updatedAt": "2026-09-21T16:32:36.976Z",
+      "source": "scan"
+    },
+    ".github/workflows/cloudflare.yml": {
+      "description": "CI: Cloudflare Terraform",
+      "tokens": 727,
+      "hash": "89525971483bef4a",
+      "size": 2542,
+      "mtimeMs": 1787554045426.1387,
+      "updatedAt": "2026-09-21T16:32:36.976Z",
+      "source": "scan"
+    },
+    ".github/workflows/dns.yml": {
+      "description": "CI: DNS Terraform",
+      "tokens": 837,
+      "hash": "5538315f6d269c93",
+      "size": 2928,
+      "mtimeMs": 1787554045426.217,
+      "updatedAt": "2026-09-21T16:32:36.976Z",
+      "source": "scan"
+    },
+    ".github/workflows/pve-srv-01.yml": {
+      "description": "CI: PVE-SRV-01 Terraform",
+      "tokens": 1090,
+      "hash": "d893b35da237993a",
+      "size": 3815,
+      "mtimeMs": 1787554045426.2886,
+      "updatedAt": "2026-09-21T16:32:36.976Z",
+      "source": "scan"
+    },
+    ".github/workflows/twingate.yml": {
+      "description": "CI: Twingate Terraform",
+      "tokens": 711,
+      "hash": "91246ffbd4111d19",
+      "size": 2486,
+      "mtimeMs": 1787554045426.3706,
+      "updatedAt": "2026-09-21T16:32:36.976Z",
+      "source": "scan"
+    },
+    ".gitignore": {
+      "description": "Git ignore rules",
+      "tokens": 6,
+      "hash": "ca13f26c99b83abe",
+      "size": 22,
+      "mtimeMs": 1787554045426.4395,
+      "updatedAt": "2026-09-21T16:32:36.976Z",
+      "source": "scan"
+    },
+    "AGENTS.md": {
+      "description": "Agent context",
+      "tokens": 181,
+      "hash": "97be0e1bddd89396",
+      "size": 721,
+      "mtimeMs": 1790008356958.4033,
+      "updatedAt": "2026-09-21T16:32:36.976Z",
+      "source": "scan"
+    },
+    "CLAUDE.md": {
+      "description": "OpenWolf",
+      "tokens": 176,
+      "hash": "4292abfb3980cfec",
+      "size": 701,
+      "mtimeMs": 1790008356952.6074,
+      "updatedAt": "2026-09-21T16:32:36.976Z",
+      "source": "scan"
+    },
+    "cloudflare/a-record.tf": {
+      "description": "",
+      "tokens": 81,
+      "hash": "f624aae4a4d6f2c4",
+      "size": 303,
+      "mtimeMs": 1787554045426.7556,
+      "updatedAt": "2026-09-21T16:32:36.977Z",
+      "source": "scan"
+    },
+    "cloudflare/a-records.auto.tfvars": {
+      "description": "",
+      "tokens": 245,
+      "hash": "397fee337f4373a0",
+      "size": 916,
+      "mtimeMs": 1787554045426.8276,
+      "updatedAt": "2026-09-21T16:32:36.977Z",
+      "source": "scan"
+    },
+    "cloudflare/common.auto.tfvars": {
+      "description": "",
+      "tokens": 18,
+      "hash": "538335152734ad68",
+      "size": 67,
+      "mtimeMs": 1787554045426.8875,
+      "updatedAt": "2026-09-21T16:32:36.977Z",
+      "source": "scan"
+    },
+    "cloudflare/gameserver.tf": {
+      "description": "",
+      "tokens": 143,
+      "hash": "9c9cabfa4e36db35",
+      "size": 536,
+      "mtimeMs": 1787554045426.9546,
+      "updatedAt": "2026-09-21T16:32:36.977Z",
+      "source": "scan"
+    },
+    "cloudflare/provider.tf": {
+      "description": "",
+      "tokens": 79,
+      "hash": "59a711aa1a1de401",
+      "size": 293,
+      "mtimeMs": 1787554045427.0295,
+      "updatedAt": "2026-09-21T16:32:36.977Z",
+      "source": "scan"
+    },
+    "cloudflare/srv-records.auto.tfvars": {
+      "description": "",
+      "tokens": 56,
+      "hash": "0203bdc5f46b26f0",
+      "size": 208,
+      "mtimeMs": 1787554045427.1116,
+      "updatedAt": "2026-09-21T16:32:36.977Z",
+      "source": "scan"
+    },
+    "cloudflare/variables.tf": {
+      "description": "",
+      "tokens": 171,
+      "hash": "acd555023d4a1ed5",
+      "size": 640,
+      "mtimeMs": 1787554045427.1858,
+      "updatedAt": "2026-09-21T16:32:36.977Z",
+      "source": "scan"
+    },
+    "dns/applications.auto.tfvars": {
+      "description": "",
+      "tokens": 61,
+      "hash": "294d88fbc39b9d19",
+      "size": 228,
+      "mtimeMs": 1787554045427.2913,
+      "updatedAt": "2026-09-21T16:32:36.977Z",
+      "source": "scan"
+    },
+    "dns/applications.tf": {
+      "description": "",
+      "tokens": 57,
+      "hash": "a531b6115ff11479",
+      "size": 212,
+      "mtimeMs": 1787554045427.3635,
+      "updatedAt": "2026-09-21T16:32:36.978Z",
+      "source": "scan"
+    },
+    "dns/demo.auto.tfvars": {
+      "description": "",
+      "tokens": 5,
+      "hash": "373121662b279466",
+      "size": 18,
+      "mtimeMs": 1787554045427.4255,
+      "updatedAt": "2026-09-21T16:32:36.978Z",
+      "source": "scan"
+    },
+    "dns/demo.tf": {
+      "description": "",
+      "tokens": 59,
+      "hash": "f0590ddae5f84de5",
+      "size": 219,
+      "mtimeMs": 1787554045427.4944,
+      "updatedAt": "2026-09-21T16:32:36.978Z",
+      "source": "scan"
+    },
+    "dns/dev.auto.tfvars": {
+      "description": "",
+      "tokens": 52,
+      "hash": "a4bd8b3feac33f89",
+      "size": 192,
+      "mtimeMs": 1787554045427.5566,
+      "updatedAt": "2026-09-21T16:32:36.978Z",
+      "source": "scan"
+    },
+    "dns/dev.tf": {
+      "description": "",
+      "tokens": 58,
+      "hash": "2ea27366fc5b295e",
+      "size": 216,
+      "mtimeMs": 1787554045427.6155,
+      "updatedAt": "2026-09-21T16:32:36.978Z",
+      "source": "scan"
+    },
+    "dns/docker.auto.tfvars": {
+      "description": "",
+      "tokens": 172,
+      "hash": "7e403fa49c2dd04b",
+      "size": 643,
+      "mtimeMs": 1787554045427.6848,
+      "updatedAt": "2026-09-21T16:32:36.978Z",
+      "source": "scan"
+    },
+    "dns/docker.tf": {
+      "description": "",
+      "tokens": 59,
+      "hash": "1307bc354f079e06",
+      "size": 218,
+      "mtimeMs": 1787554045427.7593,
+      "updatedAt": "2026-09-21T16:32:36.978Z",
+      "source": "scan"
+    },
+    "dns/home.auto.tfvars": {
+      "description": "",
+      "tokens": 86,
+      "hash": "d8cf683f6df55a31",
+      "size": 320,
+      "mtimeMs": 1787554045427.833,
+      "updatedAt": "2026-09-21T16:32:36.978Z",
+      "source": "scan"
+    },
+    "dns/home.tf": {
+      "description": "",
+      "tokens": 58,
+      "hash": "ea2b37688af356be",
+      "size": 214,
+      "mtimeMs": 1787554045427.9053,
+      "updatedAt": "2026-09-21T16:32:36.979Z",
+      "source": "scan"
+    },
+    "dns/lxc.auto.tfvars": {
+      "description": "",
+      "tokens": 422,
+      "hash": "006b43fd70933f2b",
+      "size": 1582,
+      "mtimeMs": 1787554045427.9724,
+      "updatedAt": "2026-09-21T16:32:36.979Z",
+      "source": "scan"
+    },
+    "dns/lxc.tf": {
+      "description": "",
+      "tokens": 57,
+      "hash": "6da29555eff96cc9",
+      "size": 212,
+      "mtimeMs": 1787554045428.0403,
+      "updatedAt": "2026-09-21T16:32:36.979Z",
+      "source": "scan"
+    },
+    "dns/mcp.auto.tfvars": {
+      "description": "",
+      "tokens": 35,
+      "hash": "df75d536a101c9d9",
+      "size": 131,
+      "mtimeMs": 1787554045428.1064,
+      "updatedAt": "2026-09-21T16:32:36.979Z",
+      "source": "scan"
+    },
+    "dns/mcp.tf": {
+      "description": "",
+      "tokens": 59,
+      "hash": "e3c34090674d3bf8",
+      "size": 221,
+      "mtimeMs": 1787554045428.1743,
+      "updatedAt": "2026-09-21T16:32:36.979Z",
+      "source": "scan"
+    },
+    "dns/nas.auto.tfvars": {
+      "description": "",
+      "tokens": 36,
+      "hash": "5ed306596998a6cb",
+      "size": 133,
+      "mtimeMs": 1787554045428.238,
+      "updatedAt": "2026-09-21T16:32:36.979Z",
+      "source": "scan"
+    },
+    "dns/nas.tf": {
+      "description": "",
+      "tokens": 57,
+      "hash": "13fa25fe1127812d",
+      "size": 212,
+      "mtimeMs": 1787554045428.296,
+      "updatedAt": "2026-09-21T16:32:36.979Z",
+      "source": "scan"
+    },
+    "dns/provider.tf": {
+      "description": "",
+      "tokens": 137,
+      "hash": "dce6b670f5e43231",
+      "size": 512,
+      "mtimeMs": 1787554045428.3616,
+      "updatedAt": "2026-09-21T16:32:36.979Z",
+      "source": "scan"
+    },
+    "dns/proxy.auto.tfvars": {
+      "description": "",
+      "tokens": 887,
+      "hash": "4026e1efb298d3b3",
+      "size": 3325,
+      "mtimeMs": 1787554045428.4343,
+      "updatedAt": "2026-09-21T16:32:36.979Z",
+      "source": "scan"
+    },
+    "dns/proxy.tf": {
+      "description": "",
+      "tokens": 58,
+      "hash": "5581d847cd2e5cf3",
+      "size": 216,
+      "mtimeMs": 1787554045428.4922,
+      "updatedAt": "2026-09-21T16:32:36.979Z",
+      "source": "scan"
+    },
+    "dns/reverse.auto.tfvars": {
+      "description": "PTR Records definition",
+      "tokens": 582,
+      "hash": "b677890dce18cf99",
+      "size": 2179,
+      "mtimeMs": 1787554045428.5637,
+      "updatedAt": "2026-09-21T16:32:36.980Z",
+      "source": "scan"
+    },
+    "dns/reverse.tf": {
+      "description": "",
+      "tokens": 52,
+      "hash": "d32827714e23973b",
+      "size": 192,
+      "mtimeMs": 1787554045428.625,
+      "updatedAt": "2026-09-21T16:32:36.980Z",
+      "source": "scan"
+    },
+    "dns/runners.auto.tfvars": {
+      "description": "",
+      "tokens": 63,
+      "hash": "3a850d9b75a7105f",
+      "size": 236,
+      "mtimeMs": 1787554045428.693,
+      "updatedAt": "2026-09-21T16:32:36.980Z",
+      "source": "scan"
+    },
+    "dns/runners.tf": {
+      "description": "",
+      "tokens": 59,
+      "hash": "3824117c3a9438a4",
+      "size": 219,
+      "mtimeMs": 1787554045428.758,
+      "updatedAt": "2026-09-21T16:32:36.980Z",
+      "source": "scan"
+    },
+    "dns/variables.tf": {
+      "description": "",
+      "tokens": 805,
+      "hash": "e508fd5a0c442bfe",
+      "size": 3017,
+      "mtimeMs": 1787554045428.827,
+      "updatedAt": "2026-09-21T16:32:36.980Z",
+      "source": "scan"
+    },
+    "dns/windows.auto.tfvars": {
+      "description": "",
+      "tokens": 15,
+      "hash": "428d7c5fe7f8cd92",
+      "size": 54,
+      "mtimeMs": 1787554045428.8909,
+      "updatedAt": "2026-09-21T16:32:36.980Z",
+      "source": "scan"
+    },
+    "dns/windows.tf": {
+      "description": "",
+      "tokens": 59,
+      "hash": "8fb94bd5b2942faf",
+      "size": 220,
+      "mtimeMs": 1787554045428.9482,
+      "updatedAt": "2026-09-21T16:32:36.980Z",
+      "source": "scan"
+    },
+    "pve-srv-01/app-srv.tf": {
+      "description": "Declares Settings",
+      "tokens": 468,
+      "hash": "0dbb99419704f4e9",
+      "size": 1755,
+      "mtimeMs": 1787554045429.0632,
+      "updatedAt": "2026-09-21T16:32:36.980Z",
+      "source": "scan"
+    },
+    "pve-srv-01/app.auto.tfvars": {
+      "description": "VMID: 300-399",
+      "tokens": 92,
+      "hash": "49f8ff55e4852b3d",
+      "size": 343,
+      "mtimeMs": 1787554045429.1326,
+      "updatedAt": "2026-09-21T16:32:36.980Z",
+      "source": "scan"
+    },
+    "pve-srv-01/common.auto.tfvars": {
+      "description": "",
+      "tokens": 200,
+      "hash": "f0e8720b1b2dc4f5",
+      "size": 749,
+      "mtimeMs": 1787554045429.196,
+      "updatedAt": "2026-09-21T16:32:36.981Z",
+      "source": "scan"
+    },
+    "pve-srv-01/demo-srv.tf": {
+      "description": "",
+      "tokens": 0,
+      "hash": "e3b0c44298fc1c14",
+      "size": 0,
+      "mtimeMs": 1787554045429.2322,
+      "updatedAt": "2026-09-21T16:32:36.981Z",
+      "source": "scan"
+    },
+    "pve-srv-01/demo.auto.tfvars": {
+      "description": "VMID: 400-449",
+      "tokens": 8,
+      "hash": "c0aa45e885da580c",
+      "size": 29,
+      "mtimeMs": 1787554045429.301,
+      "updatedAt": "2026-09-21T16:32:36.981Z",
+      "source": "scan"
+    },
+    "pve-srv-01/dev-srv.tf": {
+      "description": "Declares Settings",
+      "tokens": 508,
+      "hash": "dd7b9db3d0e042b2",
+      "size": 1905,
+      "mtimeMs": 1787554045429.3713,
+      "updatedAt": "2026-09-21T16:32:36.981Z",
+      "source": "scan"
+    },
+    "pve-srv-01/dev.auto.tfvars": {
+      "description": "VMID: 450-499",
+      "tokens": 164,
+      "hash": "610ce5485fdfc5a4",
+      "size": 615,
+      "mtimeMs": 1787554045429.431,
+      "updatedAt": "2026-09-21T16:32:36.981Z",
+      "source": "scan"
+    },
+    "pve-srv-01/docker-srv.tf": {
+      "description": "Declares Settings",
+      "tokens": 566,
+      "hash": "591f9560b5bd22a9",
+      "size": 2119,
+      "mtimeMs": 1787554045429.4885,
+      "updatedAt": "2026-09-21T16:32:36.981Z",
+      "source": "scan"
+    },
+    "pve-srv-01/docker.auto.tfvars": {
+      "description": "VMID: 500 - 599",
+      "tokens": 243,
+      "hash": "6c7e809efdab33fa",
+      "size": 911,
+      "mtimeMs": 1787554045429.5469,
+      "updatedAt": "2026-09-21T16:32:36.981Z",
+      "source": "scan"
+    },
+    "pve-srv-01/k3s.auto.tfvars": {
+      "description": "VMID: 600 - 699",
+      "tokens": 547,
+      "hash": "6acc0609ca009c4c",
+      "size": 2051,
+      "mtimeMs": 1787554045429.6135,
+      "updatedAt": "2026-09-21T16:32:36.981Z",
+      "source": "scan"
+    },
+    "pve-srv-01/k3s.tf": {
+      "description": "Declares Settings",
+      "tokens": 534,
+      "hash": "e18807e65750821c",
+      "size": 2001,
+      "mtimeMs": 1787554045429.682,
+      "updatedAt": "2026-09-21T16:32:36.981Z",
+      "source": "scan"
+    },
+    "pve-srv-01/lxc.auto.tfvars": {
+      "description": "VMID: 100 - 199",
+      "tokens": 175,
+      "hash": "3982f561408c1366",
+      "size": 655,
+      "mtimeMs": 1787554045429.7449,
+      "updatedAt": "2026-09-21T16:32:36.981Z",
+      "source": "scan"
+    },
+    "pve-srv-01/lxc.tf": {
+      "description": "",
+      "tokens": 307,
+      "hash": "96c75c98310e4b9b",
+      "size": 1149,
+      "mtimeMs": 1787554045429.8206,
+      "updatedAt": "2026-09-21T16:32:36.982Z",
+      "source": "scan"
+    },
+    "pve-srv-01/outputs.tf": {
+      "description": "",
+      "tokens": 408,
+      "hash": "1accaa13cd98522c",
+      "size": 1530,
+      "mtimeMs": 1787554045429.8894,
+      "updatedAt": "2026-09-21T16:32:36.982Z",
+      "source": "scan"
+    },
+    "pve-srv-01/pool.tf": {
+      "description": "",
+      "tokens": 245,
+      "hash": "8833aaddc909c6e7",
+      "size": 918,
+      "mtimeMs": 1787554045429.9534,
+      "updatedAt": "2026-09-21T16:32:36.982Z",
+      "source": "scan"
+    },
+    "pve-srv-01/provider.tf": {
+      "description": "",
+      "tokens": 123,
+      "hash": "2b403eb0789a4f72",
+      "size": 458,
+      "mtimeMs": 1787554045430.0144,
+      "updatedAt": "2026-09-21T16:32:36.982Z",
+      "source": "scan"
+    },
+    "pve-srv-01/variables.tf": {
+      "description": "",
+      "tokens": 1004,
+      "hash": "cf5f8ada22a9e7c1",
+      "size": 3765,
+      "mtimeMs": 1787554045430.0842,
+      "updatedAt": "2026-09-21T16:32:36.982Z",
+      "source": "scan"
+    },
+    "pve-srv-01/windows-srv.tf": {
+      "description": "",
+      "tokens": 398,
+      "hash": "0432f8d2cec2576d",
+      "size": 1489,
+      "mtimeMs": 1787554045430.1487,
+      "updatedAt": "2026-09-21T16:32:36.982Z",
+      "source": "scan"
+    },
+    "pve-srv-01/windows.auto.tfvars": {
+      "description": "VMID: 700-799",
+      "tokens": 88,
+      "hash": "ecd029ca20c738f1",
+      "size": 329,
+      "mtimeMs": 1787554045430.2126,
+      "updatedAt": "2026-09-21T16:32:36.982Z",
+      "source": "scan"
+    },
+    "README.md": {
+      "description": "Project documentation",
+      "tokens": 631,
+      "hash": "e15e5928f321b680",
+      "size": 2545,
+      "mtimeMs": 1787554045426.6484,
+      "updatedAt": "2026-09-21T16:32:36.982Z",
+      "source": "scan"
+    },
+    "renovate.json": {
+      "description": "",
+      "tokens": 33,
+      "hash": "e80b4e42a3043bc1",
+      "size": 114,
+      "mtimeMs": 1787554045430.2769,
+      "updatedAt": "2026-09-21T16:32:36.982Z",
+      "source": "scan"
+    },
+    "twingate/app.auto.tfvars": {
+      "description": "",
+      "tokens": 42,
+      "hash": "1a2c801567e1f620",
+      "size": 155,
+      "mtimeMs": 1787554045430.4016,
+      "updatedAt": "2026-09-21T16:32:36.982Z",
+      "source": "scan"
+    },
+    "twingate/demo.auto.tfvars": {
+      "description": "",
+      "tokens": 52,
+      "hash": "26b065da8fb859a8",
+      "size": 192,
+      "mtimeMs": 1787554045430.4807,
+      "updatedAt": "2026-09-21T16:32:36.983Z",
+      "source": "scan"
+    },
+    "twingate/desktop.auto.tfvars": {
+      "description": "",
+      "tokens": 54,
+      "hash": "14933dc9d41e691b",
+      "size": 201,
+      "mtimeMs": 1787554045430.5852,
+      "updatedAt": "2026-09-21T16:32:36.983Z",
+      "source": "scan"
+    },
+    "twingate/development.auto.tfvars": {
+      "description": "",
+      "tokens": 55,
+      "hash": "12b82e71491ac276",
+      "size": 204,
+      "mtimeMs": 1787554045430.6848,
+      "updatedAt": "2026-09-21T16:32:36.983Z",
+      "source": "scan"
+    },
+    "twingate/docker.auto.tfvars": {
+      "description": "",
+      "tokens": 98,
+      "hash": "a962f3478bc8b231",
+      "size": 366,
+      "mtimeMs": 1787554045430.7815,
+      "updatedAt": "2026-09-21T16:32:36.983Z",
+      "source": "scan"
+    },
+    "twingate/home.auto.tfvars": {
+      "description": "",
+      "tokens": 96,
+      "hash": "a6a0b918f0a76930",
+      "size": 357,
+      "mtimeMs": 1787554045430.8447,
+      "updatedAt": "2026-09-21T16:32:36.983Z",
+      "source": "scan"
+    },
+    "twingate/kubernetes.auto.tfvars": {
+      "description": "",
+      "tokens": 112,
+      "hash": "19521756de598f1c",
+      "size": 419,
+      "mtimeMs": 1787554045430.9048,
+      "updatedAt": "2026-09-21T16:32:36.983Z",
+      "source": "scan"
+    },
+    "twingate/lxc.auto.tfvars": {
+      "description": "",
+      "tokens": 67,
+      "hash": "a6555b3cb1ae9b6b",
+      "size": 250,
+      "mtimeMs": 1787554045430.9736,
+      "updatedAt": "2026-09-21T16:32:36.983Z",
+      "source": "scan"
+    },
+    "twingate/nas.auto.tfvars": {
+      "description": "",
+      "tokens": 45,
+      "hash": "8c740921b6ca929f",
+      "size": 168,
+      "mtimeMs": 1787554045431.0625,
+      "updatedAt": "2026-09-21T16:32:36.983Z",
+      "source": "scan"
+    },
+    "twingate/net-app.tf": {
+      "description": "Security Policy für Applications",
+      "tokens": 339,
+      "hash": "e04d8a1f0b0315a3",
+      "size": 1271,
+      "mtimeMs": 1787554045431.1726,
+      "updatedAt": "2026-09-21T16:32:36.983Z",
+      "source": "scan"
+    },
+    "twingate/net-demo.tf": {
+      "description": "Security Policy für Demo",
+      "tokens": 336,
+      "hash": "8983b5673c52dc2b",
+      "size": 1260,
+      "mtimeMs": 1787554045431.2644,
+      "updatedAt": "2026-09-21T16:32:36.983Z",
+      "source": "scan"
+    },
+    "twingate/net-desktop.tf": {
+      "description": "Security Policy für Desktop",
+      "tokens": 348,
+      "hash": "1b433fef2369d12e",
+      "size": 1305,
+      "mtimeMs": 1787554045431.3574,
+      "updatedAt": "2026-09-21T16:32:36.983Z",
+      "source": "scan"
+    },
+    "twingate/net-development.tf": {
+      "description": "Security Policy für Development",
+      "tokens": 362,
+      "hash": "3f68a6ec2c93424f",
+      "size": 1357,
+      "mtimeMs": 1787554045431.4446,
+      "updatedAt": "2026-09-21T16:32:36.984Z",
+      "source": "scan"
+    },
+    "twingate/net-docker.tf": {
+      "description": "Security Policy für Docker",
+      "tokens": 332,
+      "hash": "d64f404ed6f6a1ba",
+      "size": 1244,
+      "mtimeMs": 1787554045431.5166,
+      "updatedAt": "2026-09-21T16:32:36.984Z",
+      "source": "scan"
+    },
+    "twingate/net-home.tf": {
+      "description": "Security Policy für Home",
+      "tokens": 336,
+      "hash": "75c1c7e4c7a4c093",
+      "size": 1260,
+      "mtimeMs": 1787554045431.5977,
+      "updatedAt": "2026-09-21T16:32:36.984Z",
+      "source": "scan"
+    },
+    "twingate/net-kubernetes.tf": {
+      "description": "Security Policy für Kubernetes",
+      "tokens": 358,
+      "hash": "d9bc6c13612afee4",
+      "size": 1343,
+      "mtimeMs": 1787554045431.6626,
+      "updatedAt": "2026-09-21T16:32:36.984Z",
+      "source": "scan"
+    },
+    "twingate/net-lxc.tf": {
+      "description": "Security Policy für LXC",
+      "tokens": 332,
+      "hash": "b396a07ebdc26e0f",
+      "size": 1245,
+      "mtimeMs": 1787554045431.725,
+      "updatedAt": "2026-09-21T16:32:36.984Z",
+      "source": "scan"
+    },
+    "twingate/net-nas.tf": {
+      "description": "Security Policy für NAS",
+      "tokens": 332,
+      "hash": "c2d5ba63728eecac",
+      "size": 1245,
+      "mtimeMs": 1787554045431.7925,
+      "updatedAt": "2026-09-21T16:32:36.984Z",
+      "source": "scan"
+    },
+    "twingate/net-runners.tf": {
+      "description": "Security Policy für Runners",
+      "tokens": 348,
+      "hash": "4e64d0286f8e2bf0",
+      "size": 1304,
+      "mtimeMs": 1787554045431.867,
+      "updatedAt": "2026-09-21T16:32:36.984Z",
+      "source": "scan"
+    },
+    "twingate/net-windows.tf": {
+      "description": "Security Policy für Windows",
+      "tokens": 348,
+      "hash": "6f898d6ee5074507",
+      "size": 1305,
+      "mtimeMs": 1787554045431.9407,
+      "updatedAt": "2026-09-21T16:32:36.984Z",
+      "source": "scan"
+    },
+    "twingate/provider.tf": {
+      "description": "",
+      "tokens": 80,
+      "hash": "c897ce7e2fa665b7",
+      "size": 298,
+      "mtimeMs": 1787554045432.0083,
+      "updatedAt": "2026-09-21T16:32:36.984Z",
+      "source": "scan"
+    },
+    "twingate/runners.auto.tfvars": {
+      "description": "",
+      "tokens": 56,
+      "hash": "63738592d0055e7b",
+      "size": 209,
+      "mtimeMs": 1787554045432.078,
+      "updatedAt": "2026-09-21T16:32:36.984Z",
+      "source": "scan"
+    },
+    "twingate/users.tf": {
+      "description": "Datenquelle für den User",
+      "tokens": 25,
+      "hash": "1effe6cc332ea7e0",
+      "size": 92,
+      "mtimeMs": 1787554045432.144,
+      "updatedAt": "2026-09-21T16:32:36.984Z",
+      "source": "scan"
+    },
+    "twingate/variables.tf": {
+      "description": "",
+      "tokens": 1151,
+      "hash": "e814e730d2bc4d24",
+      "size": 4314,
+      "mtimeMs": 1787554045432.208,
+      "updatedAt": "2026-09-21T16:32:36.985Z",
+      "source": "scan"
+    },
+    "twingate/windows.auto.tfvars": {
+      "description": "",
+      "tokens": 51,
+      "hash": "fa94823a0c320060",
+      "size": 188,
+      "mtimeMs": 1787554045432.2712,
+      "updatedAt": "2026-09-21T16:32:36.985Z",
+      "source": "scan"
+    }
+  },
+  "preamble": [
+    "> Project structure index. Auto-maintained by OpenWolf hooks and daemon.",
+    "> Run `openwolf scan` to generate, or wait for the first Claude Code session.",
+    "> Status: Pending initial scan"
+  ]
+}
