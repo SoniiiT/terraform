@@ -68,14 +68,6 @@ ptr_records = {
     name = "52"
     ptr  = "lxc-scanopy.home.soniiit.net."
   }
-  "dev-srv-01" = {
-    name = "60"
-    ptr  = "dev-srv-01.dev.soniiit.net."
-  }
-  "dev-srv-02" = {
-    name = "61"
-    ptr  = "dev-srv-02.dev.soniiit.net."
-  }
   "gr-terraform" = {
     name = "70"
     ptr  = "gr-terraform.home.soniiit.net."

@@ -56,10 +56,6 @@ lxc_records = {
     name      = "lxc-pve-helper-scripts"
     addresses = ["192.168.178.52"]
   }
-  "lxc-adguard" = {
-    name      = "lxc-adguard"
-    addresses = ["192.168.178.52"]
-  }
   "lxc-cosmos" = {
     name      = "lxc-cosmos"
     addresses = ["192.168.178.52"]
