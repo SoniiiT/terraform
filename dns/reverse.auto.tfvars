@@ -80,10 +80,6 @@ ptr_records = {
     name = "98"
     ptr  = "jellyfin-home-01.home.soniiit.net."
   }
-  "lxc-hermes-agent" = {
-    name = "90"
-    ptr  = "lxc-hermes-agent.home.soniiit.net."
-  }
   "app-srv-01" = {
     name = "91"
     ptr  = "app-srv-01.home.soniiit.net."
