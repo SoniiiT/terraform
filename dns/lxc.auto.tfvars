@@ -48,16 +48,16 @@ lxc_records = {
     name      = "lxc-omada"
     addresses = ["192.168.178.51"]
   }
-  "lxc-scanopy" = {
-    name      = "lxc-scanopy"
+  "lxc-homelable" = {
+    name      = "lxc-homelable"
     addresses = ["192.168.178.52"]
   }
   "lxc-pve-helper-scripts" = {
     name      = "lxc-pve-helper-scripts"
-    addresses = ["192.168.178.52"]
+    addresses = ["192.168.178.53"]
   }
   "lxc-cosmos" = {
     name      = "lxc-cosmos"
-    addresses = ["192.168.178.52"]
+    addresses = ["192.168.178.57"]
   }
 }

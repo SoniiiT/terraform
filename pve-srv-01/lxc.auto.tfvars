@@ -25,6 +25,13 @@ lxc_containers = {
     memory = 8192
     ip     = "192.168.178.46"
   }
+  "lxc-homelable" = {
+    vmid         = 207
+    cores        = 2
+    memory       = 2048
+    ip           = "192.168.178.52"
+    os_disk_size = "20G"
+  }
   "lxc-teleport-proxy" = {
     vmid   = 105
     cores  = 1
