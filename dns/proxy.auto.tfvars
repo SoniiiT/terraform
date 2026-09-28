@@ -72,6 +72,10 @@ proxy_records = {
     name      = "portainer"
     addresses = ["192.168.178.30"]
   }
+  "homelable" = {
+    name      = "homelable"
+    addresses = ["192.168.178.30"]
+  }
   "semaphore" = {
     name      = "semaphore"
     addresses = ["192.168.178.30"]
