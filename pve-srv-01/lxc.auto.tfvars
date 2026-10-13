@@ -6,12 +6,6 @@ lxc_containers = {
     memory = 1024
     ip     = "192.168.178.3"
   }
-  "lxc-harbor" = {
-    vmid   = 101
-    cores  = 2
-    memory = 8192
-    ip     = "192.168.178.42"
-  }
   "lxc-remotely" = {
     vmid   = 103
     cores  = 1
