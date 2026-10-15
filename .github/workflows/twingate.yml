@@ -63,7 +63,7 @@ jobs:
           terraform plan -out=tfplan
       
       - name: Upload Plan Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: tfplan-twingate
           path: twingate/tfplan
@@ -85,7 +85,7 @@ jobs:
           terraform_version: 1.14.3
 
       - name: Download Plan Artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: tfplan-twingate
           path: twingate
