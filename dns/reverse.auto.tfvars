@@ -24,14 +24,6 @@ ptr_records = {
     name = "31"
     ptr  = "docker-srv-02.home.soniiit.net."
   }
-  "lxc-pterodactyl-panel" = {
-    name = "40"
-    ptr  = "lxc-pterodactyl-panel.home.soniiit.net."
-  }
-  "lxc-pterodactyl-wings" = {
-    name = "41"
-    ptr  = "lxc-pterodactyl-wings.home.soniiit.net."
-  }
   "lxc-harbor" = {
     name = "42"
     ptr  = "lxc-harbor.home.soniiit.net."
@@ -64,24 +56,20 @@ ptr_records = {
     name = "51"
     ptr  = "lxc-omada.home.soniiit.net."
   }
-  "lxc-scanopy" = {
+  "lxc-homelable" = {
     name = "52"
-    ptr  = "lxc-scanopy.home.soniiit.net."
+    ptr  = "lxc-homelable.home.soniiit.net."
   }
-  "gr-terraform" = {
+  "github-runner-terraform" = {
     name = "70"
-    ptr  = "gr-terraform.home.soniiit.net."
+    ptr  = "github-runner-terraform.home.soniiit.net."
   }
-  "gr-packer" = {
+  "github-runner-packer" = {
     name = "72"
-    ptr  = "gr-packer.home.soniiit.net."
+    ptr  = "github-runner-packer.home.soniiit.net."
   }
   "jellyfin-home-01" = {
     name = "98"
     ptr  = "jellyfin-home-01.home.soniiit.net."
-  }
-  "app-srv-01" = {
-    name = "91"
-    ptr  = "app-srv-01.home.soniiit.net."
   }
 }

@@ -4,14 +4,6 @@ lxc_records = {
     name      = "lxc-bind9"
     addresses = ["192.168.178.3"]
   }
-  "lxc-pterodactyl-panel" = {
-    name      = "lxc-pterodactyl-panel"
-    addresses = ["192.168.178.40"]
-  }
-  "lxc-pterodactyl-wings" = {
-    name      = "lxc-pterodactyl-wings"
-    addresses = ["192.168.178.41"]
-  }
   "lxc-harbor" = {
     name      = "lxc-harbor"
     addresses = ["192.168.178.42"]
