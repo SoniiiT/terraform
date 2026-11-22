@@ -30,8 +30,12 @@ proxy_records = {
     name      = "romm"
     addresses = ["192.168.178.30"]
   }
-  "questarr" = {
-    name      = "questarr"
+  "gamarr" = {
+    name      = "gamarr"
+    addresses = ["192.168.178.30"]
+  }
+  "audiobookshelf" = {
+    name      = "audiobookshelf"
     addresses = ["192.168.178.30"]
   }
   # --- Media-Stack ---
