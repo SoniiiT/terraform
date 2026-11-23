@@ -18,8 +18,8 @@ proxy_records = {
     name      = "calibre-web"
     addresses = ["192.168.178.30"]
   }
-  "readarr" = {
-    name      = "readarr"
+  "chaptarr" = {
+    name      = "chaptarr"
     addresses = ["192.168.178.30"]
   }
   "kavita" = {
